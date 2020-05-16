@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 15:49:52 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 16:35:01 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 */
 
 /*
-** 1. Check terminal capabilities: should work with dumb mode
 ** 2. Check argc > 1 : if no arg, then error then return
+** 1. Check terminal capabilities: should work with dumb mode
 ** 3. Set signals
 ** 4. Check valid argv and remove duplicates: check inode
 ** 5. Display files alnum sorted files
@@ -36,14 +36,14 @@
 int main(int argc, char **argv)
 {
 	struct s_select	*data;
-	(void)argc;
-	(void)argv;
 
+	(void)argv;
 	if (argc > 1)
 	{
 		data = ft_memalloc(sizeof(struct s_select));
 		if (!data)
 			return (EXIT_FAILURE);
+		data_static_method(data, NULL);
 		set_terminal(data);
 		// Loop
 		unset_terminal(data);

@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 15:46:04 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 16:32:36 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ union u_buffer			read_key(void);
 
 void	set_terminal(struct s_select *data);
 void	unset_terminal(struct s_select *data);
+void    data_static_method(struct s_select *set, struct s_select **get);
 
 #endif
