@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 15:43:03 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 15:45:50 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	set_termcaps(struct s_select *data)
 	}
 }
 
-int	set_terminal(struct s_select *data)
+void	set_terminal(struct s_select *data)
 {
 	if (isatty(STDOUT_FILENO))
 	{
@@ -51,13 +51,11 @@ int	set_terminal(struct s_select *data)
 	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_select));
 	tputs(data->termcaps.value.ti, 1, putchar);
 	tputs(data->termcaps.value.vi, 1, putchar);
-	return (0);
 }
 
-int	unset_terminal(struct s_select *data)
+void	unset_terminal(struct s_select *data)
 {
 	tputs(data->termcaps.value.te, 1, putchar);
 	tputs(data->termcaps.value.vs, 1, putchar);
 	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_backup));
-	return (0);
 }

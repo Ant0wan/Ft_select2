@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 15:01:10 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 15:49:52 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,28 @@
 
 #include "select.h"
 
+#define NEED_ARG "ft_select requires at least one argument.\n\nUsage:\t./ft_select ARG...\n"
+
 int main(int argc, char **argv)
 {
 	struct s_select	*data;
 	(void)argc;
 	(void)argv;
 
-	data = ft_memalloc(sizeof(struct s_select));
-	if (!data)
-		return (EXIT_FAILURE);
-	set_terminal(data);
-	unset_terminal(data);
-	free(data);
+	if (argc > 1)
+	{
+		data = ft_memalloc(sizeof(struct s_select));
+		if (!data)
+			return (EXIT_FAILURE);
+		set_terminal(data);
+		// Loop
+		unset_terminal(data);
+		free(data);
+	}
+	else
+	{
+		write(STDERR_FILENO, NEED_ARG, ft_strlen(NEED_ARG));
+		return (1);
+	}
 	return (EXIT_SUCCESS);
 }
