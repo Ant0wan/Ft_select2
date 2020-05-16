@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 16:35:01 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 17:49:40 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int main(int argc, char **argv)
 {
 	struct s_select	*data;
 
-	(void)argv;
 	if (argc > 1)
 	{
 		data = ft_memalloc(sizeof(struct s_select));
@@ -45,9 +44,11 @@ int main(int argc, char **argv)
 			return (EXIT_FAILURE);
 		data_static_method(data, NULL);
 		set_terminal(data);
+		fill_elements(data, argc, argv);
 		// Loop
+		
 		unset_terminal(data);
-		free(data);
+		free_data(&data); // Free function of data
 	}
 	else
 	{

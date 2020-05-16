@@ -6,13 +6,13 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:00:32 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 16:36:02 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 17:47:52 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
-void	data_static_method(struct s_select *set, struct s_select **get)
+void		data_static_method(struct s_select *set, struct s_select **get)
 {
 	static struct s_select	*data;
 
@@ -22,13 +22,13 @@ void	data_static_method(struct s_select *set, struct s_select **get)
 		*get = data;
 }
 
-static void	end_pgm(int sig)
+void		end_pgm(int sig)
 {
 	struct s_select	*data;
 
 	data_static_method(NULL, &data);
 	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_backup));
-	/* Free data */
+	free_data(&data);
 	exit(sig + 128);
 }
 

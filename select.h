@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 16:46:48 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 17:47:43 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ struct	s_element
 	struct stat		st;
 	int			selected;
 	int			underlined;
-	int			color_highlight;
-	int			color_font;
+	char			*color; // No free
 };
 
 struct	s_select
@@ -80,5 +79,10 @@ union u_buffer			read_key(void);
 void	set_terminal(struct s_select *data);
 void	unset_terminal(struct s_select *data);
 void    data_static_method(struct s_select *set, struct s_select **get);
+void		end_pgm(int sig);
+void    fill_elements(struct s_select *data, int argc, char **argv);
+char    *get_color(struct stat *st);
+void    free_data(struct s_select **data);
+void    free_elements(struct s_element *element);
 
 #endif
