@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 17:49:40 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 17:53:54 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 		set_terminal(data);
 		fill_elements(data, argc, argv);
 		// Loop
-		
+		display(data);
 		unset_terminal(data);
 		free_data(&data); // Free function of data
 	}

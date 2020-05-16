@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/16 17:50:08 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/16 17:53:20 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SOURCES_PATH := ./
 SOURCES := \
 		color.c \
 		data.c \
+		display.c \
 		elements.c \
 		keymap.c \
 		main.c \

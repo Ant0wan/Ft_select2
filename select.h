@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 17:47:43 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 17:53:39 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,7 @@ void    fill_elements(struct s_select *data, int argc, char **argv);
 char    *get_color(struct stat *st);
 void    free_data(struct s_select **data);
 void    free_elements(struct s_element *element);
+
+void	display(struct s_select *data);
 
 #endif
