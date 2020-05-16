@@ -6,12 +6,18 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 14:27:10 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 14:48:45 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SELECT_H
 # define SELECT_H
+
+# include <curses.h>
+# include <signal.h>
+# include <stdio.h>
+# include <term.h>
+# include <unistd.h>
 
 # include "libft.h"
 
@@ -53,5 +59,8 @@ union					u_buffer
 };
 
 union u_buffer			read_key(void);
+
+int	set_terminal(struct s_select *data);
+int	unset_terminal(struct s_select *data);
 
 #endif

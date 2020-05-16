@@ -6,9 +6,11 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:00:32 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 13:24:05 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 14:41:16 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "select.h"
 
 static void	end_pgm(int sig)
 {

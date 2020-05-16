@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 12:55:17 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 14:55:35 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ union u_buffer	read_key(void)
 
 char	*g_insert_std_keymap[] =
 {
-	[ 0 ... 128 ] = { NULL }
+	[ 0 ... 128 ] = NULL,
 };
 
 char	*g_insert_ctlx_keymap[] =
 {
-	[ 0 ... 128 ] = { NULL }
+	[ 0 ... 128 ] = NULL,
 };
 
 char	*g_insert_meta_keymap[] =
 {
-	[ 0 ... 128 ] = { NULL }
+	[ 0 ... 128 ] = NULL,
 };
 
 /*
@@ -46,15 +46,15 @@ char	*g_insert_meta_keymap[] =
 
 char	*g_cmd_std_keymap[] =
 {
-	[ 0 ... 128 ] = { NULL }
+	[ 0 ... 128 ] = NULL,
 };
 
 char	*g_cmd_ctlx_keymap[] =
 {
-	[ 0 ... 128 ] = { NULL }
+	[ 0 ... 128 ] = NULL,
 };
 
 char	*g_cmd_meta_keymap[] =
 {
-	[ 0 ... 128 ] = { NULL }
+	[ 0 ... 128 ] = NULL,
 };
