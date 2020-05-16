@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 15:26:58 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 15:31:40 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ struct	s_select
 	struct termios		termios_backup; // No free
 	struct termios		termios_select; // No free
 	union u_termcaps	termcaps; // No free
+	int			dumb_mode; // Set true is all termcaps are not available
 };
 
 union					u_buffer

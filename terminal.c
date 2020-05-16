@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 15:28:03 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 15:34:22 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void	set_termcaps(struct s_select *data)
 	while (i < NB_TERMS)
 	{
 		data->termcaps.index[i] = tgetstr(data->tc_string[i], NULL);
+		if (!data->termcaps.index[i])
+			data->dumb_mode = 1;
 		++i;
 	}
 }
