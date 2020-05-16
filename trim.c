@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   trim.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 18:45:41 by abarthel         ###   ########.fr       */
+/*   Created: 2020/05/16 18:56:31 by abarthel          #+#    #+#             */
+/*   Updated: 2020/05/16 19:07:22 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
-void	display(struct s_select *data)
+char	*radical(char *av, int e, int *l)
 {
-	struct s_element	*l;
-
-	l = data->elements;
-	while (l)
-	{
-		ft_printf("%s%s%s\n", l->color , l->arg, DEFAULT);
-		l = l->next;
-	}
+	*l = 0;
+	while (&av[e - *l] >= av && av[e - *l] != '/')
+		*l += 1;
+	if (*l && av[e - *l] == '/')
+		*l += 1;
+	else if (*l == 0)
+		return (av);
+	return (&av[e - *l]);
 }

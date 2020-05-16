@@ -6,11 +6,17 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:04:25 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 17:48:30 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 18:58:52 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
+
+void	del_one(struct s_element *element)
+{
+	element->previous->next = element->next;
+	free(element);
+}
 
 void	free_elements(struct s_element *element)
 {
@@ -29,8 +35,7 @@ static struct s_element	*node_element(struct s_element *prev, char *av)
 	if (!node)
 		end_pgm(-126);
 	node->previous = prev;
-	node->arg = av; // No free
-	node->len = ft_strlen(av);
+	node->arg = radical(av, ft_strlen(av), &(node->len));
 	stat(av, &(node->st));
 	node->color = get_color(&(node->st));
 	return (node);
