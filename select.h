@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 14:48:45 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 15:26:58 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,36 @@
 
 # include "libft.h"
 
+# define NB_TERMS 11
+
 struct	s_termcaps
 {
-	char	*cd;
-	char	*ce;
-	char	*vs;
-	char	*vi;
-	char	*us;
-	char	*af;
-	char	*ab;
-	char	*cm;
-	char	*me;
-	char	*ti;
-	char	*te;
+	char	*cd; // wipe
+	char	*ce; // clear end of line
+	char	*vs; // cursor visible
+	char	*vi; // cursor not visible
+	char	*us; // underline
+	char	*af; // font color
+	char	*ab; // background color
+	char	*cm; // move position
+	char	*me; // reset colors
+	char	*ti; // Enable full screen
+	char	*te; // Disable full screen
 };
 
-struct	s_tc_string
+union	u_termcaps
 {
-	const char *const	var;
-	char				**value;
-	int				available;
+	char			*index[sizeof(struct s_termcaps)];
+	struct s_termcaps	value;
 };
 
 struct	s_select
 {
 	char			*ttyname; // No free
-	struct s_tc_string	tc_string[11]; // No free
+	char			*tc_string[NB_TERMS]; // No free
 	struct termios		termios_backup; // No free
 	struct termios		termios_select; // No free
-	struct s_termcaps	termcaps; // No free
+	union u_termcaps	termcaps; // No free
 };
 
 union					u_buffer

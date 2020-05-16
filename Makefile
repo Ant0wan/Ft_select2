@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:43 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/16 14:58:34 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/16 15:02:15 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@
 
 all: $(NAME)
 
-$(NAME): $(PATH_LIB)/libft.a $(OBJECTS)
+$(NAME): $(PATH_LIB)libft.a $(OBJECTS)
 	@$(CC) $^ -o $@ $(LDLIBS) $(LDFLAGS)
 	@printf "\n\e[38;5;44m%4s [\e[1m$(NAME) built]\n\n\e[0m"
 
-libft/libft.a: dep
+$(PATH_LIB)libft.a: dep
 	@$(MAKE) lib -j -C $(PATH_LIB)
 
 dep:
