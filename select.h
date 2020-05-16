@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 16:32:36 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 16:46:48 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <term.h>
 # include <unistd.h>
+# include <sys/stat.h>
 
 # include "libft.h"
 
@@ -44,6 +45,19 @@ union	u_termcaps
 	struct s_termcaps	value;
 };
 
+struct	s_element
+{
+	struct s_element	*next;
+	struct s_element	*previous;
+	char			*arg; // No free
+	int			len;
+	struct stat		st;
+	int			selected;
+	int			underlined;
+	int			color_highlight;
+	int			color_font;
+};
+
 struct	s_select
 {
 	char			*ttyname; // No free
@@ -52,6 +66,7 @@ struct	s_select
 	struct termios		termios_select; // No free
 	union u_termcaps	termcaps; // No free
 	int			dumb_mode; // Set true is all termcaps are not available
+	struct s_element	*elements; // linked list of elements
 };
 
 union					u_buffer
