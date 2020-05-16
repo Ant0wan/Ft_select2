@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 15:34:22 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 15:43:03 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,26 @@ static void	set_termcaps(struct s_select *data)
 
 int	set_terminal(struct s_select *data)
 {
-	// Check if tty
 	if (isatty(STDOUT_FILENO))
 	{
 		data->ttyname = ttyname(STDOUT_FILENO);
 		if (data->ttyname == NULL)
 			data->ttyname = "dumb";
 	}
-	// Check and get termcaps from tty name
 	set_termcaps(data);
-
-	// Set term
+	tcgetattr(STDOUT_FILENO, &(data->termios_backup));
+	tcgetattr(STDOUT_FILENO, &(data->termios_select));
 	data->termios_select.c_lflag &= ~(ICANON | ECHO);
-	tputs(data->termcaps.value.ti, 1, putchar); // Full screen
-	tputs(data->termcaps.value.vi, 1, putchar); // Make cursor invisible
+	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_select));
+	tputs(data->termcaps.value.ti, 1, putchar);
+	tputs(data->termcaps.value.vi, 1, putchar);
 	return (0);
 }
 
 int	unset_terminal(struct s_select *data)
 {
-	data->termios_select.c_lflag |= (ICANON | ECHO);
-	tputs(data->termcaps.value.te, 1, putchar); // Disable full screen
-	tputs(data->termcaps.value.vs, 1, putchar); // Make cursor visible
+	tputs(data->termcaps.value.te, 1, putchar);
+	tputs(data->termcaps.value.vs, 1, putchar);
+	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_backup));
 	return (0);
 }
