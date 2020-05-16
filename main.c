@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 13:55:16 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 14:29:11 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,18 @@
 ** 8. Return values
 */
 
+#include "select.h"
+
 int main(int argc, char **argv)
 {
-	struct s_select	data;
+	struct s_select	*data;
 	(void)argc;
 	(void)argv;
 
-	set_terminal(&data);
-	return (0);
+	data = ft_memalloc(sizeof(struct s_select));
+	if (!data)
+		return (EXIT_FAILURE);
+	set_terminal(data);
+	unset_terminal(data);
+	return (EXIT_SUCCESS);
 }

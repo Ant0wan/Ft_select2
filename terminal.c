@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 14:22:04 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 14:30:20 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	set_tercamps(struct s_select *data)
 {
+	/*                    termcap,   pointeur,    availability            */
 	data->tc_strings[0] = {"cd", &(data->termcaps.cd), 1}; // wipe
 	data->tc_strings[1] = {"ce", &(data->termcaps.ce), 1}; // clear end of line
 	data->tc_strings[2] = {"vs", &(data->termcaps.vs), 1}; // cursor visible
@@ -38,7 +39,7 @@ int	set_terminal(struct s_select *data)
 	set_tercamps(data);
 
 	// Set term
-	termios_p.c_lflag &= ~(ICANON | ECHO);
+	termios_select->c_lflag &= ~(ICANON | ECHO);
 	tputs(termcaps.ti, 1, tc_output); // Full screen
 	tputs(termcaps.vi, 1, tc_output); // Make cursor invisible
 }
