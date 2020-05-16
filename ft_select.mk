@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/16 17:53:20 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/16 18:39:49 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ LDLIBS += $(PATH_LIB)libft.a -ltermcap
 
 LDFLAGS += $(DEBUG)
 
-CFLAGS += -Wall -Wextra -Werror -g3 -D_POSIX_C_SOURCE $(DEBUG)
+CFLAGS += -Wall -Wextra -Werror -g3 $(DEBUG) #-D_POSIX_C_SOURCE
 #CFLAGS += -fno-builtin -O2
 
 DEBUG += -fsanitize=address

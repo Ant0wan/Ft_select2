@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 17:53:39 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/16 18:31:48 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,29 @@
 # include <unistd.h>
 # include <sys/stat.h>
 
+# include <sys/sysmacros.h>
+# include <sys/types.h>
+# include <linux/types.h>
+
 # include "libft.h"
 
 # define NB_TERMS 11
+
+# define DEFAULT	"\033[0m"
+# define DIRECTORY	"\033[01;34m"
+# define SYMLINK	"\033[01;36m"
+# define PIPE		"\033[33m"
+# define SOCKET		"\033[01;35m"
+# define BLOCK_DEVICE	"\033[01;33m"
+# define CHAR_DEVICE	"\033[01;33m"
+# define EXECUTABLE	"\033[01;32m"
+# define DOOR		"\033[01;35m"
+# define SETUID		"\033[37;41m"
+# define SETGID		"\033[30;43m"
+# define STICKY		"\033[37;44m"
+# define OTHER_WRITABLE	"\033[34;42m"
+# define OW_STICKY	"\033[30;42m"
+# define CA		"\033[30;41m"
 
 struct	s_termcaps
 {
