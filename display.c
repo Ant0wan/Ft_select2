@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 17:24:27 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 17:33:16 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,17 @@
 
 void	bar(struct s_select *data)
 {
+	int	i;
+	// Set color
+	i = data->win.ws_col;
+	while (i)
+	{
+		tputs(tgoto(data->termcaps.cm, i, data->win.ws_row), 1, output);
+		ft_dprintf(data->fd, "%s ", BFIELD);
+		--i;
+	}
 	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
-	ft_dprintf(data->fd, " %sSort<S>: %s%s\t%sSelected: %s%d%s", BFIELD, RESFID, "alphabetical", BFIELD, RESFID, 0, DEFAULT);
+	ft_dprintf(data->fd, " %sSort: %s%s\t%sSelected: %s%d%s", BFIELD, RESFID, "alphabetical", BFIELD, RESFID, 0, DEFAULT);
 }
 
 void	frame(struct s_select *data)
