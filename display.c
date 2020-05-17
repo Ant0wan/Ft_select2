@@ -6,16 +6,19 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 17:15:22 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 17:24:27 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
-void	bar(struct s_select *data, struct s_element *l)
+#define BFIELD "\033[40;38;5;82m"
+#define RESFID "\033[30;48;5;82m"
+
+void	bar(struct s_select *data)
 {
 	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
-	ft_dprintf(data->fd, " %sName:%s\tSize: %ldBytes\tType: %s%s", "\033[93m", l->arg, l->st.st_size, "directory", DEFAULT);
+	ft_dprintf(data->fd, " %sSort<S>: %s%s\t%sSelected: %s%d%s", BFIELD, RESFID, "alphabetical", BFIELD, RESFID, 0, DEFAULT);
 }
 
 void	frame(struct s_select *data)
@@ -83,7 +86,7 @@ void	display_elements(struct s_select *data)
 void	display(struct s_select *data)
 {
 	frame(data);
-	bar(data, data->elements);
+	bar(data);
 	display_elements(data);
 	sleep(2);
 }
