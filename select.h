@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 18:59:29 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 09:13:32 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ void	unset_terminal(struct s_select *data);
 void    data_static_method(struct s_select *set, struct s_select **get);
 void		end_pgm(int sig);
 void    fill_elements(struct s_select *data, int argc, char **argv);
-char    *radical(char *av, int e, int *l);
 char    *get_color(struct stat *st);
 void    free_data(struct s_select **data);
 void    free_elements(struct s_element *element);

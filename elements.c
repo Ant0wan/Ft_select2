@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:04:25 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 18:58:52 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 09:14:16 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static struct s_element	*node_element(struct s_element *prev, char *av)
 	if (!node)
 		end_pgm(-126);
 	node->previous = prev;
-	node->arg = radical(av, ft_strlen(av), &(node->len));
+	node->arg = av;
+	node->len = ft_strlen(av);
 	stat(av, &(node->st));
 	node->color = get_color(&(node->st));
 	return (node);

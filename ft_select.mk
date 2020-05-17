@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/16 19:04:32 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/17 09:13:17 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,7 @@ SOURCES := \
 		keymap.c \
 		main.c \
 		sig.c \
-		terminal.c \
-		trim.c
+		terminal.c
 
 OBJECTS := $(patsubst %.c,%.o,$(addprefix $(SOURCES_PATH), $(SOURCES)))
 
