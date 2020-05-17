@@ -6,11 +6,17 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 13:29:09 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 17:15:22 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
+
+void	bar(struct s_select *data, struct s_element *l)
+{
+	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
+	ft_dprintf(data->fd, " %sName:%s\tSize: %ldBytes\tType: %s%s", "\033[93m", l->arg, l->st.st_size, "directory", DEFAULT);
+}
 
 void	frame(struct s_select *data)
 {
@@ -44,8 +50,6 @@ void	frame(struct s_select *data)
 	while (++i < data->win.ws_col - 1)
 		ft_dprintf(data->fd, "─");
 	ft_dprintf(data->fd, "┘");
-	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
-	ft_dprintf(data->fd, "%sSort: alphabetical\tSelected:%d%s", "\e[44m", 0, DEFAULT);
 }
 
 void	display_elements(struct s_select *data)
@@ -79,6 +83,7 @@ void	display_elements(struct s_select *data)
 void	display(struct s_select *data)
 {
 	frame(data);
+	bar(data, data->elements);
 	display_elements(data);
 	sleep(2);
 }

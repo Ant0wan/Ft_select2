@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 11:21:36 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 17:02:17 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 #include "select.h"
 
 #define NEED_ARG "ft_select requires at least one argument.\n\nUsage:\t./ft_select ARG...\n"
+
 
 int main(int argc, char **argv)
 {
