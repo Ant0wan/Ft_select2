@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 20:02:37 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 20:04:33 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ void	bar(struct s_select *data)
 		--i;
 	}
 	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
-	// Sort mode
-	ft_dprintf(data->fd, " %sSort: %s%s %s %s%s\t", BFIELD, RESFID, ARLE, "alphabetical", ARRI, BFIELD);
+	// Sort mode : escape mode and selection mode
+//	ft_dprintf(data->fd, " %sSort: %s%s %s %s%s\t", BFIELD, RESFID, ARLE, "alphabetical", ARRI, BFIELD);
+	ft_dprintf(data->fd, " %sSort: %s %s %s%s\t", BFIELD, ARLE, "alphabetical", ARRI, BFIELD);
 	// Selected number
 	ft_dprintf(data->fd, "\tSelected: %s%3d%s", RESFID, 0, DEFAULT);
 }
