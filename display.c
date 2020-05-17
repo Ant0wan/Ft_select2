@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 17:33:16 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 20:01:25 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 #define BFIELD "\033[40;38;5;82m"
 #define RESFID "\033[30;48;5;82m"
+
+#define ARLE "◄"
+#define ARRI "►"
+
 
 void	bar(struct s_select *data)
 {
@@ -27,7 +31,10 @@ void	bar(struct s_select *data)
 		--i;
 	}
 	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
-	ft_dprintf(data->fd, " %sSort: %s%s\t%sSelected: %s%d%s", BFIELD, RESFID, "alphabetical", BFIELD, RESFID, 0, DEFAULT);
+	// Sort mode
+	ft_dprintf(data->fd, " %sSort: %s%s %s %s%s\t", BFIELD, RESFID, ARLE, "alphabetical", ARRI, BFIELD);
+	// Selected number
+	ft_dprintf(data->fd, "\tSelected: %s%d%s", RESFID, 0, DEFAULT);
 }
 
 void	frame(struct s_select *data)
