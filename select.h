@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 10:30:20 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 11:03:24 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ struct	s_element
 struct	s_select
 {
 	char			*ttyname; // No free
+	char			*term; // No free
 	char			*tc_string[NB_TERMS]; // No free
 	struct termios		termios_backup; // No free
 	struct termios		termios_select; // No free

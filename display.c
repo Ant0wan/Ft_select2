@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 10:47:18 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 11:04:26 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	display(struct s_select *data)
 		ft_printf("%s%s%s\t", l->color , l->arg, DEFAULT);
 		l = l->next;
 	}
+	sleep(4);
 }

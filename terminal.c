@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 10:45:53 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 11:03:51 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,14 @@ void	set_terminal(struct s_select *data)
 	{
 		data->ttyname = ttyname(STDOUT_FILENO);
 		if (data->ttyname == NULL)
-			data->ttyname = "dumb";
-		if (tgetent(NULL, data->ttyname) != 1)
+			exit(2);
+		data->term = getenv("TERM");
+		if (!data->term)
+			data->term = "dumb";
+		if (tgetent(NULL, data->term) != 1)
 		{
-			data->ttyname = "dumb";
-			if (tgetent(NULL, data->ttyname) != 1)
-			{
-				write(STDERR_FILENO, ERR_TERM, ft_strlen(ERR_TERM));
-				exit(2);
-			}
+			write(STDERR_FILENO, ERR_TERM, ft_strlen(ERR_TERM));
+			exit(2);
 		}
 	}
 	set_termcaps(data);
