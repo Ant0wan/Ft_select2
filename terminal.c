@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 11:26:32 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 11:52:05 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ void	set_terminal(struct s_select *data)
 {
 	if (isatty(STDOUT_FILENO))
 	{
-		data->ttyname = ttyname(STDOUT_FILENO);
-		if (data->ttyname == NULL)
+		data->ttyname = ttyname(STDIN_FILENO);
+		if (data->ttyname)
+			data->fd = open(data->ttyname, O_RDWR);
+		if (data->fd == -1)
 			exit(2);
 		data->term = getenv("TERM");
 		if (!data->term)

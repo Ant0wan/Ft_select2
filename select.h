@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 11:25:55 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 11:49:33 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SELECT_H
 
 # include <curses.h>
+# include <fcntl.h>
 # include <signal.h>
 # include <stdio.h>
 # include <term.h>
@@ -77,7 +78,8 @@ struct	s_element
 
 struct	s_select
 {
-	char			*ttyname; // No free
+	char			*ttyname;
+	int			fd;
 	char			*term; // No free
 	char			*tc_string[NB_TERMS]; // No free
 	struct termios		termios_backup; // No free
