@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 11:52:05 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 12:04:02 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	set_terminal(struct s_select *data)
 
 void	unset_terminal(struct s_select *data)
 {
-	tputs(data->termcaps.value.te, 1, output);
 	tputs(data->termcaps.value.vs, 1, output);
+	tputs(data->termcaps.value.te, 1, output);
 	tcsetattr(STDIN_FILENO, TCSAFLUSH, &(data->termios_backup));
 }

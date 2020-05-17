@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 11:54:05 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 12:08:30 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	frame(struct s_select *data)
 	ioctl(STDERR_FILENO, TIOCGWINSZ, &(data->win));
 	// Draw frame corners
 	(void)data;
-//	tputs(tgetstr("cl", NULL), 1, output);
+	tputs(tgoto(data->termcaps.value.cm, 0, 0), 1, output);
+	tputs(data->termcaps.value.cd, 1, output);
 //	ft_dprintf(data->fd, "┌");
 
 //	i = 0;

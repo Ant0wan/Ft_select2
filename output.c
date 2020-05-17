@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 11:23:23 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 11:52:55 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 12:04:55 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,10 @@ int	output(int c)
 		return ((unsigned char)c);
 	else
 		return (EOF);
+}
+
+void	placendisplay(int col, int row, struct s_element *l, struct s_select *data)
+{
+        tputs(tgoto(data->termcaps.value.cm , col, row), 1, output);
+        write(data->fd, l->arg, l->len);
 }
