@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 09:13:32 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 10:30:20 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@
 # include <stdio.h>
 # include <term.h>
 # include <unistd.h>
+# include <sys/ioctl.h>
 # include <sys/stat.h>
-
-# include <sys/sysmacros.h>
 # include <sys/types.h>
-# include <linux/types.h>
 
 # include "libft.h"
 
@@ -85,6 +83,7 @@ struct	s_select
 	struct termios		termios_select; // No free
 	union u_termcaps	termcaps; // No free
 	int			dumb_mode; // Set true is all termcaps are not available
+	struct winsize		win; // Use to get window size
 	struct s_element	*elements; // linked list of elements
 };
 
@@ -106,5 +105,7 @@ void    free_data(struct s_select **data);
 void    free_elements(struct s_element *element);
 
 void	display(struct s_select *data);
+
+void		set_signals(void);
 
 #endif

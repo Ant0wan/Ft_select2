@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/17 09:13:17 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/17 10:35:01 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ INCLUDES := -I$(PATH_LIB)include/
 
 DEPENDS := $(patsubst %.c,%.d,$(addprefix $(SOURCES_PATH), $(SOURCES)))
 
-LDLIBS += $(PATH_LIB)libft.a -ltermcap
+LDLIBS += -ltermcap $(PATH_LIB)libft.a
 
 LDFLAGS += $(DEBUG)
 

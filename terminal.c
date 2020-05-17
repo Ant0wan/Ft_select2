@@ -6,11 +6,13 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 15:45:50 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 10:45:53 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
+
+#define ERR_TERM "Terminal capabilities insuficient for program use.\n"
 
 static void	set_termcaps(struct s_select *data)
 {
@@ -43,6 +45,15 @@ void	set_terminal(struct s_select *data)
 		data->ttyname = ttyname(STDOUT_FILENO);
 		if (data->ttyname == NULL)
 			data->ttyname = "dumb";
+		if (tgetent(NULL, data->ttyname) != 1)
+		{
+			data->ttyname = "dumb";
+			if (tgetent(NULL, data->ttyname) != 1)
+			{
+				write(STDERR_FILENO, ERR_TERM, ft_strlen(ERR_TERM));
+				exit(2);
+			}
+		}
 	}
 	set_termcaps(data);
 	tcgetattr(STDOUT_FILENO, &(data->termios_backup));
@@ -57,5 +68,5 @@ void	unset_terminal(struct s_select *data)
 {
 	tputs(data->termcaps.value.te, 1, putchar);
 	tputs(data->termcaps.value.vs, 1, putchar);
-	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_backup));
+	tcsetattr(STDIN_FILENO, TCSAFLUSH, &(data->termios_backup));
 }

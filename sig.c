@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:00:32 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 17:47:52 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 09:42:06 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,17 @@ static void	suspend(int sig)
 	(void)sig;
 	data_static_method(NULL, &data);
 	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_backup));
+	raise(SIGSTOP);
 }
 
 static void	wins_resize_sighandler(int sig)
 {
+	struct s_select	*data;
+
 	(void)sig;
+	data_static_method(NULL, &data);
+	ioctl(STDERR_FILENO, TIOCGWINSZ, &(data->win)); // Should display check all the time ?
+	// redisplay ?
 }
 
 static void	cont_pgm(int sig)
