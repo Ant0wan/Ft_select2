@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 13:06:16 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 13:20:04 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	frame(struct s_select *data)
 	while (++i < data->win.ws_col - 1)
 		ft_dprintf(data->fd, "─");
 
-	ft_printf("┐");
+	ft_dprintf(data->fd, "┐");
 
 	i = 0;
 	while (++i < data->win.ws_row - 2)
@@ -39,11 +39,13 @@ void	frame(struct s_select *data)
 	}
 
 	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row - 2), 1, output);
-	ft_printf("└");
+	ft_dprintf(data->fd, "└");
 	i = 0;
 	while (++i < data->win.ws_col - 1)
 		ft_dprintf(data->fd, "─");
-	ft_printf("┘");
+	ft_dprintf(data->fd, "┘");
+	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
+	ft_dprintf(data->fd, "%sSort: alphabetical\tSelected:%d%s", "\e[44m", 0, DEFAULT);
 }
 
 void	display(struct s_select *data)
