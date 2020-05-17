@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/17 10:35:01 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/17 11:27:06 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SOURCES := \
 		elements.c \
 		keymap.c \
 		main.c \
+		output.c \
 		sig.c \
 		terminal.c
 

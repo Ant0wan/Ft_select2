@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:00:32 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 09:42:06 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 11:19:32 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static void	wins_resize_sighandler(int sig)
 
 	(void)sig;
 	data_static_method(NULL, &data);
-	ioctl(STDERR_FILENO, TIOCGWINSZ, &(data->win)); // Should display check all the time ?
 	// redisplay ?
 }
 

@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 11:03:51 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 11:26:32 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ void	set_terminal(struct s_select *data)
 	tcgetattr(STDOUT_FILENO, &(data->termios_select));
 	data->termios_select.c_lflag &= ~(ICANON | ECHO);
 	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_select));
-	tputs(data->termcaps.value.ti, 1, putchar);
-	tputs(data->termcaps.value.vi, 1, putchar);
+	tputs(data->termcaps.value.ti, 1, output);
+	tputs(data->termcaps.value.vi, 1, output);
 }
 
 void	unset_terminal(struct s_select *data)
 {
-	tputs(data->termcaps.value.te, 1, putchar);
-	tputs(data->termcaps.value.vs, 1, putchar);
+	tputs(data->termcaps.value.te, 1, output);
+	tputs(data->termcaps.value.vs, 1, output);
 	tcsetattr(STDIN_FILENO, TCSAFLUSH, &(data->termios_backup));
 }

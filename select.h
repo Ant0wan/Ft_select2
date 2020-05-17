@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 11:03:24 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 11:25:55 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@
 
 struct	s_termcaps
 {
-	char	*cd; // wipe
-	char	*ce; // clear end of line
-	char	*vs; // cursor visible
-	char	*vi; // cursor not visible
-	char	*us; // underline
-	char	*af; // font color
-	char	*ab; // background color
-	char	*cm; // move position
-	char	*me; // reset colors
-	char	*ti; // Enable full screen
-	char	*te; // Disable full screen
+	char	*cd; //0 wipe
+	char	*ce; //1 clear end of line
+	char	*vs; //2 cursor visible
+	char	*vi; //3 cursor not visible
+	char	*us; //4 underline
+	char	*af; //5 font color
+	char	*ab; //6 background color
+	char	*cm; //7 move position
+	char	*me; //8 reset colors
+	char	*ti; //9 Enable full screen
+	char	*te; //10 Disable full screen
 };
 
 union	u_termcaps
@@ -95,6 +95,8 @@ union					u_buffer
 };
 
 union u_buffer			read_key(void);
+
+int     output(int c);
 
 void	set_terminal(struct s_select *data);
 void	unset_terminal(struct s_select *data);
