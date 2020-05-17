@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 12:05:15 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 12:51:10 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,6 @@ struct	s_termcaps
 	char	*te; //10 Disable full screen
 };
 
-union	u_termcaps
-{
-	char			*index[sizeof(struct s_termcaps)];
-	struct s_termcaps	value;
-};
-
 struct	s_element
 {
 	struct s_element	*next;
@@ -84,7 +78,7 @@ struct	s_select
 	char			*tc_string[NB_TERMS]; // No free
 	struct termios		termios_backup; // No free
 	struct termios		termios_select; // No free
-	union u_termcaps	termcaps; // No free
+	struct s_termcaps	termcaps; // No free
 	int			dumb_mode; // Set true is all termcaps are not available
 	struct winsize		win; // Use to get window size
 	struct s_element	*elements; // linked list of elements

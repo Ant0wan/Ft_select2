@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 12:04:02 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/17 12:56:26 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,18 @@
 
 static void	set_termcaps(struct s_select *data)
 {
-	int	i;
-
-	data->tc_string[0] = "cd";
-	data->tc_string[1] = "ce";
-	data->tc_string[2] = "vs";
-	data->tc_string[3] = "vi";
-	data->tc_string[4] = "us";
-	data->tc_string[5] = "AF";
-	data->tc_string[6] = "AB";
-	data->tc_string[7] = "cm";
-	data->tc_string[8] = "me";
-	data->tc_string[9] = "ti";
-	data->tc_string[10] = "te";
-	while (i < NB_TERMS)
-	{
-		data->termcaps.index[i] = tgetstr(data->tc_string[i], NULL);
-		if (!data->termcaps.index[i])
+	if (!(data->termcaps.cd = tgetstr("cd", NULL))
+		|| !(data->termcaps.ce = tgetstr("ce", NULL))
+		|| !(data->termcaps.vs = tgetstr("vs", NULL))
+		|| !(data->termcaps.vi = tgetstr("vi", NULL))
+		|| !(data->termcaps.us = tgetstr("us", NULL))
+		|| !(data->termcaps.af = tgetstr("AF", NULL))
+		|| !(data->termcaps.ab = tgetstr("AB", NULL))
+		|| !(data->termcaps.cm = tgetstr("cm", NULL))
+		|| !(data->termcaps.me = tgetstr("me", NULL))
+		|| !(data->termcaps.ti = tgetstr("ti", NULL))
+		|| !(data->termcaps.te = tgetstr("te", NULL)))
 			data->dumb_mode = 1;
-		++i;
-	}
 }
 
 void	set_terminal(struct s_select *data)
@@ -61,13 +53,14 @@ void	set_terminal(struct s_select *data)
 	tcgetattr(STDOUT_FILENO, &(data->termios_select));
 	data->termios_select.c_lflag &= ~(ICANON | ECHO);
 	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_select));
-	tputs(data->termcaps.value.ti, 1, output);
-	tputs(data->termcaps.value.vi, 1, output);
+	tputs(data->termcaps.ti, 1, output);
+	tputs(data->termcaps.vi, 1, output);
 }
 
 void	unset_terminal(struct s_select *data)
 {
-	tputs(data->termcaps.value.vs, 1, output);
-	tputs(data->termcaps.value.te, 1, output);
+	tputs(data->termcaps.vs, 1, output);
+	tputs(data->termcaps.te, 1, output);
+	close(data->fd);
 	tcsetattr(STDIN_FILENO, TCSAFLUSH, &(data->termios_backup));
 }
