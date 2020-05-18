@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 19:05:33 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 21:28:34 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #define RESFID "\033[30;48;5;82m"
 #define GRHELP "\033[37;40;5m"
 #define GRMODE "\033[37;40;2m"
+#define SEAERR "\033[97;41m"
 
 #define ARLE "◄"
 #define ARRI "►"
@@ -48,7 +49,8 @@ void	bar(struct s_select *data)
 	}
 	else if (data->mode == SEARCH)
 	{
-		ft_dprintf(data->fd, "/keyword");
+		//ft_dprintf(data->fd, "/keyword");
+		ft_dprintf(data->fd, "%sSearch: Pattern not found: keyword%s",SEAERR, DEFAULT);
 	}
 }
 
