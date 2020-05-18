@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 15:37:05 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 20:54:00 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,8 @@ void	set_search_mode(struct s_select *data, union u_buffer input);
 
 
 int     isstdkey(int c);
+int	isctrlkey(union u_buffer c);
+int	mvctrlkey(union u_buffer c);
+
 
 #endif
