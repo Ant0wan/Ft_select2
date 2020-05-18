@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 14:35:39 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 15:22:33 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@
 # define COMMAN 1
 # define SEARCH 2
 
+union					u_buffer
+{
+	unsigned long	value;
+	char			buf[sizeof(unsigned long)];
+};
+
 struct	s_termcaps
 {
 	char	*cd; //0 wipe
@@ -76,9 +82,9 @@ struct	s_element
 
 struct s_keymap
 {
-	void	*std[128];
-	void	*ctrl[128];
-	void	*meta[128];
+	void	(*std[128])();
+	void	(*ctrl[128])();
+	void	(*meta[128])();
 };
 
 struct	s_select
@@ -98,12 +104,6 @@ struct	s_select
 	struct s_keymap		select_keymap;
 	struct s_keymap		cmd_keymap;
 	struct s_keymap		search_keymap;
-};
-
-union					u_buffer
-{
-	unsigned long	value;
-	char			buf[sizeof(unsigned long)];
 };
 
 union u_buffer			read_key(void);
@@ -127,5 +127,9 @@ void		set_signals(void);
 void    placendisplay(int col, int row, struct s_element *l, struct s_select *data);
 
 int     actions(struct s_select *data);
+void	set_command_mode(struct s_select *data, union u_buffer input);
+void	set_select_mode(struct s_select *data, union u_buffer input);
+void	set_search_mode(struct s_select *data, union u_buffer input);
+
 
 #endif
