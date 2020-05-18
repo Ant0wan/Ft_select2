@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 12:46:11 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 14:36:53 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 union u_buffer	read_key(void)
 {
 	union u_buffer	buffer_u;
+	int		ret;
 
 	buffer_u.value = 0;
-	if (read(STDIN_FILENO, buffer_u.buf, sizeof(buffer_u.buf) == -1))
-		buffer_u.value = 0;
+	ret = read(STDIN_FILENO, buffer_u.buf, sizeof(buffer_u.buf));
+	if (ret == -1)
+		buffer_u.value = -1;
 	return (buffer_u);
 }
 
@@ -27,18 +29,21 @@ int	actions(struct s_select *data)
 	union u_buffer	input;
 
 	(void)data;
-	input = read_key();
-	if (data->mode == 0)
+	while (1)
 	{
-		(void)input;
-	}
-	else if (data->mode == 1)
-	{
-		(void)input;
-	}
-	else if (data->mode == 2)
-	{
-		(void)input;
+		input = read_key();
+		if (data->mode == SELECT)
+		{
+			(void)input;
+		}
+		else if (data->mode == COMMAN)
+		{
+			(void)input;
+		}
+		else if (data->mode == SEARCH)
+		{
+			(void)input;
+		}
 	}
 	return (0);
 }

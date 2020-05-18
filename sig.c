@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:00:32 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 11:19:32 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 14:37:47 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void		end_pgm(int sig)
 	struct s_select	*data;
 
 	data_static_method(NULL, &data);
-	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_backup));
+//	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_backup));
+	unset_terminal(data);
 	free_data(&data);
 	exit(sig + 128);
 }

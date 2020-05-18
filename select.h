@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 12:47:05 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 14:35:39 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@
 # define OTHER_WRITABLE	"\033[34;42m"
 # define OW_STICKY	"\033[30;42m"
 # define CA		"\033[30;41m"
+
+# define SELECT 0
+# define COMMAN 1
+# define SEARCH 2
 
 struct	s_termcaps
 {
@@ -115,6 +119,8 @@ char    *get_color(struct stat *st);
 void    free_data(struct s_select **data);
 void    free_elements(struct s_element *element);
 
+void	bar(struct s_select *data);
+void	display_elements(struct s_select *data);
 void	display(struct s_select *data);
 
 void		set_signals(void);

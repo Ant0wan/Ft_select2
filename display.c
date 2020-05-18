@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 10:59:14 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 14:34:01 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,20 @@ void	bar(struct s_select *data)
 	}
 	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
 	// Sort mode : escape mode and selection mode
-//	ft_dprintf(data->fd, " %sSort: %s%s %s %s%s\t", BFIELD, RESFID, ARLE, "alphabetical", ARRI, BFIELD);
-	ft_dprintf(data->fd, " %sSort: %s %s %s%s\t", BFIELD, ARLE, "alphabetical", ARRI, BFIELD);
-	// Selected number
-	ft_dprintf(data->fd, "\tSelected: %s%3d%s", RESFID, 0, DEFAULT);
+	if (data->mode == COMMAN)
+	{
+		ft_dprintf(data->fd, " %sSort:%s%s %s %s%s\t", BFIELD, RESFID, ARLE, "alphabetical", ARRI, BFIELD);
+		ft_dprintf(data->fd, "\tSelected: %s%3d%s", RESFID, 0, DEFAULT);
+	}
+	else if (data->mode == SELECT)
+	{
+		ft_dprintf(data->fd, " %sSort:  %s  %s\t", BFIELD, "alphabetical", BFIELD);
+		ft_dprintf(data->fd, "\tSelected: %s%3d%s", RESFID, 0, DEFAULT);
+	}
+	else if (data->mode == SEARCH)
+	{
+		ft_dprintf(data->fd, "/keyword");
+	}
 }
 
 void	frame(struct s_select *data)
@@ -105,5 +115,5 @@ void	display(struct s_select *data)
 	frame(data);
 	bar(data);
 	display_elements(data);
-	sleep(2);
+	actions(data);
 }
