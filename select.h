@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 12:51:10 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 12:47:05 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,13 @@ struct	s_element
 	char			*color; // No free
 };
 
+struct s_keymap
+{
+	void	*std[128];
+	void	*ctrl[128];
+	void	*meta[128];
+};
+
 struct	s_select
 {
 	char			*ttyname;
@@ -82,6 +89,11 @@ struct	s_select
 	int			dumb_mode; // Set true is all termcaps are not available
 	struct winsize		win; // Use to get window size
 	struct s_element	*elements; // linked list of elements
+	char			*line; // Malloc
+	int			mode; // 0. selection'escape', 1. control (change sort)':', 2. search '/'
+	struct s_keymap		select_keymap;
+	struct s_keymap		cmd_keymap;
+	struct s_keymap		search_keymap;
 };
 
 union					u_buffer
@@ -107,5 +119,7 @@ void	display(struct s_select *data);
 
 void		set_signals(void);
 void    placendisplay(int col, int row, struct s_element *l, struct s_select *data);
+
+int     actions(struct s_select *data);
 
 #endif

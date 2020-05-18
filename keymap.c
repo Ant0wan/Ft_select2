@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/16 14:55:35 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 12:46:11 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,44 +17,52 @@ union u_buffer	read_key(void)
 	union u_buffer	buffer_u;
 
 	buffer_u.value = 0;
-	read(STDIN_FILENO, buffer_u.buf, sizeof(buffer_u.buf));
+	if (read(STDIN_FILENO, buffer_u.buf, sizeof(buffer_u.buf) == -1))
+		buffer_u.value = 0;
 	return (buffer_u);
 }
 
-/*
-** Insertion mode
-*/
-
-char	*g_insert_std_keymap[] =
+int	actions(struct s_select *data)
 {
-	[ 0 ... 128 ] = NULL,
-};
+	union u_buffer	input;
 
-char	*g_insert_ctlx_keymap[] =
+	(void)data;
+	input = read_key();
+	if (data->mode == 0)
+	{
+		(void)input;
+	}
+	else if (data->mode == 1)
+	{
+		(void)input;
+	}
+	else if (data->mode == 2)
+	{
+		(void)input;
+	}
+	return (0);
+}
+
+static void	none(void)
 {
-	[ 0 ... 128 ] = NULL,
-};
+	return;
+}
 
-char	*g_insert_meta_keymap[] =
+void	init_keymaps(struct s_select *data)
 {
-	[ 0 ... 128 ] = NULL,
-};
+	int	i;
 
-/*
-** Command mode
-*/
-
-char	*g_cmd_std_keymap[] =
-{
-	[ 0 ... 128 ] = NULL,
-};
-
-char	*g_cmd_ctlx_keymap[] =
-{
-	[ 0 ... 128 ] = NULL,
-};
-
-char	*g_cmd_meta_keymap[] =
-{
-	[ 0 ... 128 ] = NULL,
-};
+	i = 127;
+	while (i > -1)
+	{
+		data->select_keymap.std[i] = &none;
+		data->select_keymap.ctrl[i] = &none;
+		data->select_keymap.meta[i] = &none;
+		data->cmd_keymap.std[i] = &none;
+		data->cmd_keymap.ctrl[i] = &none;
+		data->cmd_keymap.meta[i] = &none;
+		data->search_keymap.std[i] = &none;
+		data->search_keymap.ctrl[i] = &none;
+		data->search_keymap.meta[i] = &none;
+	}
+}
