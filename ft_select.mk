@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/18 15:23:05 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/18 15:28:00 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ SOURCES := \
 		output.c \
 		search.c \
 		sig.c \
-		terminal.c
+		terminal.c \
+		utils_suite.c \
+		utils_suite2.c
 
 OBJECTS := $(patsubst %.c,%.o,$(addprefix $(SOURCES_PATH), $(SOURCES)))
 

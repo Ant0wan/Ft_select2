@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 15:23:49 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 15:39:02 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	actions(struct s_select *data)
 		input = read_key();
 		if (data->mode == SELECT)
 		{
-			(void)input;
-		//	(data->select_keymap.std[(int)input.buf[0]])(data, input);
+			if (isstdkey(input.value))
+				(data->select_keymap.std[input.value])(data, input);
 		}
 		else if (data->mode == COMMAN)
 		{
@@ -49,8 +49,10 @@ int	actions(struct s_select *data)
 	return (0);
 }
 
-static void	none(void)
+static void	none(struct s_select *data, union u_buffer input)
 {
+	(void)data;
+	(void)input;
 	return;
 }
 
@@ -79,5 +81,7 @@ void	init_keymaps(struct s_select *data)
 		data->search_keymap.std[i] = &none;
 		data->search_keymap.ctrl[i] = &none;
 		data->search_keymap.meta[i] = &none;
+		--i;
 	}
+	set_command_keymap(data);
 }

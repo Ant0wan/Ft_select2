@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 12:25:19 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 15:37:17 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int main(int argc, char **argv)
 		if (!data)
 			return (EXIT_FAILURE);
 		data_static_method(data, NULL);
+		init_keymaps(data);
 		set_terminal(data);
 		set_signals();
 		fill_elements(data, argc, argv);
