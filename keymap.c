@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 15:39:02 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 16:18:35 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	actions(struct s_select *data)
 {
 	union u_buffer	input;
 
-	(void)data;
 	while (1)
 	{
 		input = read_key();
@@ -39,11 +38,13 @@ int	actions(struct s_select *data)
 		}
 		else if (data->mode == COMMAN)
 		{
-			(void)input;
+			if (isstdkey(input.value))
+				(data->cmd_keymap.std[input.value])(data, input);
 		}
 		else if (data->mode == SEARCH)
 		{
-			(void)input;
+			if (isstdkey(input.value))
+				(data->search_keymap.std[input.value])(data, input);
 		}
 	}
 	return (0);

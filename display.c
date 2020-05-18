@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 14:34:01 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 18:52:09 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #define BFIELD "\033[40;38;5;82m"
 #define RESFID "\033[30;48;5;82m"
+#define GRHELP "\033[37;40;5m"
 
 #define ARLE "◄"
 #define ARRI "►"
@@ -36,6 +37,7 @@ void	bar(struct s_select *data)
 	{
 		ft_dprintf(data->fd, " %sSort:%s%s %s %s%s\t", BFIELD, RESFID, ARLE, "alphabetical", ARRI, BFIELD);
 		ft_dprintf(data->fd, "\tSelected: %s%3d%s", RESFID, 0, DEFAULT);
+		ft_dprintf(data->fd, "\t%sPress <ESC> to quit mode%s", GRHELP, DEFAULT); // Should be right centered
 	}
 	else if (data->mode == SELECT)
 	{
