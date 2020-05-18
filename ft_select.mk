@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/18 20:42:26 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/18 21:47:07 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SOURCES := \
 		search.c \
 		select.c \
 		sig.c \
+		sort.c \
 		terminal.c \
 		utils_suite.c \
 		utils_suite2.c

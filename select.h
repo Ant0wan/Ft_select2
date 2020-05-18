@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 20:54:00 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 21:46:55 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,13 @@ struct s_keymap
 	void	(*meta[128])();
 };
 
+struct s_sort
+{
+	struct s_sort	*next;
+	struct s_sort	*prev;
+	char		*name;
+};
+
 struct	s_select
 {
 	char			*ttyname;
@@ -104,6 +111,7 @@ struct	s_select
 	struct s_keymap		select_keymap;
 	struct s_keymap		cmd_keymap;
 	struct s_keymap		search_keymap;
+	struct s_sort		*sort;
 };
 
 union u_buffer			read_key(void);
@@ -137,5 +145,6 @@ int     isstdkey(int c);
 int	isctrlkey(union u_buffer c);
 int	mvctrlkey(union u_buffer c);
 
+void    init_sort_list(struct s_select *data);
 
 #endif

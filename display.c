@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 21:28:34 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/18 21:49:17 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	bar(struct s_select *data)
 	// Sort mode : escape mode and selection mode
 	if (data->mode == COMMAN)
 	{
-		ft_dprintf(data->fd, " %sSort:%s%s %s %s%s\t", BFIELD, RESFID, ARLE, "alphabetical", ARRI, BFIELD);
+		ft_dprintf(data->fd, " %sSort:%s%s %s %s%s\t", BFIELD, RESFID, data->sort->prev ? ARLE : "", data->sort->name, data->sort->next ? ARRI : "", BFIELD);
 		ft_dprintf(data->fd, "\tSelected: %s%3d%s", RESFID, 0, DEFAULT);
 		ft_dprintf(data->fd, "\t%sPress <ESC> to quit mode%s", GRHELP, DEFAULT); // Should be right centered
 	}
