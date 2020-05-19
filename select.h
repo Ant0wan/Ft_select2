@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/19 09:40:45 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/19 10:09:01 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,8 @@ int	isctrlkey(union u_buffer c);
 int	mvctrlkey(union u_buffer c);
 
 void    init_sort_list(struct s_select *data);
+void    left_sort_mode(struct s_select *data, union u_buffer input);
+void    right_sort_mode(struct s_select *data, union u_buffer input);
+
 
 #endif

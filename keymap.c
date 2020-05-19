@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 20:56:32 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/19 10:17:44 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ int	actions(struct s_select *data)
 	while (1)
 	{
 		input = read_key();
-	//	ft_printf(">>%d,%d,%d,%d << ", input.buf[0], input.buf[1], input.buf[2], input.buf[3]);
+	//	ft_printf(">>%d,%d,%d,%d, %d, %d << ", input.buf[0], input.buf[1], input.buf[2], input.buf[3], input.buf[4], input.buf[5]);
 		if (data->mode == SELECT)
 		{
 			if (isstdkey(input.value))
 				(data->select_keymap.std[input.value])(data, input);
 			else if (isctrlkey(input))
 			{
-				if (mvctrlkey(input))
-					input.buf[2] = input.buf[5] + 20;
+			//	if (mvctrlkey(input))
+			//		input.buf[2] = input.buf[5] + 20;
 				(data->select_keymap.ctrl[(int)input.buf[2]])(data, input);
 			}
 		}
@@ -49,8 +49,8 @@ int	actions(struct s_select *data)
 				(data->cmd_keymap.std[input.value])(data, input);
 			else if (isctrlkey(input))
 			{
-				if (mvctrlkey(input))
-					input.buf[2] = input.buf[5] + 20;
+			//	if (mvctrlkey(input))
+			//		input.buf[2] = input.buf[5] + 20;
 				(data->cmd_keymap.ctrl[(int)input.buf[2]])(data, input);
 			}
 		}
@@ -60,8 +60,8 @@ int	actions(struct s_select *data)
 				(data->search_keymap.std[input.value])(data, input);
 			else if (isctrlkey(input))
 			{
-				if (mvctrlkey(input))
-					input.buf[2] = input.buf[5] + 20;
+			//	if (mvctrlkey(input))
+			//		input.buf[2] = input.buf[5] + 20;
 				(data->search_keymap.ctrl[(int)input.buf[2]])(data, input);
 			}
 		}
@@ -78,6 +78,8 @@ static void	none(struct s_select *data, union u_buffer input)
 
 void	set_command_keymap(struct s_select *data)
 {
+	data->cmd_keymap.ctrl[67] = &right_sort_mode;
+	data->cmd_keymap.ctrl[68] = &left_sort_mode;
 	data->cmd_keymap.std[27] = &set_select_mode;
 	data->search_keymap.std[27] = &set_select_mode;
 	data->select_keymap.std[':'] = &set_command_mode;
