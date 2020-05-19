@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/19 10:17:44 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/19 17:18:00 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	set_command_keymap(struct s_select *data)
 	data->cmd_keymap.ctrl[68] = &left_sort_mode;
 	data->cmd_keymap.std[27] = &set_select_mode;
 	data->search_keymap.std[27] = &set_select_mode;
+	data->select_keymap.std[27] = &quit;
 	data->select_keymap.std[':'] = &set_command_mode;
 	data->select_keymap.std['/'] = &set_search_mode;
 }

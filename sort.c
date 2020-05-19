@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 21:36:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/19 10:14:03 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/19 14:07:22 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,30 @@ void	left_sort_mode(struct s_select *data, union u_buffer input)
 		bar(data);
 	}
 }
+/*
+void	sort(struct s_select *data)
+{
+	
+}
+
+
+int	alpha_compare(struct s_select *data)
+{
+	size_t	len1;
+	size_t	len2;
+	int		ret_time_cmp;
+	_Bool	low_equal;
+
+	len1 = ft_strlen(arg->ret_readdir->d_name);
+	len2 = ft_strlen(arg->voyager->d_name);
+	low_equal = ft_strcasecmp(arg->ret_readdir->d_name, arg->voyager->d_name) ? 0 : 1;
+	if (low_equal)
+	{
+		if (len1 != len2)
+			return (len1 > len2);
+		else
+			return (ft_strcmp(arg->ret_readdir->d_name, arg->voyager->d_name));
+	}
+	else
+		return (ft_strcasecmp(arg->ret_readdir->d_name, arg->voyager->d_name));
+}*/

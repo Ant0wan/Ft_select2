@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/19 10:18:35 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/19 17:16:10 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	bar(struct s_select *data)
 	{
 		ft_dprintf(data->fd, " %sSort:  %s  %s\t", BFIELD, data->sort->name, BFIELD);
 		ft_dprintf(data->fd, "\tSelected: %s%3d%s", RESFID, 0, DEFAULT);
-		ft_dprintf(data->fd, "\t\t\t\t\t%s<:> sort mode   </> search mode%s", GRMODE, DEFAULT); // Should be right centered
+		ft_dprintf(data->fd, "\t\t\t\t\t%s<:> sort mode   </> search mode   <r> reset%s", GRMODE, DEFAULT); // Should be right centered
 	}
 	else if (data->mode == SEARCH)
 	{

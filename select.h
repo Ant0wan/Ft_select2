@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/19 10:09:01 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/19 17:18:23 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void    init_keymaps(struct s_select *data);
 void	set_command_mode(struct s_select *data, union u_buffer input);
 void	set_select_mode(struct s_select *data, union u_buffer input);
 void	set_search_mode(struct s_select *data, union u_buffer input);
-
+void	quit(struct s_select *data, union u_buffer input);
 
 int     isstdkey(int c);
 int	isctrlkey(union u_buffer c);
