@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:00:32 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 14:37:47 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/19 09:41:37 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void		end_pgm(int sig)
 	struct s_select	*data;
 
 	data_static_method(NULL, &data);
-//	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_backup));
 	unset_terminal(data);
 	free_data(&data);
 	exit(sig + 128);
@@ -39,8 +38,8 @@ static void	suspend(int sig)
 
 	(void)sig;
 	data_static_method(NULL, &data);
-	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_backup));
-	raise(SIGSTOP);
+	unset_terminal(data);
+	raise(SIGSTOP); // could be replaced by ioctl
 }
 
 static void	wins_resize_sighandler(int sig)
@@ -58,7 +57,8 @@ static void	cont_pgm(int sig)
 
 	(void)sig;
 	data_static_method(NULL, &data);
-	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_select));
+	set_terminal(data);
+	display(data);
 }
 
 void		set_signals(void)

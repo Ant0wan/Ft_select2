@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 21:46:55 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/19 09:40:45 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ void    free_data(struct s_select **data);
 void    free_elements(struct s_element *element);
 
 void	bar(struct s_select *data);
+void	frame(struct s_select *data);
 void	display_elements(struct s_select *data);
 void	display(struct s_select *data);
 
