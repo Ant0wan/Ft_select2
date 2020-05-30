@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 14:59:44 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 15:08:30 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	set_bar_color(struct s_select *data)
 
 void	select_bar(struct s_select *data)
 {
-	if (data->win.ws_col >= 25)
+	if (data->win.ws_col >= 23)
 		ft_dprintf(data->fd, " %sSort:  %s  %s", BFIELD, data->sort->name, BFIELD); // len up to 25
 	if (data->win.ws_col >= 25 + 16)
 		ft_dprintf(data->fd, "    Selected:%3d", 0); // len up to 16
@@ -51,11 +51,15 @@ void	select_bar(struct s_select *data)
 
 void	command_bar(struct s_select *data)
 {
-	ft_dprintf(data->fd, " %sSort:%s%s %s %s%s\t", BFIELD, RESFID, data->sort->prev ? ARLE : " ", data->sort->name, data->sort->next ? ARRI : " ", BFIELD);
-	ft_dprintf(data->fd, "\tSelected:%3d", 0);
-//	ft_dprintf(data->fd, "\t%sPress <ESC> to quit mode%s", GRHELP, DEFAULT); // Should be right centered
-//	ft_dprintf(data->fd, "\t%sPress <ESC> to quit mode%s", GRMODE, DEFAULT); // Should be right centered
-	ft_dprintf(data->fd, "\t%s%sPress <ESC> to quit mode%s", GRMODE, GRHELP, DEFAULT); // Should be right centered
+	if (data->win.ws_col >= 23)
+		ft_dprintf(data->fd, " %sSort:%s%s %s %s%s", BFIELD, RESFID, data->sort->prev ? ARLE : " ", data->sort->name, data->sort->next ? ARRI : " ", BFIELD);
+	if (data->win.ws_col >= 25 + 16)
+		ft_dprintf(data->fd, "    Selected:%3d", 0);
+	ft_printf("%s", DEFAULT);
+	if (data->win.ws_col >= 25 + 16 + 55) // limit is max len of help msg
+		ft_dprintf(data->fd, "%s    %sPress <ESC> to quit mode%s", GRMODE, GRHELP, DEFAULT); // len up to 28
+	//	ft_dprintf(data->fd, "\t%sPress <ESC> to quit mode%s", GRHELP, DEFAULT);
+	//	ft_dprintf(data->fd, "\t%sPress <ESC> to quit mode%s", GRMODE, DEFAULT);
 }
 
 void	search_bar(struct s_select *data)
