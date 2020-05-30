@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/19 17:18:23 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 13:18:54 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ void	display_elements(struct s_select *data);
 void	display(struct s_select *data);
 
 void		set_signals(void);
+void            termsize(struct s_select *data);
 void    placendisplay(int col, int row, struct s_element *l, struct s_select *data);
 
 int     actions(struct s_select *data);

@@ -6,13 +6,23 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/18 13:15:54 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 13:18:26 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
 #define ERR_TERM "Terminal capabilities insuficient for program use.\n"
+#define ERR_WINS "Something went wrong in getting window size. ioctl(2): failed.\n"
+
+void		termsize(struct s_select *data)
+{
+	if (ioctl(STDERR_FILENO, TIOCGWINSZ, &(data->win)) == -1)
+	{
+		ft_dprintf(STDERR_FILENO, ERR_WINS);
+		end_pgm(-126);
+	}
+}
 
 static void	set_termcaps(struct s_select *data)
 {

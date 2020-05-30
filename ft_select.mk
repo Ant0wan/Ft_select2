@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/18 21:47:07 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/30 13:22:16 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,13 @@ NAME = ft_select
 SOURCES_PATH := ./
 
 SOURCES := \
+		bar.c \
 		color.c \
 		command.c \
 		data.c \
 		display.c \
 		elements.c \
+		frame.c \
 		keymap.c \
 		main.c \
 		output.c \
