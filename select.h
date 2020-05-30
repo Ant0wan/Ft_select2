@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 13:45:04 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 14:14:07 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ struct	s_select
 	struct s_keymap		search_keymap;
 	struct s_sort		*sort; // Sort mode selected
 	int			frame_enabled; // 1 if frame can be displayed else 0
+	int			bar_enabled; // 1 if bar can be displayed else 0
+	int			help_enabled; // If too win too small, help is not displayed
 };
 
 union u_buffer			read_key(void);
