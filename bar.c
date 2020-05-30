@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 14:50:49 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 14:59:44 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	select_bar(struct s_select *data)
 		ft_dprintf(data->fd, "    Selected:%3d", 0); // len up to 16
 	ft_printf("%s", DEFAULT);
 	if (data->win.ws_col >= 25 + 16 + 55)
+	{
+		tputs(tgoto(data->termcaps.cm, data->win.ws_col - 55, data->win.ws_row), 1, output);
 		ft_dprintf(data->fd, "%s    Press <:> sort mode   </> search mode   <r> reset%s", GRMODE, DEFAULT); // len up to 55
+	}
 }
 
 void	command_bar(struct s_select *data)
