@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 13:18:26 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 13:44:46 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		termsize(struct s_select *data)
 
 static void	set_termcaps(struct s_select *data)
 {
-	if (!(data->termcaps.cd = tgetstr("cd", NULL))
+	if (!(data->termcaps.cl = tgetstr("cl", NULL))
 		|| !(data->termcaps.ce = tgetstr("ce", NULL))
 		|| !(data->termcaps.vs = tgetstr("vs", NULL))
 		|| !(data->termcaps.vi = tgetstr("vi", NULL))

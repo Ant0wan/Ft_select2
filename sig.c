@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:00:32 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/19 09:41:37 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 13:40:08 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	wins_resize_sighandler(int sig)
 	(void)sig;
 	data_static_method(NULL, &data);
 	// redisplay ?
+	display(data);
 }
 
 static void	cont_pgm(int sig)

@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:20:20 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 13:37:41 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 13:39:05 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	frame(struct s_select *data)
 	termsize(data);
 
 	// Check if there is enough space to display the frame
-	if (data->win.ws_row < 4 && data->win.ws_col < 3)
+	if (data->win.ws_row < 4 || data->win.ws_col < 3)
 		data->frame_enabled = 0; // Not enough space to display frame and bar and an element
 	else
 	{

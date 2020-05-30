@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 13:34:14 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 13:45:04 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ union					u_buffer
 
 struct	s_termcaps
 {
-	char	*cd; //0 wipe
+	char	*cl; //0 clear all screen
 	char	*ce; //1 clear end of line
 	char	*vs; //2 cursor visible
 	char	*vi; //3 cursor not visible
