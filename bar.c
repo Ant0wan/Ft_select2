@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 15:08:30 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 15:31:49 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,26 @@ void	command_bar(struct s_select *data)
 
 void	search_bar(struct s_select *data)
 {
-	ft_dprintf(data->fd, "/keyword");
-	ft_dprintf(data->fd, "%sSearch: Pattern not found: keyword%s",SEAERR, DEFAULT);
+	union u_buffer	c;
+
+	ft_dprintf(data->fd, "/");
+	c.value = 1;
+	// Need line editing here with range scrolling <text>!
+	while (c.value)
+	{
+		c = read_key();
+		if (c.buf[0] == '\n')
+			break;
+		else
+			ft_printf("%c", c.buf[0]);
+	}
+	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
+	// If pattern not found
+		ft_dprintf(data->fd, "%sSearch: Pattern not found: keyword%s",SEAERR, DEFAULT);
+		sleep(1); // DEBUGG MODE
+	// If pattern is found, select the found word and go back to selection mode
+		set_bar_color(data);
+		set_select_mode(data, c);
 }
 
 static void	draw_bar(struct s_select *data)
