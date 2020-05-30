@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 15:44:24 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 19:49:27 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,10 @@ struct	s_select
 	int			bar_enabled; // 1 if bar can be displayed else 0
 	int			help_enabled; // If too win too small, help is not displayed
 	int			search_error; // 1:error, 0:no error
+	char			*search_line; // line input for search loop
+	int			sl_size; //  buffer of search_line
+	int			sl_len; // len of line
+	int			sl_cpos; // Cursor position on the line
 };
 
 union u_buffer			read_key(void);
