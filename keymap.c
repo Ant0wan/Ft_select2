@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/19 17:18:00 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 20:13:50 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,18 @@ static void	none(struct s_select *data, union u_buffer input)
 
 void	set_command_keymap(struct s_select *data)
 {
-	data->cmd_keymap.ctrl[67] = &right_sort_mode;
-	data->cmd_keymap.ctrl[68] = &left_sort_mode;
-	data->cmd_keymap.std[27] = &set_select_mode;
-	data->search_keymap.std[27] = &set_select_mode;
+	// set select binding
 	data->select_keymap.std[27] = &quit;
 	data->select_keymap.std[':'] = &set_command_mode;
 	data->select_keymap.std['/'] = &set_search_mode;
+
+	// set cmd binding
+	data->cmd_keymap.ctrl[67] = &right_sort_mode;
+	data->cmd_keymap.ctrl[68] = &left_sort_mode;
+	data->cmd_keymap.std[27] = &set_select_mode;
+
+	// set search binding
+	data->search_keymap.std[27] = &set_select_mode;
 }
 
 void	init_keymaps(struct s_select *data)

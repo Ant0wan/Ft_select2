@@ -6,27 +6,23 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:22:31 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 20:07:42 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 20:11:35 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
-static void	readline_internal_keys(struct s_select *data)
+static void	readline_internal(struct s_select *data)
 {
 	union u_buffer	c;
 
 	c.value = 1;
 	while (c.value)
 	{
-		if (g_input_break)
-			return (g_vim_mode ? vim_insert() : rl_void());
 		c = read_key();
 //		ft_printf("\n%d %d %d %d %d %d %d\n", (int)c.buf[0], (int)c.buf[1], (int)c.buf[2], (int)c.buf[3], (int)c.buf[4], (int)c.buf[5], (int)c.buf[6]);
-		if (g_ctrl_mode)
-			rl_ctrl_mode(c);
-		else if (enter_rc(c))
-			return (g_vim_mode ? vim_insert() : rl_void());
+		if (enter_rc(c))
+			return ;
 		else if (isstdkey(c.value))
 			(g_standard_keymap[c.value].func)(c.value);
 		else if (isctrlkey(c))
@@ -49,5 +45,5 @@ void		*searchline(struct s_select *data)
 		ft_memdel((void**)&data->search);
 	init_line_buffer(data);
 	update_line();
-	readline_internal_keys(data);
+	readline_internal(data);
 }
