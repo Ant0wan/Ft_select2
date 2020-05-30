@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:20:25 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 19:42:52 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 21:11:12 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	cursor_r(void);
 void	history_up(void);
 void	history_down(void);
 void    rl_reversel(void);
-void	rl_ctrl_mode(union u_buffer u);
 void	swap_words(void);
 void	beg_next_wd(void);
 void	beg_next_alnum(void);
@@ -59,17 +58,5 @@ void	replace_wd(void);
 void	replace_text(const char *string, int len);
 void	replace_mode(void);
 void	l_expand(void);
-void	c_motion(union u_buffer d);
-void	d_motion(union u_buffer d);
-void	cmaj_motion(void);
-void	clear_all_l(void);
-void	dmaj_motion(void);
-void    yank_c(void);
-void    yank_eol(void);
-void    paste_all_l(void);
-void	paste_all_r(void);
-void	undo_last(void);
-void	undo_lastB(void);
-void	add_back(void);
 
 #endif

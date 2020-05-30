@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:22:09 by abarthel          #+#    #+#             */
-/*   Updated: 2020/03/10 12:19:53 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 20:38:38 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define LINE_H
 
 # define READLINE_DEFAULT_BUFFER_SIZE 256
-
-struct	s_line
-{
-	char	*buffer;
-	size_t	len;
-};
 
 void	init_line_buffer(void);
 
