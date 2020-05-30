@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 15:31:49 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 15:43:57 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,18 @@ void	command_bar(struct s_select *data)
 	//	ft_dprintf(data->fd, "\t%sPress <ESC> to quit mode%s", GRMODE, DEFAULT);
 }
 
-void	search_bar(struct s_select *data)
+void	search_errmsg(struct s_select *data)
+{
+	int	len_msg;
+
+	len_msg = data->win.ws_col < 35 ? data->win.ws_col : 35;
+	ft_dprintf(data->fd, "%s", SEAERR);
+	write(data->fd, "Search: Pattern not found: keyword", len_msg);
+	ft_dprintf(data->fd, "%s", DEFAULT);
+	data->search_error = 1;
+}
+
+void	readl(struct s_select *data)
 {
 	union u_buffer	c;
 
@@ -72,18 +83,23 @@ void	search_bar(struct s_select *data)
 	while (c.value)
 	{
 		c = read_key();
-		if (c.buf[0] == '\n')
+		if (c.buf[0] == '\n' || !isprintchr(c.value))
 			break;
 		else
 			ft_printf("%c", c.buf[0]);
 	}
+}
+
+void	search_bar(struct s_select *data)
+{
+	if (!data->search_error)
+		readl(data);
 	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
 	// If pattern not found
-		ft_dprintf(data->fd, "%sSearch: Pattern not found: keyword%s",SEAERR, DEFAULT);
-		sleep(1); // DEBUGG MODE
+		search_errmsg(data);
 	// If pattern is found, select the found word and go back to selection mode
-		set_bar_color(data);
-		set_select_mode(data, c);
+//		set_bar_color(data);
+//		set_select_mode(data, c);
 }
 
 static void	draw_bar(struct s_select *data)

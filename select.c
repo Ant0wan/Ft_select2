@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/19 17:17:33 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/30 15:41:28 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	set_select_mode(struct s_select *data, union u_buffer input)
 {
 	(void)input;
 	data->mode = SELECT;
+	data->search_error = 0;
 	bar(data);
 }
 
