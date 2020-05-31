@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 10:20:12 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 16:42:33 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 16:54:34 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ void	wd_right(struct s_select *data);
 void		rl_backspace(struct s_select *data);
 void clear_eol(struct s_select *data);
 void    clear_befline(struct s_select *data);
+void	clear_line(struct s_select *data);
+
 
 #endif

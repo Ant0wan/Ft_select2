@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:14:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:44:19 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 16:56:03 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 void	clear_line(struct s_select *data)
 {
 	rl_home(data);
-	tputs(tgoto(data->termcaps.cm, 1, data->win.ws_row), 1, output);
-	tputs(data->termcaps.ce, 1, output);
-	tputs(tgoto(data->termcaps.cm, 1, data->win.ws_row), 1, output);
 	data->sl_len = 0;
 	ft_bzero(data->search_line, data->sl_size);
+	bar(data);
 }
 
 void	rl_home(struct s_select *data)
