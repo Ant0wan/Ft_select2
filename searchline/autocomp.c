@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 17:26:23 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 18:22:31 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 18:25:21 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	disp_sug(struct s_select *data)
 	suggestion(data);
 	if (data->suggestion)
 	{
-		ft_dprintf(data->fd, "%s%s%s", GRMODE, &(data->suggestion->arg[data->sl_cpos]), DEFAULT);
+		ft_dprintf(data->fd, "%s%s%s", DIMCOL, &(data->suggestion->arg[data->sl_cpos]), DEFAULT);
 		tputs(tgoto(data->termcaps.cm, data->sl_cpos + 1, data->win.ws_row), 1, output);
 	}
 }
