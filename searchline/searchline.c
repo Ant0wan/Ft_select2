@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 10:18:58 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 12:01:20 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 12:04:00 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	searchline_internal(struct s_select *data)
 	}
 }
 
-void		*searchline(struct s_select *data)
+void		searchline(struct s_select *data)
 {
 	if (data->search_line)
 		ft_memdel((void**)&data->search_line);

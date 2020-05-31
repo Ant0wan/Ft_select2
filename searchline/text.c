@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:16:27 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 10:47:37 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 12:10:08 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		init_line_buffer(struct s_select *data)
 	data->sl_size = 512;
 	data->search_line = (char*)malloc(sizeof(char) * data->sl_size);
 	ft_bzero(data->search_line, data->sl_size);
-	data->sl_cbpos = 0;
+	data->sl_cpos = 0;
 	data->sl_len = 0;
 }
 
@@ -70,11 +70,11 @@ void		rl_delete(struct s_select *data)
 	}
 }
 
-void		rl_backspace(void)
+void		rl_backspace(struct s_select *data)
 {
 	if (data->sl_cpos > 0)
 	{
-		cursor_l();
+		cursor_l(data);
 		if (data->search_line[data->sl_cpos])
 		{
 			ft_memmove(&(data->search_line[data->sl_cpos]),
