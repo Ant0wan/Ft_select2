@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 16:01:03 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 16:20:02 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,13 @@
 
 void	set_bar_color(struct s_select *data)
 {
-	int	i;
-
 	// Clear bar line
 	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
 	tputs(data->termcaps.ce, 1, output);
 
-	i = data->win.ws_col;
-	while (i)
-	{
-		tputs(tgoto(data->termcaps.cm, i, data->win.ws_row), 1, output);
-		ft_dprintf(data->fd, "%s ", BFIELD);
-		--i;
-	}
+	// Set color for bar
+	if (data->win.ws_col > 0)
+		ft_dprintf(data->fd, "%s%*s", BFIELD, data->win.ws_col, " ");
 	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
 }
 
