@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 12:53:19 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 14:24:14 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,19 @@ void	search_errmsg(struct s_select *data)
 	data->search_error = 1;
 }
 
-void	readl(struct s_select *data)
-{
-	ft_dprintf(data->fd, "/");
-	// Need line editing here with range scrolling <text>!
-	searchline(data);
-}
-
 void	search_bar(struct s_select *data)
 {
 	if (!data->search_error)
 	{
 		tputs(data->termcaps.vs, 1, output);
-		readl(data);
+		ft_dprintf(data->fd, "/");
+		// Need line editing here with range scrolling <text>!
+		searchline(data);
 		tputs(data->termcaps.vi, 1, output);
 	}
 	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
 	// If pattern not found
+		set_bar_color(data);
 		search_errmsg(data);
 	// If pattern is found, select the found word and go back to selection mode
 //		set_bar_color(data);

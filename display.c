@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 10:24:09 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 14:25:12 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void	display(struct s_select *data)
 {
 	tputs(tgoto(data->termcaps.cl, 0, 0), 1, output);
 	frame(data);
-	bar(data);
 //	display_elements(data);
+	bar(data);
 }
