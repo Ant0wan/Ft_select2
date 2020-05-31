@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:13:39 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 17:08:36 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 17:12:45 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,22 +69,3 @@ void    rl_reversel(struct s_select *data)
 		}
 	}
 }
-/*
-void	cut_next_wd(void)
-{
-	int start;
-
-	if (g_clip.str != NULL)
-		free(g_clip.str);
-	start = g_dis.cbpos;
-	while (start < g_line.len && g_line.line[start] == ' ')
-		++start;
-	while (start < g_line.len && g_line.line[start] != ' ')
-		++start;
-	g_clip.l = start - g_dis.cbpos;
-	g_clip.str = ft_strndup(&(g_line.line[g_dis.cbpos]), g_clip.l);
-	ft_memmove(&(g_line.line[g_dis.cbpos]), &(g_line.line[start]), g_line.len - start);
-	g_line.len -= g_clip.l;
-	ft_bzero(&(g_line.line[g_line.len]), g_clip.l);
-	bar(data);
-}*/

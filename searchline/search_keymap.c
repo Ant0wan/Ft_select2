@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 20:29:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 17:04:40 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 17:20:14 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,5 @@ void	set_search_ctrl_keymap(struct s_select *data)
 void	set_search_meta_keymap(struct s_select *data)
 {
 	data->search_keymap.meta[98] = &wd_left;
-//	data->search_keymap.meta[100] = &cut_next_wd;
 	data->search_keymap.meta[102] = &wd_right;
-//	data->search_keymap.meta[116] = &swap_words;
 }
