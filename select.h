@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 12:44:25 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 12:50:23 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ void	bar(struct s_select *data);
 void	frame(struct s_select *data);
 void	display_elements(struct s_select *data);
 void	display(struct s_select *data);
+void	set_bar_color(struct s_select *data);
 
 void		set_signals(void);
 void            termsize(struct s_select *data);

@@ -6,13 +6,13 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 12:46:11 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 12:49:59 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
-static void	set_bar_color(struct s_select *data)
+void	set_bar_color(struct s_select *data)
 {
 	int	i;
 
