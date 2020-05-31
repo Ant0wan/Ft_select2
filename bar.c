@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 18:21:34 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 18:43:08 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,11 @@ void	search_errmsg(struct s_select *data)
 {
 	int	len_msg;
 
-	len_msg = data->win.ws_col < 35 ? data->win.ws_col : 35;
+	len_msg = data->win.ws_col < 26 ? data->win.ws_col : 26;
 	ft_dprintf(data->fd, "%s", SEAERR);
-	write(data->fd, "Search: Pattern not found: keyword", len_msg);
+	write(data->fd, "Search: Pattern not found", len_msg);
+	if (data->win.ws_col >= 28 + 1)
+		ft_dprintf(data->fd, ": %.*s", data->win.ws_col - 28, data->search_line);
 	ft_dprintf(data->fd, "%s", DEFAULT);
 	data->search_error = 1;
 }
