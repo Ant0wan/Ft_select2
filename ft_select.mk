@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/31 10:51:50 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/31 11:38:03 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SOURCES := \
 		utils_suite.c \
 		utils_suite2.c \
 		searchline/display.c \
-		searchline/emacs_keymap.c \
+		searchline/search_keymap.c \
 		searchline/searchline.c \
 		searchline/text.c \
 		searchline/text_hist.c \

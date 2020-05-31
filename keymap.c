@@ -6,11 +6,12 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 10:39:18 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 11:49:03 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
+#include "searchline.h"
 
 union u_buffer	read_key(void)
 {
@@ -89,7 +90,10 @@ void	set_command_keymap(struct s_select *data)
 	data->cmd_keymap.std[27] = &set_select_mode;
 
 	// set search binding
-	data->search_keymap.std[27] = &set_select_mode;
+	set_search_std_insertion_keymap(data);
+	set_search_std_keymap(data);
+	set_search_ctrl_keymap(data);
+	set_search_meta_keymap(data);
 }
 
 void	init_keymaps(struct s_select *data)
