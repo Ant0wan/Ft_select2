@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/31 17:20:26 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/31 17:38:50 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SOURCES := \
 		terminal.c \
 		utils_suite.c \
 		utils_suite2.c \
+		searchline/autocomp.c \
 		searchline/search_keymap.c \
 		searchline/searchline.c \
 		searchline/text.c \

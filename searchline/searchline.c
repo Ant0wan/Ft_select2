@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 10:18:58 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:43:06 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 17:38:28 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	searchline_internal(struct s_select *data)
 			(data->search_keymap.meta[(int)c.buf[1]])(data, c);
 		else
 			paste_via_input(data, c.value);
+		disp_sug(data);
 	}
 }
 

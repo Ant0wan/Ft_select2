@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:38:37 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 17:34:04 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 #define GRHELP "\033[37;40;5m"
 #define GRMODE "\033[37;40;2m"
 #define SEAERR "\033[97;41m"
+#define DIMCOL "\033[2m"
 
 #define ARLE "◄"
 #define ARRI "►"
