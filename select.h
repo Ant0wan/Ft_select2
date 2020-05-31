@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 10:54:31 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 11:59:55 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,8 @@ int     isstdkey(int c);
 int	isctrlkey(union u_buffer c);
 int	mvctrlkey(union u_buffer c);
 int     isprintchr(int c);
+int	enter_rc(union u_buffer c);
+int	ismetachar(union u_buffer c);
 
 void    init_sort_list(struct s_select *data);
 void    left_sort_mode(struct s_select *data, union u_buffer input);

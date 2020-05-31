@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 10:20:12 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 11:47:59 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 12:00:25 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,20 @@ void	insert_text(struct s_select *data, const char *string, int len);
 void	init_line_buffer(struct s_select *data);
 void	update_line(struct s_select *data);
 
+/*
+** Set binding of the search bar
+*/
+
 void	set_search_std_insertion_keymap(struct s_select *data);
 void	set_search_std_keymap(struct s_select *data);
 void	set_search_ctrl_keymap(struct s_select *data);
 void	set_search_meta_keymap(struct s_select *data);
 
+/*
+** All key bind functions
+*/
+
+void    rl_insert(struct s_select *data, int c);
+void	paste_via_input(struct s_select *data, unsigned long v);
 
 #endif

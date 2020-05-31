@@ -6,45 +6,34 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:13:58 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 10:27:37 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 11:58:57 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "searchline.h"
 
+/*
 void	wd_left(void)
 {
 	while (g_dis.cbpos > 0 && g_line.line[g_dis.cbpos - 1] == ' ')
 		cursor_l();
 	while (g_dis.cbpos > 0 && g_line.line[g_dis.cbpos - 1] != ' ')
 		cursor_l();
-}
+}*/
 
-void	clear_scr(void)
-{
-	ft_putstr(g_termcaps.clrpag);
-	update_line();
-}
-
-void	rl_void(void)
-{
-	ft_putstr(g_termcaps.bl);
-}
-
-void	paste_via_input(unsigned long v)
+void	paste_via_input(struct s_select *data, unsigned long v)
 {
 	union u_buffer	u;
 	int				len;
 
-	if (g_back)
-		stack_delete(&g_back, del_stat_line);
 	len = 0;
 	u.value = v;
 	while (len < 8 && u.buf[len])
 		++len;
-	insert_text(&(u.buf[0]), len);
+	insert_text(data, &(u.buf[0]), len);
 }
 
+/*
 void	clear_eol(void)
 {
 	if (g_dis.cbpos != g_line.len)
@@ -57,4 +46,4 @@ void	clear_eol(void)
 		g_line.len -= g_clip.l;
 		update_line();
 	}
-}
+}*/
