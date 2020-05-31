@@ -6,20 +6,19 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:13:58 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:44:38 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 16:11:38 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "searchline.h"
 
-/*
-void	wd_left(void)
+void	wd_left(struct s_select *data)
 {
-	while (g_dis.cbpos > 0 && g_line.line[g_dis.cbpos - 1] == ' ')
-		cursor_l();
-	while (g_dis.cbpos > 0 && g_line.line[g_dis.cbpos - 1] != ' ')
-		cursor_l();
-}*/
+	while (data->sl_cpos > 0 && data->search_line[data->sl_cpos - 1] == ' ')
+		cursor_l(data);
+	while (data->sl_cpos > 0 && data->search_line[data->sl_cpos - 1] != ' ')
+		cursor_l(data);
+}
 
 void	paste_via_input(struct s_select *data, unsigned long v)
 {

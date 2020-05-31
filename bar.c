@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:54:49 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 16:01:03 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	search_bar(struct s_select *data)
 	if (!data->search_error)
 	{
 		// Display line from range Need line editing here with range scrolling <text>!
-		ft_dprintf(data->fd, "%s", BFIELD);
 		ft_dprintf(data->fd, "/");
 		ft_dprintf(data->fd, "%s", data->search_line);
 		ft_dprintf(data->fd, "%s", DEFAULT);

@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 20:29:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:53:57 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 16:06:42 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	set_search_std_keymap(struct s_select *data)
 	(void)data;
 //	data->search_keymap.std[1] = &rl_home;
 	data->search_keymap.std[2] = &cursor_l;
-//	data->search_keymap.std[3] = &kill_line;
-//	data->search_keymap.std[4] = &rl_eot;
 //	data->search_keymap.std[5] = &rl_end;
 	data->search_keymap.std[6] = &cursor_r;
 //	data->search_keymap.std[8] = &rl_backspace;
@@ -52,16 +50,15 @@ void	set_search_std_keymap(struct s_select *data)
 
 void	set_search_ctrl_keymap(struct s_select *data)
 {
-	(void)data;
-//	data->search_keymap.ctrl[51] = &rl_delete;
+	data->search_keymap.ctrl[51] = &rl_delete;
 //	data->search_keymap.ctrl[65] = &history_up;
 //	data->search_keymap.ctrl[66] = &history_down;
 	data->search_keymap.ctrl[67] = &cursor_r;
 	data->search_keymap.ctrl[68] = &cursor_l;
 //	data->search_keymap.ctrl[70] = &rl_end;
 //	data->search_keymap.ctrl[72] = &rl_home;
-//	data->search_keymap.ctrl[87] = &wd_right;
-//	data->search_keymap.ctrl[88] = &wd_left;
+	data->search_keymap.ctrl[87] = &wd_right;
+	data->search_keymap.ctrl[88] = &wd_left;
 }
 
 void	set_search_meta_keymap(struct s_select *data)
