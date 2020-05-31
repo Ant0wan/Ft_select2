@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 10:18:58 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 13:08:45 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:19:40 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	searchline_internal(struct s_select *data)
 	while (c.value)
 	{
 		c = read_key();
-//		ft_printf("\n%d %d %d %d %d %d %d\n", (int)c.buf[0], (int)c.buf[1], (int)c.buf[2], (int)c.buf[3], (int)c.buf[4], (int)c.buf[5], (int)c.buf[6]);
 		if (enter_rc(c) || c.value == 27)
 			return ;
 		else if (isstdkey(c.value))

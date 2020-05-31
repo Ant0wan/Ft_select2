@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:20:42 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 12:59:49 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:30:10 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 void		update_line(struct s_select *data)
 {
-	// Clear line
+	bar(data);
+/*	// Clear line
 	set_bar_color(data);
 	tputs(tgoto(data->termcaps.cm, 1, data->win.ws_row), 1, output);
 	tputs(data->termcaps.ce, 1, output);
@@ -28,4 +29,4 @@ void		update_line(struct s_select *data)
 
 	// Go back to cursor position
 	tputs(tgoto(data->termcaps.cm, data->sl_cpos, data->win.ws_row), 1, output);
-}
+*/}

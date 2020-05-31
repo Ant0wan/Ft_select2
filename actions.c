@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:11:17 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:21:39 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,9 @@ int	command_input(struct s_select *data)
 
 int	search_input(struct s_select *data)
 {
-	union u_buffer	input;
-
-	input = read_key();
-	if (isstdkey(input.value))
-		(data->search_keymap.std[input.value])(data, input);
-	else if (isctrlkey(input))
-	{
-		if (mvctrlkey(input))
-			input.buf[2] = input.buf[5] + 20;
-		(data->search_keymap.ctrl[(int)input.buf[2]])(data, input);
-	}
+	tputs(data->termcaps.vs, 1, output);
+	searchline(data);
+	tputs(data->termcaps.vs, 0, output);
 	return (0);
 }
 

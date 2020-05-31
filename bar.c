@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 14:24:14 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:29:44 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 void	set_bar_color(struct s_select *data)
 {
 	int	i;
+
+	// Clear bar line
+	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
+	tputs(data->termcaps.ce, 1, output);
 
 	i = data->win.ws_col;
 	while (i)
@@ -66,21 +70,27 @@ void	search_errmsg(struct s_select *data)
 
 void	search_bar(struct s_select *data)
 {
+	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
 	if (!data->search_error)
 	{
-		tputs(data->termcaps.vs, 1, output);
+		// Display line from range Need line editing here with range scrolling <text>!
+		ft_dprintf(data->fd, "%s", BFIELD);
 		ft_dprintf(data->fd, "/");
-		// Need line editing here with range scrolling <text>!
-		searchline(data);
-		tputs(data->termcaps.vi, 1, output);
+		ft_dprintf(data->fd, "%s", data->search_line);
+		ft_dprintf(data->fd, "%s", DEFAULT);
+
+		// Go back to cursor position
+		tputs(tgoto(data->termcaps.cm, data->sl_cpos, data->win.ws_row), 1, output);
 	}
-	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
-	// If pattern not found
+	else
+	{
+		// If pattern not found
 		set_bar_color(data);
 		search_errmsg(data);
-	// If pattern is found, select the found word and go back to selection mode
+		// If pattern is found, select the found word and go back to selection mode
 //		set_bar_color(data);
 //		set_select_mode(data, c);
+	}
 }
 
 static void	draw_bar(struct s_select *data)
