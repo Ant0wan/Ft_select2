@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:13:39 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 16:51:11 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 17:08:36 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,54 +24,52 @@ void	clear_befline(struct s_select *data)
 		bar(data);
 	}
 }
-/*
-void	cut_prev_wd(void)
-{
-	int start;
 
-	if (g_dis.cbpos != 0)
+void	cut_prev_wd(struct s_select *data)
+{
+	int	start;
+	int	l;
+
+	if (data->sl_cpos != 0)
 	{
-		if (g_clip.str != NULL)
-			free(g_clip.str);
-		start = g_dis.cbpos;
-		while (start && g_line.line[start - 1] == ' ')
+		start = data->sl_cpos;
+		while (start && data->search_line[start - 1] == ' ')
 			--start;
-		while (start && g_line.line[start - 1] != ' ')
+		while (start && data->search_line[start - 1] != ' ')
 			--start;
-		g_clip.l = g_dis.cbpos - start;
-		g_clip.str = ft_strndup(&(g_line.line[start]), g_clip.l);
-		ft_memmove(&(g_line.line[start]),
-		&(g_line.line[g_dis.cbpos]), g_line.len - g_dis.cbpos);
-		g_line.len -= g_clip.l;
-		ft_bzero(&(g_line.line[g_line.len]), g_clip.l);
-		g_dis.cbpos = start;
+		l = data->sl_cpos - start;
+		ft_memmove(&(data->search_line[start]),
+		&(data->search_line[data->sl_cpos]), data->sl_len - data->sl_cpos);
+		data->sl_len -= l;
+		ft_bzero(&(data->search_line[data->sl_len]), l);
+		data->sl_cpos = start;
 		bar(data);
 	}
 }
 
-void    rl_reversel(void)
+void    rl_reversel(struct s_select *data)
 {
-	char c;
+	char	c;
 
-	if (g_line.len > 1)
+	if (data->sl_len > 1)
 	{
-		if (g_line.len > 1 && g_dis.cbpos == g_line.len)
+		if (data->sl_len > 1 && data->sl_cpos == data->sl_len)
 		{
-			c = g_line.line[g_dis.cbpos - 1];
-			g_line.line[g_dis.cbpos - 1] = g_line.line[g_dis.cbpos - 2];
-			g_line.line[g_dis.cbpos - 2] = c;
+			c = data->search_line[data->sl_cpos - 1];
+			data->search_line[data->sl_cpos - 1] = data->search_line[data->sl_cpos - 2];
+			data->search_line[data->sl_cpos - 2] = c;
 			bar(data);
 		}
-		else if (g_dis.cbpos > 0)
+		else if (data->sl_cpos > 0)
 		{
-			c = g_line.line[g_dis.cbpos];
-				g_line.line[g_dis.cbpos] = g_line.line[g_dis.cbpos - 1];
-			g_line.line[g_dis.cbpos - 1] = c;
-			cursor_r();
+			c = data->search_line[data->sl_cpos];
+				data->search_line[data->sl_cpos] = data->search_line[data->sl_cpos - 1];
+			data->search_line[data->sl_cpos - 1] = c;
+			cursor_r(data);
 		}
 	}
 }
-
+/*
 void	cut_next_wd(void)
 {
 	int start;
