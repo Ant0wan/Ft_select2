@@ -6,12 +6,13 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 10:18:14 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 10:28:24 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 12:11:38 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "searchline.h"
 
+/*
 int test_c_value(union u_buffer c)
 {
 	if ((ft_isprint(c.value) && c.value != 9) || c.value == 127)
@@ -59,4 +60,4 @@ void history_down(void)
 		insert_text(s, ft_strlen(s));
 	else if (g_original_cmd)
 		insert_text(g_original_cmd, ft_strlen(g_original_cmd));
-}
+}*/

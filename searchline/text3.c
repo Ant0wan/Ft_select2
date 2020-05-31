@@ -6,38 +6,23 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:14:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 10:27:27 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 12:15:25 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "searchline.h"
 
-void	cursor_u(void)
+void	clear_line(struct s_select *data)
 {
-	if (g_cursor.v_pos != 0)
-	{
-		if (g_cursor.v_pos == 1 && g_cursor.c_pos < g_dis.prompt_l)
-		{
-			ft_putstr(tgoto(g_termcaps.ch, 0, g_dis.prompt_l));
-			g_dis.cbpos = 0;
-		}
-		else
-			g_dis.cbpos -= g_sc.w;
-		--g_cursor.v_pos;
-		ft_putstr(tgoto(g_termcaps.up, 0, 0));
-		update_line();
-	}
+	rl_home(data);
+	tputs(tgoto(data->termcaps.cm, 1, data->win.ws_row), 1, output);
+	tputs(data->termcaps.ce, 1, output);
+	tputs(tgoto(data->termcaps.cm, 1, data->win.ws_row), 1, output);
+	data->sl_len = 0;
+	ft_bzero(data->search_line, data->sl_size);
 }
 
-void	clear_line(void)
-{
-	rl_home();
-	ft_putstr(g_termcaps.clreol);
-	g_line.len = 0;
-	ft_bzero(g_line.line, g_line.size_buf);
-}
-
-void	rl_home(void)
+void	rl_home(struct s_select *data)
 {
 	g_cursor.c_pos = g_dis.prompt_l;
 	if (g_cursor.c_pos > 0)
