@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:21:39 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:40:35 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	search_input(struct s_select *data)
 {
 	tputs(data->termcaps.vs, 1, output);
 	searchline(data);
-	tputs(data->termcaps.vs, 0, output);
+	tputs(data->termcaps.vi, 0, output);
+	set_select_mode(data);
 	return (0);
 }
 

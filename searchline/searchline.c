@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 10:18:58 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:19:40 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:36:01 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ static void	searchline_internal(struct s_select *data)
 	{
 		c = read_key();
 		if (enter_rc(c) || c.value == 27)
+		{
+			
 			return ;
+		}
 		else if (isstdkey(c.value))
 			(data->search_keymap.std[c.value])(data, c);
 		else if (isctrlkey(c))

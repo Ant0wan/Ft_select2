@@ -6,18 +6,18 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 13:07:56 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:38:06 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
-void	set_select_mode(struct s_select *data, union u_buffer input)
+void	set_select_mode(struct s_select *data)//, union u_buffer input)
 {
-	(void)input;
+//	(void)input;
 	data->mode = SELECT;
 	data->search_error = 0;
-	bar(data);
+//	bar(data);
 }
 
 void	quit(struct s_select *data, union u_buffer input)

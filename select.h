@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 14:34:31 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:38:37 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void    placendisplay(int col, int row, struct s_element *l, struct s_select *da
 int     actions(struct s_select *data);
 void    init_keymaps(struct s_select *data);
 void	set_command_mode(struct s_select *data, union u_buffer input);
-void	set_select_mode(struct s_select *data, union u_buffer input);
+void	set_select_mode(struct s_select *data);//, union u_buffer input);
 void	set_search_mode(struct s_select *data, union u_buffer input);
 void	quit(struct s_select *data, union u_buffer input);
 
