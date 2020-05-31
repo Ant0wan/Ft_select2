@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 10:18:58 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 10:27:03 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 10:40:09 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	searchline_internal(struct s_select *data)
 			(g_meta_keymap[(int)c.buf[1]].func)();
 		else
 			paste_via_input(c.value);
-		*value = g_line.line;
 	}
 }
 
@@ -44,6 +43,6 @@ void		*searchline(struct s_select *data)
 	if (data->search_line)
 		ft_memdel((void**)&data->search);
 	init_line_buffer(data);
-	update_line();
+	update_line(data);
 	searchline_internal(data);
 }

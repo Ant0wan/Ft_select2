@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/31 10:30:04 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/31 10:51:50 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,22 +35,20 @@ SOURCES := \
 		searchline/display.c \
 		searchline/emacs_keymap.c \
 		searchline/searchline.c \
-		searchline/text2.c \
-		searchline/text3.c \
-		searchline/text4.c \
-		searchline/text5.c \
-		searchline/text7.c \
-		searchline/text8.c \
 		searchline/text.c \
 		searchline/text_hist.c \
-		searchline/utils_suite2.c \
-		searchline/utils_suite.c
+#		searchline/text2.c \
+#		searchline/text3.c \
+#		searchline/text4.c \
+#		searchline/text5.c \
+#		searchline/text7.c \
+#		searchline/text8.c \
 
 OBJECTS := $(patsubst %.c,%.o,$(addprefix $(SOURCES_PATH), $(SOURCES)))
 
 PATH_LIB := ./42Libc/
 
-INCLUDES := -I$(PATH_LIB)include/
+INCLUDES := -I$(PATH_LIB)include/ -I./searchline/
 
 DEPENDS := $(patsubst %.c,%.d,$(addprefix $(SOURCES_PATH), $(SOURCES)))
 

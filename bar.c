@@ -6,20 +6,11 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 15:43:57 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 10:54:44 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
-
-#define BFIELD "\033[40;38;5;82m"
-#define RESFID "\033[30;48;5;82m"
-#define GRHELP "\033[37;40;5m"
-#define GRMODE "\033[37;40;2m"
-#define SEAERR "\033[97;41m"
-
-#define ARLE "◄"
-#define ARRI "►"
 
 static void	set_bar_color(struct s_select *data)
 {

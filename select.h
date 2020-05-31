@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 19:49:27 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 10:54:31 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@
 # define SELECT 0
 # define COMMAN 1
 # define SEARCH 2
+
+#define BFIELD "\033[40;38;5;82m"
+#define RESFID "\033[30;48;5;82m"
+#define GRHELP "\033[37;40;5m"
+#define GRMODE "\033[37;40;2m"
+#define SEAERR "\033[97;41m"
+
+#define ARLE "◄"
+#define ARRI "►"
+
 
 union					u_buffer
 {

@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:16:27 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 10:28:08 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 10:47:37 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,83 +21,69 @@ void		init_line_buffer(struct s_select *data)
 	data->sl_len = 0;
 }
 
-void		l_expand(void)
+void		l_expand(struct s_select *data)
 {
 	char	*new;
 	size_t	lold;
 
-	lold = g_line.size_buf;
-	g_line.size_buf = lold * 2;
-	new = (char*)malloc(sizeof(char) * g_line.size_buf);
+	lold = data->sl_size;
+	data->sl_size = lold * 2;
+	new = (char*)malloc(sizeof(char) * data->sl_size);
 	ft_bzero(new, lold * 2);
-	ft_strncpy(new, g_line.line, lold);
-	free(g_line.line);
-	g_line.line = new;
+	ft_strncpy(new, data->search_line, lold);
+	free(data->search_line);
+	data->search_line = new;
 }
 
-void		insert_text(const char *string, int len)
+void		insert_text(struct s_select *data, const char *string, int len)
 {
-	if (g_vim_mode == 0)
+	while (len + data->sl_len >= data->sl_size)
+		l_expand(data);
+	if (data->sl_cpos < data->sl_len)
 	{
-		g_add_back_buf += len;
-		if (g_add_back_buf > 20)
-		{
-//			ft_printf("\n\nH\n\n");
-			g_add_back_buf = 0;
-			add_back();
-		}
+		ft_memmove(&(data->search_line[data->sl_cpos + len]), &(data->search_line[data->sl_cpos]), data->sl_len - data->sl_cpos);
 	}
-	if (g_replace_mode)
-		return replace_text(string, len);
-	while (len + g_line.len >= g_line.size_buf)
-		l_expand();
-	if (g_dis.cbpos < g_line.len)
-	{
-		ft_memmove(&(g_line.line[g_dis.cbpos + len]),
-				&(g_line.line[g_dis.cbpos]),
-				g_line.len - g_dis.cbpos);
-	}
-	ft_memmove(&(g_line.line[g_dis.cbpos]), string, len);
-	g_line.len += len;
-	g_dis.cbpos += len;
-	update_line();
+	ft_memmove(&(data->search_line[data->sl_cpos]), string, len);
+	data->sl_len += len;
+	data->sl_cpos += len;
+	update_line(data);
 }
 
-void		rl_delete(void)
+void		rl_delete(struct s_select *data)
 {
-	if (g_dis.cbpos < g_line.len && g_line.len > 0)
+	if (data->sl_cpos < data->sl_len && data->sl_len > 0)
 	{
-		if (g_line.line[g_dis.cbpos] && g_dis.cbpos <= g_line.len)
+		if (data->search_line[data->sl_cpos] && data->sl_cpos <= data->sl_len)
 		{
-			ft_memmove(&(g_line.line[g_dis.cbpos]),
-				&(g_line.line[g_dis.cbpos + 1]), g_line.len - g_dis.cbpos + 1);
-			g_line.line[g_line.len + 1] = '\0';
-			update_line();
-			--g_line.len;
+			ft_memmove(&(data->search_line[data->sl_cpos]),
+				&(data->search_line[data->sl_cpos + 1]), data->sl_len - data->sl_cpos + 1);
+			data->search_line[data->sl_len + 1] = '\0';
+			update_line(data);
+			--data->sl_len;
 		}
-		else if (g_dis.cbpos > 0)
+		else if (data->sl_cpos > 0)
 		{
-			g_line.line[g_dis.cbpos] = '\0';
-			update_line();
-			--g_line.len;
+			data->search_line[data->sl_cpos] = '\0';
+			update_line(data);
+			--data->sl_len;
 		}
 	}
 }
 
 void		rl_backspace(void)
 {
-	if (g_dis.cbpos > 0)
+	if (data->sl_cpos > 0)
 	{
 		cursor_l();
-		if (g_line.line[g_dis.cbpos])
+		if (data->search_line[data->sl_cpos])
 		{
-			ft_memmove(&(g_line.line[g_dis.cbpos]),
-				&(g_line.line[g_dis.cbpos + 1]), g_line.len - g_dis.cbpos + 1);
-			g_line.line[g_line.len + 1] = '\0';
+			ft_memmove(&(data->search_line[data->sl_cpos]),
+				&(data->search_line[data->sl_cpos + 1]), data->sl_len - data->sl_cpos + 1);
+			data->search_line[data->sl_len + 1] = '\0';
 		}
 		else
-			g_line.line[g_dis.cbpos] = '\0';
-		--g_line.len;
-		update_line();
+			data->search_line[data->sl_cpos] = '\0';
+		--data->sl_len;
+		update_line(data);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 20:29:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 10:26:44 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 11:01:41 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,72 +14,59 @@
 
 char	*g_emacs_standard_keymap[] =
 {
-	rl_void,
-	rl_home,
-	cursor_l,
-	kill_line,
-	rl_eot,
-	rl_end,
-	cursor_r,
-	rl_void,
-	rl_backspace,
-	autocomplete,
-	rl_void,
-	clear_eol,
-	clear_scr,
-	rl_void,
-	history_down,
-	rl_void,
-	history_up,
-	rl_void,
-	hist_lookup,
-	rl_void,
-	rl_reversel,
-	clear_befline,
-	rl_void,
-	cut_prev_wd,
-	rl_ctrl_mode,
-	clip_paste,
-	rl_void,
-	rl_void,
-	rl_void,
-	rl_void,
-	rl_void,
-	undo_last,
+	[1] = rl_home,
+	[2] = cursor_l,
+	[3] = kill_line,
+	[4] = rl_eot,
+	[5] = rl_end,
+	[6] = cursor_r,
+	[8] = rl_backspace,
+	[9] = autocomplete,
+	[11] = clear_eol,
+	[12] = clear_scr,
+	[14] = history_down,
+	[16] = history_up,
+	[18] = hist_lookup,
+	[20] = rl_reversel,
+	[21] = clear_befline,
+	[23] = cut_prev_wd,
+	[24] = rl_ctrl_mode,
+	[25] = clip_paste,
+	[31] = undo_last,
 	[ ' ' ... '~' ] = rl_insert,
-	rl_backspace
+	[127] = rl_backspace
 };
 
 char	*g_emacs_ctlx_keymap[] =
 {
 	[ 0 ... 50 ] = rl_void,
-	rl_delete,
+	[51] = rl_delete,
 	[ 52 ... 64 ] = rl_void,
-	history_up,
-	history_down,
-	cursor_r,
-	cursor_l,
-	rl_void,
-	rl_end,
-	rl_void,
-	rl_home,
+	[65] = history_up,
+	[66] = history_down,
+	[67] = cursor_r,
+	[68] = cursor_l,
+	[69] = rl_void,
+	[70] = rl_end,
+	[71] = rl_void,
+	[72] = rl_home,
 	[ 73 ... 84 ] = rl_void,
-	cursor_u,
-	cursor_d,
-	wd_right,
-	wd_left,
+	[85] = cursor_u,
+	[86] = cursor_d,
+	[87] = wd_right,
+	[88] = wd_left,
 	[ 89 ... 127 ] = rl_void,
 };
 
 char	*g_emacs_meta_keymap[] =
 {
 	[ 0 ... 97 ] = rl_void,
-	wd_left,
-	rl_void,
-	cut_next_wd,
-	rl_void,
-	wd_right,
+	[98] = wd_left,
+	[99] = rl_void,
+	[100] = cut_next_wd,
+	[101] = rl_void,
+	[102] = wd_right,
 	[ 103 ... 115 ] = rl_void,
-	swap_words,
+	[116] = swap_words,
 	[ 117 ... 127 ] = rl_void,
 };
