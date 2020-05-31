@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:13:58 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 16:11:38 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 16:31:46 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,12 @@ void	paste_via_input(struct s_select *data, unsigned long v)
 	insert_text(data, &(u.buf[0]), len);
 }
 
-/*
-void	clear_eol(void)
+void	clear_eol(struct s_select *data)
 {
-	if (g_dis.cbpos != g_line.len)
+	if (data->sl_cpos != data->sl_len)
 	{
-		g_clip.l = g_line.len - g_dis.cbpos;
-		if (g_clip.str != NULL)
-			free(g_clip.str);
-		g_clip.str = ft_strndup(&(g_line.line[g_dis.cbpos]), g_clip.l);
-		ft_bzero(&(g_line.line[g_dis.cbpos]), g_clip.l);
-		g_line.len -= g_clip.l;
+		ft_bzero(&(data->search_line[data->sl_cpos]), data->sl_len - data->sl_cpos);
+		data->sl_len -= data->sl_len - data->sl_cpos;
 		bar(data);
 	}
-}*/
+}
