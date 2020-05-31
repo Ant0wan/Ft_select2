@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:14:17 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:53:26 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 18:16:46 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,16 @@ void	cursor_l(struct s_select *data)
 
 void	cursor_r(struct s_select *data)
 {
-	if (data->sl_cpos < data->sl_len)
+	if (data->sl_cpos == data->sl_len)
+	{
+		// Replace search_line by suggestion
+		if (data->suggestion)
+		{
+			clear_line(data);
+			insert_text(data, data->suggestion->arg, data->suggestion->len);
+		}
+	}
+	else if (data->sl_cpos < data->sl_len)
 	{
 		// Cursor should be set as visible when in line edition
 		data->sl_cpos++;

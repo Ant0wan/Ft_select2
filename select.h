@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 17:34:04 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 18:10:31 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ struct	s_select
 	int			sl_size; //  buffer of search_line
 	int			sl_len; // len of line
 	int			sl_cpos; // Cursor position on the line
+	struct s_element	*suggestion; // element suggested for completion
 };
 
 union u_buffer			read_key(void);
