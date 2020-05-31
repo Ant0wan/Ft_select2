@@ -6,34 +6,25 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:13:39 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:45:06 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 16:51:11 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "searchline.h"
 
-void	clip_paste(void)
+void	clear_befline(struct s_select *data)
 {
-	insert_text(g_clip.str, g_clip.l);
-}
-
-void	clear_befline(void)
-{
-	if (g_dis.cbpos != 0)
+	if (data->sl_cpos > 0)
 	{
-		if (g_clip.str != NULL)
-			free(g_clip.str);
-		g_clip.str = ft_strndup(g_line.line, g_dis.cbpos);
-		g_clip.l = g_dis.cbpos;
-		g_line.len -= g_dis.cbpos;
-		ft_memmove(g_line.line, &(g_line.line[g_dis.cbpos]),
-		g_dis.cbpos);
-		ft_bzero(&(g_line.line[g_line.len]), g_clip.l);
-		g_dis.cbpos = 0;
-		rl_home();
+		data->sl_len -= data->sl_cpos;
+		ft_memmove(data->search_line, &(data->search_line[data->sl_cpos]), data->sl_cpos);
+		ft_bzero(&(data->search_line[data->sl_len]), data->sl_cpos);
+		data->sl_cpos = 0;
+		rl_home(data);
+		bar(data);
 	}
 }
-
+/*
 void	cut_prev_wd(void)
 {
 	int start;
@@ -98,4 +89,4 @@ void	cut_next_wd(void)
 	g_line.len -= g_clip.l;
 	ft_bzero(&(g_line.line[g_line.len]), g_clip.l);
 	bar(data);
-}
+}*/

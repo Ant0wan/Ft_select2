@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/31 16:01:22 by abarthel         ###   ########.fr        #
+#    Updated: 2020/05/31 16:46:07 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,11 +36,10 @@ SOURCES := \
 		searchline/search_keymap.c \
 		searchline/searchline.c \
 		searchline/text.c \
-		searchline/text_hist.c \
 		searchline/text2.c \
 		searchline/text3.c \
 		searchline/text4.c \
-#		searchline/text5.c \
+		searchline/text5.c \
 #		searchline/text7.c \
 #		searchline/text8.c 
 

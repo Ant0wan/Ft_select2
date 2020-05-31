@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 20:29:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 16:34:54 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 16:45:47 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ void	set_search_std_keymap(struct s_select *data)
 //	data->search_keymap.std[9] = &autocomplete;
 	data->search_keymap.std[11] = &clear_eol;
 //	data->search_keymap.std[12] = &clear_scr;
-//	data->search_keymap.std[14] = &history_down;
-//	data->search_keymap.std[16] = &history_up;
 //	data->search_keymap.std[18] = &hist_lookup;
 //	data->search_keymap.std[20] = &rl_reversel;
-//	data->search_keymap.std[21] = &clear_befline;
+	data->search_keymap.std[21] = &clear_befline;
 //	data->search_keymap.std[23] = &cut_prev_wd;
 	data->search_keymap.std[127] = &rl_backspace;
 }
@@ -47,8 +45,6 @@ void	set_search_std_keymap(struct s_select *data)
 void	set_search_ctrl_keymap(struct s_select *data)
 {
 	data->search_keymap.ctrl[51] = &rl_delete;
-//	data->search_keymap.ctrl[65] = &history_up;
-//	data->search_keymap.ctrl[66] = &history_down;
 	data->search_keymap.ctrl[67] = &cursor_r;
 	data->search_keymap.ctrl[68] = &cursor_l;
 	data->search_keymap.ctrl[70] = &rl_end;
