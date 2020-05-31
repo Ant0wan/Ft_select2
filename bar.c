@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 12:49:59 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 12:53:19 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ void	readl(struct s_select *data)
 void	search_bar(struct s_select *data)
 {
 	if (!data->search_error)
+	{
+		tputs(data->termcaps.vs, 1, output);
 		readl(data);
+		tputs(data->termcaps.vi, 1, output);
+	}
 	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
 	// If pattern not found
 		search_errmsg(data);
