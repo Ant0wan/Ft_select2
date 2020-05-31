@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:29:44 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:54:49 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	search_bar(struct s_select *data)
 		ft_dprintf(data->fd, "%s", DEFAULT);
 
 		// Go back to cursor position
-		tputs(tgoto(data->termcaps.cm, data->sl_cpos, data->win.ws_row), 1, output);
+		tputs(tgoto(data->termcaps.cm, data->sl_cpos + 1, data->win.ws_row), 1, output);
 	}
 	else
 	{
