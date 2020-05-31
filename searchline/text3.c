@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:14:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 12:15:25 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 12:41:32 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,39 +24,30 @@ void	clear_line(struct s_select *data)
 
 void	rl_home(struct s_select *data)
 {
-	g_cursor.c_pos = g_dis.prompt_l;
-	if (g_cursor.c_pos > 0)
-		ft_putstr(tgoto(g_termcaps.ch, 0, g_cursor.c_pos));
-	if (g_cursor.v_pos > 0)
+	if (data->sl_cpos > 0)
 	{
-		ft_putstr(tgoto(g_termcaps.gup, 0, g_cursor.v_pos));
-		g_cursor.v_pos = 0;
+		// Display should change because of line < Here is the pharse >
+		data->sl_cpos = 0;
+		tputs(tgoto(data->termcaps.cm, 1, data->win.ws_row), 1, output);
+		update_line(data);
 	}
-	g_dis.cbpos = 0;
-	update_line();
 }
 
-void	rl_end(void)
+void	rl_end(struct s_select *data)
 {
-	g_cursor.c_pos = (g_dis.prompt_l + g_dis.cbpos) % g_sc.w;
-	if (g_cursor.c_pos > 0)
+	if (data->sl_cpos < data->sl_len)
 	{
-		ft_putstr(tgoto(g_termcaps.ch, 0, g_cursor.c_pos));
-		g_dis.cbpos = g_line.len;
+		// Display should change because of line < Here is the pharse >
+		data->sl_cpos = data->sl_len;
+		tputs(tgoto(data->termcaps.cm, data->sl_len, data->win.ws_row), 1, output);
+		update_line(data);
 	}
-	if (g_cursor.v_pos != g_dis.botl)
-	{
-		ft_putstr(tgoto(g_termcaps.gdo, 0, g_dis.botl - g_cursor.v_pos));
-		g_dis.cbpos = g_line.len;
-		g_cursor.v_pos = (g_dis.prompt_l + g_dis.cbpos) / g_sc.w;
-	}
-	update_line();
 }
 
-void	wd_right(void)
+void	wd_right(struct s_select *data)
 {
-	while (g_line.line[g_dis.cbpos] == ' ' && g_dis.cbpos < g_line.len)
-		cursor_r();
-	while (g_line.line[g_dis.cbpos] != ' ' && g_dis.cbpos < g_line.len)
-		cursor_r();
+	while (data->search_line[data->sl_cpos] == ' ' && data->sl_cpos < data->sl_len)
+		cursor_r(data);
+	while (data->search_line[data->sl_cpos] != ' ' && data->sl_cpos < data->sl_len)
+		cursor_r(data);
 }

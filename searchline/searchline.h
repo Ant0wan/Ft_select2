@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 10:20:12 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 12:09:51 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 12:42:12 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void    rl_insert(struct s_select *data, int c);
 void	paste_via_input(struct s_select *data, unsigned long v);
 void	cursor_l(struct s_select *data);
 void	cursor_r(struct s_select *data);
+void    rl_home(struct s_select *data);
 
 #endif

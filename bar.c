@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 10:54:44 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 12:43:53 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,9 @@ void	search_errmsg(struct s_select *data)
 
 void	readl(struct s_select *data)
 {
-	union u_buffer	c;
-
 	ft_dprintf(data->fd, "/");
-	c.value = 1;
 	// Need line editing here with range scrolling <text>!
-	while (c.value)
-	{
-		c = read_key();
-		if (c.buf[0] == '\n' || !isprintchr(c.value))
-			break;
-		else
-			ft_printf("%c", c.buf[0]);
-	}
+	searchline(data);
 }
 
 void	search_bar(struct s_select *data)

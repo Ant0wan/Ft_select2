@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 11:59:55 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 12:44:25 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,5 +172,6 @@ void    init_sort_list(struct s_select *data);
 void    left_sort_mode(struct s_select *data, union u_buffer input);
 void    right_sort_mode(struct s_select *data, union u_buffer input);
 
+void		searchline(struct s_select *data);
 
 #endif
