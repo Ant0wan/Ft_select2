@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 20:29:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 16:06:42 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 16:25:38 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	set_search_std_keymap(struct s_select *data)
 	data->search_keymap.std[2] = &cursor_l;
 //	data->search_keymap.std[5] = &rl_end;
 	data->search_keymap.std[6] = &cursor_r;
-//	data->search_keymap.std[8] = &rl_backspace;
+	data->search_keymap.std[8] = &rl_backspace;
 //	data->search_keymap.std[9] = &autocomplete;
 //	data->search_keymap.std[11] = &clear_eol;
 //	data->search_keymap.std[12] = &clear_scr;
@@ -45,7 +45,7 @@ void	set_search_std_keymap(struct s_select *data)
 //	data->search_keymap.std[25] = &clip_paste;
 //	data->search_keymap.std[27] = &none; // Escape key
 //	data->search_keymap.std[31] = &undo_last;
-//	data->search_keymap.std[127] = &rl_backspace;
+	data->search_keymap.std[127] = &rl_backspace;
 }
 
 void	set_search_ctrl_keymap(struct s_select *data)

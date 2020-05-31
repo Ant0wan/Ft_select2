@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 10:20:12 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 16:10:42 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 16:26:00 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void	cursor_r(struct s_select *data);
 void    rl_home(struct s_select *data);
 void            rl_delete(struct s_select *data);
 void    wd_left(struct s_select *data);
-
 void	wd_right(struct s_select *data);
-
+void		rl_backspace(struct s_select *data);
 
 #endif
