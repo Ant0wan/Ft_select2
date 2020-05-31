@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_suite2.c                                     :+:      :+:    :+:   */
+/*   searchline.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/10 14:03:17 by abarthel          #+#    #+#             */
-/*   Updated: 2020/03/10 14:03:19 by abarthel         ###   ########.fr       */
+/*   Created: 2020/05/31 10:20:12 by abarthel          #+#    #+#             */
+/*   Updated: 2020/05/31 10:32:39 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_readline.h"
+#ifndef SEARCHLINE_H
+# define SEARCHLINE_H
 
-int	mvctrlkey(union u_buffer c)
-{
-	return (c.buf[2] == 49 && c.buf[3] == 59 && c.buf[4] == 53);
-}
+# include "select.h"
 
-int	enter_rc(union u_buffer c)
-{
-	return (c.buf[0] == 13 && c.buf[1] == 0);
-}
+# define READLINE_DEFAULT_BUFFER_SIZE 256
+
+void	insert_text(const char *string, int len);
+void	clear_line(void);
+void	init_line_buffer(void);
+void	update_line(void);
+
+#endif

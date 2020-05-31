@@ -6,11 +6,11 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:20:42 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 20:03:50 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 10:26:31 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "select.h"
+#include "searchline.h"
 
 void		update_line(struct s_select *data)
 {

@@ -3,61 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   text_hist.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snunes <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/10 16:21:11 by snunes            #+#    #+#             */
-/*   Updated: 2020/03/10 22:33:24 by snunes           ###   ########.fr       */
+/*   Created: 2020/05/31 10:18:14 by abarthel          #+#    #+#             */
+/*   Updated: 2020/05/31 10:28:24 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_readline.h"
-
-char	*get_beg_matching_hist(char **line, char *patern)
-{
-	char	*tmp;
-	int		pat_len;
-
-	tmp = *line;
-	if (!tmp)
-		return (tmp);
-	if (!patern)
-		return (prev_hist());
-	pat_len = ft_strlen(patern);
-	while (!ft_strnequ(tmp, patern, pat_len) && g_hist->nb_line > 0)
-		tmp = prev_hist();
-	if (ft_strnequ(tmp, patern, pat_len))
-		*line = tmp;
-	else
-	{
-		while (!ft_strnequ(tmp, *line, pat_len) \
-				&& g_hist->nb_line < g_hist->total_lines)
-			tmp = next_hist();
-		*line = tmp;
-		tmp = NULL;
-	}
-	return (tmp);
-}
-
-char *get_matching_hist(char **line, char *patern)
-{
-	char *tmp;
-
-	tmp = *line;
-	if (!tmp)
-		return (tmp);
-	while (!ft_strstr(tmp, patern) && g_hist->nb_line > 0)
-		tmp = prev_hist();
-	if (ft_strstr(tmp, patern))
-		*line = tmp;
-	else
-	{
-		while (!ft_strstr(tmp, *line) && g_hist->nb_line < g_hist->total_lines)
-			tmp = next_hist();
-		*line = tmp;
-		tmp = NULL;
-	}
-	return (tmp);
-}
+#include "searchline.h"
 
 int test_c_value(union u_buffer c)
 {

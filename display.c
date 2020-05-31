@@ -6,11 +6,11 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 13:45:15 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 10:24:09 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "select.h"
+#include "searchline.h"
 
 void	display_elements(struct s_select *data)
 {

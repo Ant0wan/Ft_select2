@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readline.c                                         :+:      :+:    :+:   */
+/*   searchline.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/03 17:22:31 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 20:11:35 by abarthel         ###   ########.fr       */
+/*   Created: 2020/05/31 10:18:58 by abarthel          #+#    #+#             */
+/*   Updated: 2020/05/31 10:27:03 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "select.h"
+#include "searchline.h"
 
-static void	readline_internal(struct s_select *data)
+static void	searchline_internal(struct s_select *data)
 {
 	union u_buffer	c;
 
@@ -45,5 +45,5 @@ void		*searchline(struct s_select *data)
 		ft_memdel((void**)&data->search);
 	init_line_buffer(data);
 	update_line();
-	readline_internal(data);
+	searchline_internal(data);
 }

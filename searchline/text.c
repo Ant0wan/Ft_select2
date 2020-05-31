@@ -6,15 +6,11 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:16:27 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 19:50:08 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 10:28:08 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_readline.h"
-
-struct s_clipboard	g_clip = { .str = NULL, .l = 0 };
-char				*g_original_cmd;
-int					g_full_completion = 1;
+#include "searchline.h"
 
 void		init_line_buffer(struct s_select *data)
 {

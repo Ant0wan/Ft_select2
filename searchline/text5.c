@@ -6,11 +6,11 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:13:39 by abarthel          #+#    #+#             */
-/*   Updated: 2020/03/10 14:39:47 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 10:27:45 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_readline.h"
+#include "searchline.h"
 
 void	clip_paste(void)
 {
