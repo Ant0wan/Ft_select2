@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 10:20:12 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 17:38:08 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 18:47:38 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ void	clear_line(struct s_select *data);
 void    cut_prev_wd(struct s_select *data);
 void    rl_reversel(struct s_select *data);
 void    disp_sug(struct s_select *data);
+void	check_occur(struct s_select *data);
 
 #endif
