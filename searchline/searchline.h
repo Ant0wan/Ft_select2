@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 10:20:12 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 12:42:12 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:43:31 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 void	insert_text(struct s_select *data, const char *string, int len);
 void	init_line_buffer(struct s_select *data);
-void	update_line(struct s_select *data);
 
 /*
 ** Set binding of the search bar

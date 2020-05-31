@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:13:58 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 11:58:57 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:44:38 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void	clear_eol(void)
 		g_clip.str = ft_strndup(&(g_line.line[g_dis.cbpos]), g_clip.l);
 		ft_bzero(&(g_line.line[g_dis.cbpos]), g_clip.l);
 		g_line.len -= g_clip.l;
-		update_line();
+		bar(data);
 	}
 }*/

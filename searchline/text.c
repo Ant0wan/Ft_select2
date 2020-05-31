@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:16:27 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 12:10:08 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:45:42 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		insert_text(struct s_select *data, const char *string, int len)
 	ft_memmove(&(data->search_line[data->sl_cpos]), string, len);
 	data->sl_len += len;
 	data->sl_cpos += len;
-	update_line(data);
+	bar(data);
 }
 
 void		rl_delete(struct s_select *data)
@@ -58,13 +58,13 @@ void		rl_delete(struct s_select *data)
 			ft_memmove(&(data->search_line[data->sl_cpos]),
 				&(data->search_line[data->sl_cpos + 1]), data->sl_len - data->sl_cpos + 1);
 			data->search_line[data->sl_len + 1] = '\0';
-			update_line(data);
+			bar(data);
 			--data->sl_len;
 		}
 		else if (data->sl_cpos > 0)
 		{
 			data->search_line[data->sl_cpos] = '\0';
-			update_line(data);
+			bar(data);
 			--data->sl_len;
 		}
 	}
@@ -84,6 +84,6 @@ void		rl_backspace(struct s_select *data)
 		else
 			data->search_line[data->sl_cpos] = '\0';
 		--data->sl_len;
-		update_line(data);
+		bar(data);
 	}
 }

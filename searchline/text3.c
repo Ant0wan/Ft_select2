@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:14:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 12:41:32 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/05/31 15:44:19 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	rl_home(struct s_select *data)
 		// Display should change because of line < Here is the pharse >
 		data->sl_cpos = 0;
 		tputs(tgoto(data->termcaps.cm, 1, data->win.ws_row), 1, output);
-		update_line(data);
+		bar(data);
 	}
 }
 
@@ -40,7 +40,7 @@ void	rl_end(struct s_select *data)
 		// Display should change because of line < Here is the pharse >
 		data->sl_cpos = data->sl_len;
 		tputs(tgoto(data->termcaps.cm, data->sl_len, data->win.ws_row), 1, output);
-		update_line(data);
+		bar(data);
 	}
 }
 
