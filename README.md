@@ -1,13 +1,9 @@
 # Select new version
 
----
-
 ## TODO:
 - display with scroll
 
----
 
 ## Demo
 
-[![demo](/demo.gif)](/demo.gif)
-
+<img src="https://i.imgur.com/BHfhj0n.gif" alt="demo" width="120" height="120">
