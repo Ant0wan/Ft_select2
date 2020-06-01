@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/01 15:34:16 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/01 15:41:50 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,37 +65,19 @@ void	search_errmsg(struct s_select *data)
 static void	search_area(struct s_select *data)
 {
 	static int	offset;
-	static int	last_size;
 
 	// Display line from range Need line editing here with range scrolling <text>!
-	if (data->win.ws_col < data->sl_len + 2)
-	{
-		offset = data->sl_cpos + 2 - data->win.ws_col;
-		offset = offset > 0 ? offset : 0;
-
-		if (last_size != data->win.ws_col) // Would change if resize
-			last_size = data->win.ws_col;
-
-		if (offset > 0)
-			ft_dprintf(data->fd, "<");
-		else
-			ft_dprintf(data->fd, "/");
-
-		ft_dprintf(data->fd, "%.*s", data->win.ws_col - 2, &data->search_line[offset]);
-
-		if (offset + data->win.ws_col < data->sl_len + 2)
-			ft_dprintf(data->fd, ">");
-		ft_dprintf(data->fd, "%s", DEFAULT);
-		tputs(tgoto(data->termcaps.cm, data->sl_cpos - offset + 1, data->win.ws_row), 1, output);
-	}
+	offset = data->sl_cpos + 2 - data->win.ws_col;
+	offset = offset > 0 ? offset : 0;
+	if (offset > 0)
+		ft_dprintf(data->fd, "<");
 	else
-	{
 		ft_dprintf(data->fd, "/");
-		ft_dprintf(data->fd, "%s", data->search_line);
-		ft_dprintf(data->fd, "%s", DEFAULT);
-		// Go back to cursor position
-		tputs(tgoto(data->termcaps.cm, data->sl_cpos + 1, data->win.ws_row), 1, output);
-	}
+	ft_dprintf(data->fd, "%.*s", data->win.ws_col - 2, &data->search_line[offset]);
+	if (offset + data->win.ws_col < data->sl_len + 2)
+		ft_dprintf(data->fd, ">");
+	ft_dprintf(data->fd, "%s", DEFAULT);
+	tputs(tgoto(data->termcaps.cm, data->sl_cpos - offset + 1, data->win.ws_row), 1, output);
 }
 
 void	search_bar(struct s_select *data)
