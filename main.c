@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 15:11:28 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/01 17:12:26 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int main(int argc, char **argv)
 		set_terminal(data);
 		set_signals();
 		fill_elements(data, argc, argv);
+		sort(data);
 
 		while (!acting)
 		{

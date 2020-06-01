@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/05/31 18:47:17 by abarthel         ###   ########.fr        #
+#    Updated: 2020/06/01 17:02:53 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SOURCES := \
 		display.c \
 		elements.c \
 		frame.c \
+		ft_merge_sort.c \
 		io.c \
 		keymap.c \
 		main.c \

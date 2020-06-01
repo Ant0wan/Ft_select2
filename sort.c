@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 21:36:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/19 14:07:22 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/01 17:14:38 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,30 +57,49 @@ void	left_sort_mode(struct s_select *data, union u_buffer input)
 		bar(data);
 	}
 }
+
 /*
-void	sort(struct s_select *data)
-{
-	
-}
+** Linux like alpha num sort
+*/
 
-
-int	alpha_compare(struct s_select *data)
+int	alpha_compare(char *s1, char *s2)
 {
 	size_t	len1;
 	size_t	len2;
-	int		ret_time_cmp;
+	int	ret_cmp;
 	_Bool	low_equal;
 
-	len1 = ft_strlen(arg->ret_readdir->d_name);
-	len2 = ft_strlen(arg->voyager->d_name);
-	low_equal = ft_strcasecmp(arg->ret_readdir->d_name, arg->voyager->d_name) ? 0 : 1;
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	ret_cmp = ft_strcasecmp(s1, s2);
+	low_equal = ret_cmp ? 0 : 1;
 	if (low_equal)
 	{
 		if (len1 != len2)
 			return (len1 > len2);
 		else
-			return (ft_strcmp(arg->ret_readdir->d_name, arg->voyager->d_name));
+			return (ft_strcmp(s1, s2));
 	}
 	else
-		return (ft_strcasecmp(arg->ret_readdir->d_name, arg->voyager->d_name));
-}*/
+		return (ret_cmp);
+}
+
+void	fcompare(struct s_select *data, struct s_element **e1, struct s_element **e2, struct s_element **h)
+{
+	(void)data;
+	if (alpha_compare((*e1)->arg, (*e2)->arg) > 0) // Not always strcmp, function pointer depending on data->sort
+	{
+		*h = *e2;
+		*e2 = (*e2)->next;
+	}
+	else
+	{
+		*h = *e1;
+		*e1 = (*e1)->next;
+	}
+}
+
+void	sort(struct s_select *data)
+{
+	ft_merge_sort(&data->elements, data);
+}
