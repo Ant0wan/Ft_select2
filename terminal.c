@@ -6,14 +6,11 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/30 13:44:46 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/01 18:23:01 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
-
-#define ERR_TERM "Terminal capabilities insuficient for program use.\n"
-#define ERR_WINS "Something went wrong in getting window size. ioctl(2): failed.\n"
 
 void		termsize(struct s_select *data)
 {
@@ -58,7 +55,14 @@ void	set_terminal(struct s_select *data)
 			exit(2);
 		}
 	}
+	else
+		exit(1);
 	set_termcaps(data);
+	if (data->dumb_mode) // Should be removed once dumb_mode is handled
+	{
+		write(STDERR_FILENO, ERR_TERM, ft_strlen(ERR_TERM));
+		exit(2);
+	}
 	tcgetattr(STDOUT_FILENO, &(data->termios_backup));
 	tcgetattr(STDOUT_FILENO, &(data->termios_select));
 	data->termios_select.c_lflag &= ~(ICANON | ECHO);

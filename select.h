@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/01 17:42:31 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/01 18:18:38 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@
 #define ARLE "◄"
 #define ARRI "►"
 
+#define ERR_TERM "Terminal capabilities insuficient for program use.\n"
+#define ERR_WINS "Something went wrong in getting window size. ioctl(2): failed.\n"
 
 union					u_buffer
 {
