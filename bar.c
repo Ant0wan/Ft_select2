@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/01 13:51:51 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/01 15:34:16 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,23 @@ static void	search_area(struct s_select *data)
 	// Display line from range Need line editing here with range scrolling <text>!
 	if (data->win.ws_col < data->sl_len + 2)
 	{
-		offset = data->sl_cpos - data->win.ws_col;
-		if (last_size != data->win.ws_col)
+		offset = data->sl_cpos + 2 - data->win.ws_col;
+		offset = offset > 0 ? offset : 0;
+
+		if (last_size != data->win.ws_col) // Would change if resize
 			last_size = data->win.ws_col;
-		ft_dprintf(data->fd, "<");
-		if (data->sl_cpos < data->sl_len)
-			ft_dprintf(data->fd, "%.*s>", data->win.ws_col - 2, &data->search_line[offset + 2]);
+
+		if (offset > 0)
+			ft_dprintf(data->fd, "<");
 		else
-			ft_dprintf(data->fd, "%.*s", data->win.ws_col - 2, &data->search_line[offset + 2]);
+			ft_dprintf(data->fd, "/");
+
+		ft_dprintf(data->fd, "%.*s", data->win.ws_col - 2, &data->search_line[offset]);
+
+		if (offset + data->win.ws_col < data->sl_len + 2)
+			ft_dprintf(data->fd, ">");
 		ft_dprintf(data->fd, "%s", DEFAULT);
-		tputs(tgoto(data->termcaps.cm, data->win.ws_col - 1, data->win.ws_row), 1, output);
+		tputs(tgoto(data->termcaps.cm, data->sl_cpos - offset + 1, data->win.ws_row), 1, output);
 	}
 	else
 	{
