@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/01 17:44:18 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/01 17:51:23 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int	command_input(struct s_select *data)
 	union u_buffer	input;
 
 	input = read_key();
-	if (isstdkey(input.value))
+	if (enter_rc(input))
+		set_select_mode(data);
+	else if (isstdkey(input.value))
 		(data->cmd_keymap.std[input.value])(data, input);
 	else if (isctrlkey(input))
 		(data->cmd_keymap.ctrl[(int)input.buf[2]])(data, input);

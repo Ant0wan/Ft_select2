@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/01 15:41:50 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/01 17:53:56 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	command_bar(struct s_select *data)
 		ft_dprintf(data->fd, "    Selected:%3d", 0);
 	ft_printf("%s", DEFAULT);
 	if (data->win.ws_col >= 25 + 16 + 55) // limit is max len of help msg
-		ft_dprintf(data->fd, "%s    %sPress <ESC> to quit mode%s", GRMODE, GRHELP, DEFAULT); // len up to 28
+		ft_dprintf(data->fd, "%s    %sPress <ESC> or <ENTER> to quit mode%s", GRMODE, GRHELP, DEFAULT); // len up to 28
 }
 
 void	search_errmsg(struct s_select *data)
