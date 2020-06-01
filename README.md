@@ -3,7 +3,7 @@
 
 ## Demo
 
-[![asciicast](https://asciinema.org/a/YY6nG19UDLjZYvQp2SQWXbwx4.svg)](https://asciinema.org/a/YY6nG19UDLjZYvQp2SQWXbwx4)
+[![demo](/demo.gif)](/demo.gif)
 
 TODO:
 - display with scroll
