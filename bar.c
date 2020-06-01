@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 18:43:08 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/01 13:29:59 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	command_bar(struct s_select *data)
 	ft_printf("%s", DEFAULT);
 	if (data->win.ws_col >= 25 + 16 + 55) // limit is max len of help msg
 		ft_dprintf(data->fd, "%s    %sPress <ESC> to quit mode%s", GRMODE, GRHELP, DEFAULT); // len up to 28
-	//	ft_dprintf(data->fd, "\t%sPress <ESC> to quit mode%s", GRHELP, DEFAULT);
-	//	ft_dprintf(data->fd, "\t%sPress <ESC> to quit mode%s", GRMODE, DEFAULT);
 }
 
 void	search_errmsg(struct s_select *data)
@@ -64,27 +62,42 @@ void	search_errmsg(struct s_select *data)
 	data->search_error = 1;
 }
 
-void	search_bar(struct s_select *data)
+static void	search_area(struct s_select *data)
 {
-	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
-	if (!data->search_error)
+	static int	offset;
+	static int	last_size;
+
+	// Display line from range Need line editing here with range scrolling <text>!
+	if (data->win.ws_col < data->sl_len + 2)
 	{
-		// Display line from range Need line editing here with range scrolling <text>!
+		offset = data->sl_cpos - data->win.ws_col;
+		if (last_size != data->win.ws_col)
+			last_size = data->win.ws_col;
+		ft_dprintf(data->fd, "<");
+		ft_dprintf(data->fd, "%.*s", data->win.ws_col - 2, &data->search_line[offset + 2]);
+		ft_dprintf(data->fd, "%s", DEFAULT);
+		tputs(tgoto(data->termcaps.cm, data->sl_cpos + 1, data->win.ws_row), 1, output);
+	}
+	else
+	{
 		ft_dprintf(data->fd, "/");
 		ft_dprintf(data->fd, "%s", data->search_line);
 		ft_dprintf(data->fd, "%s", DEFAULT);
-
 		// Go back to cursor position
 		tputs(tgoto(data->termcaps.cm, data->sl_cpos + 1, data->win.ws_row), 1, output);
 	}
+}
+
+void	search_bar(struct s_select *data)
+{
+	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
+	if (!data->search_error) // search line editing
+		search_area(data);
 	else
 	{
 		// If pattern not found
 		set_bar_color(data);
 		search_errmsg(data);
-		// If pattern is found, select the found word and go back to selection mode
-//		set_bar_color(data);
-//		set_select_mode(data, c);
 	}
 }
 
