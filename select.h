@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/01 17:11:42 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/01 17:42:31 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ struct s_sort
 	struct s_sort	*next;
 	struct s_sort	*prev;
 	char		*name;
+	int		(*fcmp)();
 };
 
 struct	s_select
@@ -178,6 +179,11 @@ void    right_sort_mode(struct s_select *data, union u_buffer input);
 
 void	ft_merge_sort(struct s_element **e, struct s_select *data);
 void    fcompare(struct s_select *data, struct s_element **e1, struct s_element **e2, struct s_element **h);
+int	alpha_compare(struct s_element *e1, struct s_element *e2);
+int	size_compare(struct s_element *e1, struct s_element *e2);
+int	time_compare(struct s_element *e1, struct s_element *e2);
+int	type_compare(struct s_element *e1, struct s_element *e2);
+int	uid_compare(struct s_element *e1, struct s_element *e2);
 
 void		searchline(struct s_select *data);
 

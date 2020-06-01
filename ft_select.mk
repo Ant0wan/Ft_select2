@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/06/01 17:02:53 by abarthel         ###   ########.fr        #
+#    Updated: 2020/06/01 17:40:08 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SOURCES := \
 		bar.c \
 		color.c \
 		command.c \
+		compare.c \
 		data.c \
 		display.c \
 		elements.c \
