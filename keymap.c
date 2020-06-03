@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 14:51:00 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/03 11:33:39 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	none(struct s_select *data, union u_buffer input)
 {
-	(void)data;
+	data->no_refresh = 1;
 	(void)input;
 	return;
 }

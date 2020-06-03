@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/01 18:23:07 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/03 11:34:05 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ int main(int argc, char **argv)
 
 		while (!acting)
 		{
-			display(data);
+			if (!data->no_refresh)
+				display(data); // if acting was none, no need to display
+			data->no_refresh = 0;
 			acting = actions(data);
 		}
 

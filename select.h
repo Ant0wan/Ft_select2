@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/01 18:18:38 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/03 11:33:13 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,12 @@ struct s_sort
 	int		(*fcmp)();
 };
 
+struct	s_page
+{
+	int	nb; // page user is currently at
+	int	total; // total nb of pages needed
+};
+
 struct	s_select
 {
 	char			*ttyname;
@@ -119,6 +125,7 @@ struct	s_select
 	struct s_termcaps	termcaps; // No free
 	int			dumb_mode; // Set true is all termcaps are not available
 	struct winsize		win; // Use to get window size
+	int			no_refresh; // Set to 0 if dis needed, 1 if last key executed none
 	struct s_element	*elements; // linked list of elements
 	char			*line; // Malloc
 	int			mode; // 0. selection'escape', 1. control (change sort)':', 2. search '/'
@@ -135,6 +142,7 @@ struct	s_select
 	int			sl_len; // len of line
 	int			sl_cpos; // Cursor position on the line
 	struct s_element	*suggestion; // element suggested for completion
+	struct s_page		page; // paging info
 };
 
 union u_buffer			read_key(void);
