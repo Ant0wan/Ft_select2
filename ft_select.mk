@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/06/01 17:40:08 by abarthel         ###   ########.fr        #
+#    Updated: 2020/06/03 17:32:39 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SOURCES := \
 		io.c \
 		keymap.c \
 		main.c \
+		page.c \
 		search.c \
 		select.c \
 		sig.c \
