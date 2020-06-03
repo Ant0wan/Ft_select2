@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 21:36:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/01 17:45:46 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/03 21:05:09 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	right_sort_mode(struct s_select *data, union u_buffer input)
 		data->sort = data->sort->next;
 		bar(data);
 	}
+	data->no_refresh = 1;
 }
 
 void	left_sort_mode(struct s_select *data, union u_buffer input)
@@ -61,6 +62,7 @@ void	left_sort_mode(struct s_select *data, union u_buffer input)
 		data->sort = data->sort->prev;
 		bar(data);
 	}
+	data->no_refresh = 1;
 }
 
 void	fcompare(struct s_select *data, struct s_element **e1, struct s_element **e2, struct s_element **h)
