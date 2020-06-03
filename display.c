@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/03 17:41:08 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/03 23:34:26 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 
 void	display_elements(struct s_select *data)
 {
+	int	w_frame;
 	struct s_element	*l;
 	int	i;
 	int	j;
 	int	width;
 
-	tputs(tgoto(data->termcaps.cm, 1, 1), 1, output);
+	if (data->frame_enabled)
+		w_frame = 1;
+	else
+		w_frame = 0;
 	l = data->elements;
 	i = 0;
 	j = 0;
 	width = 0;
 	while (l)
 	{
-		tputs(tgoto(data->termcaps.cm, 1 + j, 1 + i), 1, output);
-		ft_printf("%s%s%s", l->color, l->arg, DEFAULT);
+		tputs(tgoto(data->termcaps.cm, w_frame + j, w_frame + i), 1, output);
+		ft_printf("%s%.*s%s", l->color, data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
 		if (l->len > width)
 			width = l->len + 1;
 		l = l->next;
