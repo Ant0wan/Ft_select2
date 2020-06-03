@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/03 17:41:37 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/03 23:10:29 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,9 @@ struct s_sort
 
 struct	s_page
 {
-	int	nb; // page user is currently at
-	int	total; // total nb of pages needed
+	int			c_width; // column width of the page
+	struct s_element	*estart; // first element in the page
+	struct s_element	*eend; // last element in the page
 };
 
 struct	s_select
@@ -142,7 +143,9 @@ struct	s_select
 	int			sl_len; // len of line
 	int			sl_cpos; // Cursor position on the line
 	struct s_element	*suggestion; // element suggested for completion
-	struct s_page		page; // paging info
+	int			pnb; // page number the user is at
+	int			psum; // total nb of pages needed
+	struct s_page		*page; // paging info
 };
 
 union u_buffer			read_key(void);

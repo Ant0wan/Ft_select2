@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/02 16:09:46 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/03 21:25:36 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,4 @@ void	bar(struct s_select *data)
 		data->bar_enabled = 1;
 		draw_bar(data);
 	}
-
 }
