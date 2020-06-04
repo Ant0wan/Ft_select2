@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/03 23:10:29 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/04 12:46:27 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,13 @@ struct	s_termcaps
 	char	*te; //10 Disable full screen
 };
 
+struct	s_page
+{
+	int			c_width; // column width of the page
+	int			page_nb; // page number
+	struct s_element	*estart; // first element in the page
+};
+
 struct	s_element
 {
 	struct s_element	*next;
@@ -91,6 +98,7 @@ struct	s_element
 	int			selected;
 	int			underlined;
 	char			*color; // No free
+	struct s_page		page; // If not null this is the first element of the page
 };
 
 struct s_keymap
@@ -106,13 +114,6 @@ struct s_sort
 	struct s_sort	*prev;
 	char		*name;
 	int		(*fcmp)();
-};
-
-struct	s_page
-{
-	int			c_width; // column width of the page
-	struct s_element	*estart; // first element in the page
-	struct s_element	*eend; // last element in the page
 };
 
 struct	s_select
@@ -145,7 +146,7 @@ struct	s_select
 	struct s_element	*suggestion; // element suggested for completion
 	int			pnb; // page number the user is at
 	int			psum; // total nb of pages needed
-	struct s_page		*page; // paging info
+	struct s_element	*cursor; // element the user is underlining
 };
 
 union u_buffer			read_key(void);
