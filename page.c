@@ -6,11 +6,16 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 17:32:47 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/03 23:12:20 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/04 14:14:02 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
+
+void	set_pages(struct s_select *data)
+{
+	data->elements->page = 1;
+}
 
 void	page(struct s_select *data)
 {
@@ -22,8 +27,3 @@ void	page(struct s_select *data)
 		ft_dprintf(data->fd, "%3d/%-3d", data->pnb, data->psum);
 	}
 }
-/*
-void	compute_nb_pages(struct s_select *data)
-{
-	data->page->total = 2;
-}*/

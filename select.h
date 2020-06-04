@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/04 12:46:27 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/04 14:13:37 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,6 @@ struct	s_termcaps
 	char	*te; //10 Disable full screen
 };
 
-struct	s_page
-{
-	int			c_width; // column width of the page
-	int			page_nb; // page number
-	struct s_element	*estart; // first element in the page
-};
-
 struct	s_element
 {
 	struct s_element	*next;
@@ -98,7 +91,8 @@ struct	s_element
 	int			selected;
 	int			underlined;
 	char			*color; // No free
-	struct s_page		page; // If not null this is the first element of the page
+	int			page; // If not 0 this is the first element of the page having the page nb
+	int			c_width; // column width if first element of the column
 };
 
 struct s_keymap
