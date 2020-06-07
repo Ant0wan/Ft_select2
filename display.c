@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/07 14:56:46 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/07 23:24:04 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,20 @@ void	display_elements(struct s_select *data)
 	{
 		tputs(tgoto(data->termcaps.cm, w_frame + j, w_frame + i), 1, output);
 
-		if (l == data->cursor) // Check element cursor is on and underline if so
-			ft_printf("%s%s%.*s%s", l->color, UNDERL, data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
-		else // others but should check if selected
-			ft_printf("%s%.*s%s", l->color, data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+		if (l == data->cursor)
+		{
+			if (!l->selected)
+				ft_printf("%s%s%.*s%s", l->color, UNDERL, data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+			else
+				ft_printf("%s%s%.*s%s", "\e[7m", UNDERL, data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+		}
+		else
+		{
+			if (!l->selected)
+				ft_printf("%s%.*s%s", l->color, data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+			else
+				ft_printf("%s%.*s%s", "\e[7m", data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+		}
 
 
 		if (l->len > width)
