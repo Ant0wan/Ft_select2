@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/07 14:53:05 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/07 15:13:18 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,5 +195,8 @@ int	uid_compare(struct s_element *e1, struct s_element *e2);
 void		searchline(struct s_select *data);
 
 void    page(struct s_select *data);
+
+void	cursor_prev(struct s_select *data);
+void	cursor_next(struct s_select *data);
 
 #endif
