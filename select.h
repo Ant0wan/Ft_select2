@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/07 15:41:10 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/07 23:35:20 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@
 # define COMMAN 1
 # define SEARCH 2
 
+#define UNDERL "\033[4m"
+#define HIGHLI "\033[7m"
 #define BFIELD "\033[40;38;5;82m"
 #define RESFID "\033[30;48;5;82m"
 #define GRHELP "\033[37;40;5m"
