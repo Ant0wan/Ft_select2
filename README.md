@@ -8,7 +8,6 @@
 - navigate left right column to column
 - navigate page to page
 - return selected elements
-- underline found element
 
 
 

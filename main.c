@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/07 14:52:25 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/08 13:22:59 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int main(int argc, char **argv)
 		}
 
 		unset_terminal(data);
+		display_selection(data);
 		free_data(&data); // Free function of data
 	}
 	else

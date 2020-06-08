@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/07 23:45:31 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/08 13:22:23 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,5 +205,7 @@ void    del_cursor_element(struct s_select *data);
 
 
 void	del_one(struct s_element *element);
+
+void	display_selection(struct s_select *data);
 
 #endif
