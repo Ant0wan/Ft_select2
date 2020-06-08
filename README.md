@@ -1,7 +1,6 @@
 # Select new version
 
 ## TODO:
-- fix sort previous
 - column display
 - page display
 - navigate left right column to column
