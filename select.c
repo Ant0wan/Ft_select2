@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/08 16:50:05 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/08 23:11:31 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	select_it(struct s_select *data)
 	if (data->cursor)
 		data->cursor->selected ^= 1;
 	cursor_next(data);
+	bar(data);
 }
 
 void	del_cursor_element(struct s_select *data)

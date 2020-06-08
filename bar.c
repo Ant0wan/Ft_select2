@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/03 21:25:36 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/08 23:12:52 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,28 @@ void	set_bar_color(struct s_select *data)
 	tputs(tgoto(data->termcaps.cm, 0, data->win.ws_row), 1, output);
 }
 
+static int	nb_selected(struct s_select *data)
+{
+	struct s_element	*e;
+	int	i;
+
+	i = 0;
+	e = data->elements;
+	while (e)
+	{
+		if (e->selected)
+			++i;
+		e = e->next;
+	}
+	return (i);
+}
+
 void	select_bar(struct s_select *data)
 {
 	if (data->win.ws_col >= 23)
 		ft_dprintf(data->fd, " %sSort:  %s  %s", BFIELD, data->sort->name, BFIELD); // len up to 25
 	if (data->win.ws_col >= 25 + 16)
-		ft_dprintf(data->fd, "    Selected:%3d", 0); // len up to 16
+		ft_dprintf(data->fd, "    Selected:%3d", nb_selected(data)); // len up to 16
 	ft_printf("%s", DEFAULT);
 	if (data->win.ws_col >= 25 + 16 + 55)
 	{
@@ -43,7 +59,7 @@ void	command_bar(struct s_select *data)
 	if (data->win.ws_col >= 23)
 		ft_dprintf(data->fd, " %sSort:%s%s %s %s%s", BFIELD, RESFID, data->sort->prev ? ARLE : " ", data->sort->name, data->sort->next ? ARRI : " ", BFIELD);
 	if (data->win.ws_col >= 25 + 16)
-		ft_dprintf(data->fd, "    Selected:%3d", 0);
+		ft_dprintf(data->fd, "    Selected:%3d", nb_selected(data));
 	ft_printf("%s", DEFAULT);
 	if (data->win.ws_col >= 25 + 16 + 55) // limit is max len of help msg
 		ft_dprintf(data->fd, "%s    %sPress <ESC> or <ENTER> to quit mode%s", GRMODE, GRHELP, DEFAULT); // len up to 28
