@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 21:36:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/03 21:05:09 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/08 18:59:38 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,16 @@ void	fcompare(struct s_select *data, struct s_element **e1, struct s_element **e
 
 void	sort(struct s_select *data)
 {
+	struct s_element	*e;
+
 	if (data && data->elements && data->elements->next)
 		ft_merge_sort(&data->elements, data);
+	e = data->elements;
+	data->elements->previous = NULL;
+	while (e)
+	{
+		if (e->next)
+			e->next->previous = e;
+		e = e->next;
+	}
 }
