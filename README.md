@@ -7,7 +7,6 @@
 - page display
 - navigate left right column to column
 - navigate page to page
-- return selected elements
 
 
 
