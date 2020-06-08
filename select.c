@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/07 23:48:37 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/08 16:50:05 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	del_cursor_element(struct s_select *data)
 {
 	if (data->cursor->next)
 	{
+		if (data->cursor == data->elements)
+			data->elements = data->cursor->next;
 		data->cursor = data->cursor->next;
 		del_one(data->cursor->previous);
 	}

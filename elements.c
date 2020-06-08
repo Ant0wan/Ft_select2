@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:04:25 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/17 09:14:16 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/08 16:50:10 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,15 @@
 
 void	del_one(struct s_element *element)
 {
-	element->previous->next = element->next;
+	struct s_element	*ep;
+	struct s_element	*en;
+
+	ep = element->previous;
+	en = element->next;
+	if (ep)
+		ep->next = en;
+	if (en)
+		en->previous = ep;
 	free(element);
 }
 

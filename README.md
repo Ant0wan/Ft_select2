@@ -1,7 +1,6 @@
 # Select new version
 
 ## TODO:
-- delete element
 - fix sort previous
 - column display
 - page display
