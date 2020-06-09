@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/09 14:50:22 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/09 18:20:35 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,37 +63,15 @@ void	select_it(struct s_select *data)
 
 void	del_cursor_element(struct s_select *data)
 {
-	del_one(data);
-/*	struct s_element	*p;
-	struct s_element	*n;
+	struct s_element	*e;
 
-	p = NULL;
-	n = NULL;
-	if (data->cursor->previous)
-		p = data->cursor->previous;
+	e = NULL;
 	if (data->cursor->next)
-		n = data->cursor->next;
-	if (p)
-		p->next = n;
-	if (n)
-		n->previous = p;
-	if (data->cursor == data->elements)
-	{
-		if (n)
-			data->elements = n;
-		else if (p)
-			data->elements = p;
-		else
-			data->elements = NULL;
-	}
-	if (n)
-	{
-		free(data->cursor);
-		data->cursor = NULL;
-		data->cursor = n;
-	}
-	else if (p)
-		data->cursor = p;
-	else
+		e = data->cursor->next;
+	else if (data->cursor->previous)
+		e = data->cursor->previous;
+	del_one(data);
+	data->cursor = e;
+	if (!data->cursor)
 		end_pgm(-128);
-*/}
+}
