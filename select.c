@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/09 19:12:22 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/09 19:26:45 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	set_select_mode(struct s_select *data)
 		data->no_refresh = 1;
 	data->mode = SELECT;
 	data->search_error = 0;
-	sort(data);
+//	sort(data);
 }
 
 void	quit(struct s_select *data, union u_buffer input)
