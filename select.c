@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/09 13:35:29 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/09 14:07:20 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,12 @@ void	del_cursor_element(struct s_select *data)
 		else
 			data->elements = NULL;
 	}
-	free(data->cursor);
-	data->cursor = NULL;
 	if (n)
+	{
+		free(data->cursor);
+		data->cursor = NULL;
 		data->cursor = n;
+	}
 	else if (p)
 		data->cursor = p;
 	else
