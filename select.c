@@ -6,13 +6,13 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/09 14:07:20 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/09 14:50:22 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
-void	set_select_mode(struct s_select *data)//, union u_buffer input)
+void	set_select_mode(struct s_select *data)
 {
 	static struct s_sort	*lastsort;
 
@@ -20,7 +20,7 @@ void	set_select_mode(struct s_select *data)//, union u_buffer input)
 		data->no_refresh = 1;
 	data->mode = SELECT;
 	data->search_error = 0;
-	sort(data);
+//	sort(data);
 }
 
 void	quit(struct s_select *data, union u_buffer input)
@@ -63,7 +63,8 @@ void	select_it(struct s_select *data)
 
 void	del_cursor_element(struct s_select *data)
 {
-	struct s_element	*p;
+	del_one(data);
+/*	struct s_element	*p;
 	struct s_element	*n;
 
 	p = NULL;
@@ -95,4 +96,4 @@ void	del_cursor_element(struct s_select *data)
 		data->cursor = p;
 	else
 		end_pgm(-128);
-}
+*/}

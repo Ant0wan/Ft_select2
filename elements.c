@@ -6,24 +6,24 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:04:25 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/09 14:02:22 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/09 14:51:48 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
-void	del_one(struct s_element *element)
+void	del_one(struct s_select *data)
 {
-	struct s_element	*ep;
-	struct s_element	*en;
-
-	ep = element->previous;
-	en = element->next;
-	if (ep)
-		ep->next = en;
-	if (en)
-		en->previous = ep;
-	free(element);
+	if (data->elements == NULL || data->cursor == NULL)
+		end_pgm(-128);
+	if (data->elements == data->cursor)
+		data->elements = data->cursor->next;
+	if (data->cursor->next != NULL)
+		data->cursor->next->previous = data->cursor->previous;
+	if (data->cursor->previous != NULL)
+		data->cursor->previous->next = data->cursor->next;
+	free(data->cursor);
+	data->cursor = NULL;
 }
 
 void	free_elements(struct s_element *element)

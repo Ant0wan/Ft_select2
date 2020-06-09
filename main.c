@@ -6,28 +6,9 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/09 13:56:59 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/09 14:33:07 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** Commands:
-** /name :search by name
-** :s time, size, chmod, name, date
-** :help : display help message
-** else display error msg if needed
-*/
-
-/*
-** 2. Check argc > 1 : if no arg, then error then return
-** 1. Check terminal capabilities: should work with dumb mode
-** 3. Set signals
-** 4. Check valid argv and remove duplicates: check inode
-** 5. Display files alnum sorted files
-** 6. Unset terminal
-** 7. Unset signals
-** 8. Return values
-*/
 
 #include "select.h"
 
