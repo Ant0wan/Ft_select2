@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/09 14:12:12 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/10 17:27:13 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void	display_elements(struct s_select *data)
 		if (l == data->cursor)
 		{
 			if (!l->selected)
-				ft_printf("%s%s%.*s%s", l->color, UNDERL, data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+				ft_dprintf(data->fd, "%s%s%.*s%s", l->color, UNDERL, data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
 			else
-				ft_printf("%s%s%.*s%s", HIGHLI, UNDERL, data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+				ft_dprintf(data->fd, "%s%s%.*s%s", HIGHLI, UNDERL, data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
 		}
 		else
 		{
 			if (!l->selected)
-				ft_printf("%s%.*s%s", l->color, data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+				ft_dprintf(data->fd, "%s%.*s%s", l->color, data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
 			else
-				ft_printf("%s%.*s%s", "\e[7m", data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+				ft_dprintf(data->fd, "%s%.*s%s", "\e[7m", data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
 		}
 
 

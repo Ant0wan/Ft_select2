@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:16:44 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/09 19:35:33 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/10 17:27:55 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	display_selection(struct s_select *data)
 		if (!has_prev && e->selected)
 		{
 			has_prev = 1;
-			ft_printf("%s", e->arg);
+			ft_dprintf(STDOUT_FILENO, "%s", e->arg);
 		}
 		else if (has_prev && e->selected)
-			ft_printf(" %s", e->arg);
+			ft_dprintf(STDOUT_FILENO, " %s", e->arg);
 		e = e->next;
 	}
 }

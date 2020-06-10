@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/01 18:23:01 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/10 20:03:53 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	set_termcaps(struct s_select *data)
 
 void	set_terminal(struct s_select *data)
 {
-	if (isatty(STDOUT_FILENO))
+	if (isatty(STDIN_FILENO))
 	{
 		data->ttyname = ttyname(STDIN_FILENO);
 		if (data->ttyname)
@@ -63,13 +63,13 @@ void	set_terminal(struct s_select *data)
 		write(STDERR_FILENO, ERR_TERM, ft_strlen(ERR_TERM));
 		exit(2);
 	}
-	tcgetattr(STDOUT_FILENO, &(data->termios_backup));
-	tcgetattr(STDOUT_FILENO, &(data->termios_select));
+	tcgetattr(STDIN_FILENO, &(data->termios_backup));
+	tcgetattr(STDIN_FILENO, &(data->termios_select));
 	data->termios_select.c_lflag &= ~(ICANON | ECHO);
 	data->termios_select.c_cc[VMIN] = 1;
 	data->termios_select.c_cc[VTIME] = 0;
 	data->termios_select.c_iflag &= ~(INLCR);
-	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &(data->termios_select));
+	tcsetattr(STDIN_FILENO, TCSAFLUSH, &(data->termios_select));
 	tputs(data->termcaps.ti, 1, output);
 	tputs(data->termcaps.vi, 1, output);
 }
