@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/11 15:44:17 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/11 16:59:47 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,8 @@ void	display_elements(struct s_select *data)
 
 void	display(struct s_select *data)
 {
-	tputs(tgoto(data->termcaps.cl, 0, 0), 1, output);
 	frame(data);
-	display_elements(data);
 	page(data);
+
 	bar(data);
 }

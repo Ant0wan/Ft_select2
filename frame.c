@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:20:20 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 18:32:04 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/11 16:34:37 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	draw_frame(struct s_select *data)
 
 void	frame(struct s_select *data)
 {
+	tputs(tgoto(data->termcaps.cl, 0, 0), 1, output);
 	// get windows size to chekc limits
 	termsize(data);
 

@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 17:32:47 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/09 20:01:26 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/11 16:59:26 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void	page(struct s_select *data)
 		ft_dprintf(data->fd, "%3d/%-3d", data->pnb, data->psum);
 	}
 	mark_elements(data);
+	display_elements(data);
 //	set_pages(data);
 }
