@@ -6,12 +6,12 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 17:32:47 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/11 16:59:26 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/11 17:54:02 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
-/*
+
 static struct s_element	*element_per_column(struct s_select *data, struct s_element *e)
 {
 	struct s_element	*first_e;
@@ -22,9 +22,9 @@ static struct s_element	*element_per_column(struct s_select *data, struct s_elem
 	nb_el = 0;
 	first_e = e;
 	if (data->frame_enabled)
-		capacity = data->win.ws_row - 3;
+		capacity = data->win.ws_row - 2;
 	else
-		nmax = data->win.ws_row - 1;
+		capacity = data->win.ws_row;
 	while (e && nb_el <= capacity)
 	{
 		if (e->len > width)
@@ -43,20 +43,23 @@ static struct s_element	*set_columns(struct s_select *data, struct s_element *e)
 	int			remaining_width;
 
 	if (data->frame_enabled)
-		remaining_width = data->win.ws_col - 3;
+		remaining_width = data->win.ws_col - 2;
 	else
-		remaining_width = data->win.ws_col - 1;
+		remaining_width = data->win.ws_col;
 	first_e = e;
-	while (e)
+	while (e && remaining_width > 0)
 	{
 		col_leader = e;
 		e = element_per_column(data, e);
+		remaining_width -= (col_leader->c_width + 1);
+		
 	}
 	return (first_e);
 }
 
 static void	set_pages(struct s_select *data)
 {
+	set_columns(data, data->elements);/*
 	struct s_element	*e;
 	int			nb_col;
 
@@ -66,13 +69,7 @@ static void	set_pages(struct s_select *data)
 	{
 		++nb_col;
 	}
-	data->elements->page = 1;
-}
-*/
-void	mark_elements(struct s_select *data)
-{
-	(void)data;
-	// mark pages
+	data->elements->page = 1;*/
 }
 
 void	page(struct s_select *data)
@@ -84,7 +81,6 @@ void	page(struct s_select *data)
 		tputs(tgoto(data->termcaps.cm, data->win.ws_col / 2 - 5, data->win.ws_row - 2), 1, output);
 		ft_dprintf(data->fd, "%3d/%-3d", data->pnb, data->psum);
 	}
-	mark_elements(data);
-	display_elements(data);
-//	set_pages(data);
+	set_pages(data);
+//	display_elements(data);
 }
