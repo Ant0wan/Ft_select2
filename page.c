@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 17:32:47 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/16 18:38:58 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/16 18:56:00 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static struct s_element	*compute_column(struct s_select *data, struct s_element 
 		if (e->len > width)
 			width = e->len;
 		++nb_el;
+		if (e == data->cursor)
+			data->pnb = data->psum;
 		e = e->next;
 	}
 	fill_info(first_e, e, width);
@@ -91,5 +93,4 @@ void	page(struct s_select *data)
 		tputs(tgoto(data->termcaps.cm, data->win.ws_col / 2 - 5, data->win.ws_row - 2), 1, output);
 		ft_dprintf(data->fd, "%3d/%-3d", data->pnb, data->psum);
 	}
-//	display_elements(data);
 }

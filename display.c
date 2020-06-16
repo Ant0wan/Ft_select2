@@ -6,25 +6,25 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/16 18:04:45 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/16 19:58:00 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "searchline.h"
 
-static void	display_element(struct s_select *data, struct s_element *l, int w_frame)
+static void	display_element(struct s_select *data, struct s_element *l)
 {
 	if (l == data->cursor)
 	{
 		if (!l->selected)
 		{
 			ft_dprintf(data->fd, "%s%s%.*s%s", l->color, UNDERL,
-				data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+				l->c_width, l->arg, DEFAULT);
 		}
 		else
 		{
 			ft_dprintf(data->fd, "%s%s%.*s%s", HIGHLI, UNDERL,
-				data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+				l->c_width, l->arg, DEFAULT);
 		}
 	}
 	else
@@ -32,57 +32,35 @@ static void	display_element(struct s_select *data, struct s_element *l, int w_fr
 		if (!l->selected)
 		{
 			ft_dprintf(data->fd, "%s%.*s%s", l->color,
-				data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+				l->c_width, l->arg, DEFAULT);
 		}
 		else
 		{
 			ft_dprintf(data->fd, "%s%.*s%s", "\e[7m",
-				data->win.ws_col - w_frame * 2, l->arg, DEFAULT);
+				l->c_width, l->arg, DEFAULT);
 		}
 	}
 }
 
-static int	display_column(struct s_select *data, struct s_element **l, int offset)
+void	display_page(struct s_select *data)
 {
-	int	next_offset;
-	int	w_frame;
-	int	line;
+	struct s_element *e;
 
-	if (data->frame_enabled)
-		w_frame = 1;
-	else
-		w_frame = 0;
-	next_offset = 0;
-	if (*l && (*l)->c_width)
+	e = data->cursor;
+	while (e->previous)
 	{
-		next_offset = (*l)->c_width + 1;
-		tputs(tgoto(data->termcaps.cm, offset + w_frame, w_frame), 1, output);
-		display_element(data, *l, w_frame);
-		*l = (*l)->next;
+		if (e->page != e->previous->page)
+			break;
+		else
+			e = e->previous;
 	}
-	else if (!(*l)->next)
-		return (-1);
-	line = 1;
-	while (*l && (*l)->next && !(*l)->next->c_width)
+	while (e)
 	{
-		tputs(tgoto(data->termcaps.cm, offset + w_frame, w_frame + line), 1, output);
-		display_element(data, *l, w_frame);
-		*l = (*l)->next;
-	}
-	return (next_offset);
-}
-
-void	display_elements(struct s_select *data)
-{
-	struct s_element	*l;
-	int			offset;
-
-	offset = 0;
-	l = data->elements;
-	while (l)
-	{
-		offset = display_column(data, &l, offset);
-		l = l->next;
+		tputs(tgoto(data->termcaps.cm, e->c, e->r), 1, output);
+		display_element(data, e);
+		if (e->next && e->next->page != e->page)
+			break;
+		e = e->next;
 	}
 }
 
@@ -90,6 +68,6 @@ void	display(struct s_select *data)
 {
 	frame(data);
 	page(data);
-
+	display_page(data);
 	bar(data);
 }
