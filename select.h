@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/09 14:43:34 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/16 18:13:08 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,10 @@ struct	s_element
 	struct stat		st;
 	int			selected;
 	char			*color; // No free
-	int			page; // If not 0 this is the first element of the page having the page nb
-	int			c_width; // column width if first element of the column
+	int			c; // Column position
+	int			r; // Row position
+	int			c_width; // Width of the column
+	int			page; // Page it belongs to
 };
 
 struct s_keymap

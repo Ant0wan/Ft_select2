@@ -6,13 +6,24 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 17:32:47 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/16 10:02:39 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/16 18:38:58 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
-static struct s_element	*element_per_column(struct s_select *data, struct s_element *e)
+static void	fill_info(struct s_element *start, struct s_element *end, int width)
+{
+	while (start)
+	{
+		if (start == end)
+			break;
+		start->c_width = width;
+		start = start->next;
+	}
+}
+
+static struct s_element	*compute_column(struct s_select *data, struct s_element *e)
 {
 	struct s_element	*first_e;
 	int			nb_el;
@@ -32,68 +43,49 @@ static struct s_element	*element_per_column(struct s_select *data, struct s_elem
 		++nb_el;
 		e = e->next;
 	}
-	first_e->c_width = width;
+	fill_info(first_e, e, width);
 	return (e);
 }
 
-static struct s_element	*set_columns(struct s_select *data, struct s_element *e)
+static struct s_element	*compute_one_page(struct s_select *data, struct s_element *e)
 {
-	struct s_element	*first_e;
-	struct s_element	*col_leader;
 	int			remaining_width;
 
 	if (data->frame_enabled)
 		remaining_width = data->win.ws_col - 2;
 	else
 		remaining_width = data->win.ws_col;
-	first_e = e;
 	while (e && remaining_width > 0)
 	{
-		col_leader = e;
-		e = element_per_column(data, e);
-		remaining_width -= (col_leader->c_width + 1);
-		
+		e->page = data->psum;
+		e = compute_column(data, e);
+		if (e)
+		{
+			remaining_width -= e->c_width;
+			remaining_width--;
+		}
 	}
-	return (first_e);
+	return (e);
 }
 
-static void	set_pages(struct s_select *data)
+static void	compute_pages(struct s_select *data)
 {
-	set_columns(data, data->elements);
-/*
 	struct s_element	*e;
-	int			nb_col;
 
-	nb_col = 0;
+	data->psum = 0;
 	e = data->elements;
-	while (set_columns(data, e))
+	while (e)
 	{
-		++nb_col;
+		data->psum++;
+		e = compute_one_page(data, e);
+		if (e)
+			e = e->next;
 	}
-*/	data->elements->page = 1;
-}
-
-int	current_page_nb(struct s_select *data)
-{
-	struct s_element	*c;
-
-	c = data->cursor;
-	while (c)
-	{
-		if (c->page)
-			return (c->page);
-		else if (c == data->elements)
-			return (0);
-		c = c->previous;
-	}
-	return (0);
 }
 
 void	page(struct s_select *data)
 {
-	set_pages(data);
-	data->psum = 10; // SHoud be computed at each resize
-	data->pnb = current_page_nb(data); // SHould be computed what element is underlined
+	compute_pages(data);
 	if (data->psum > 1 && data->frame_enabled && data->win.ws_col > 10) // No need to display pages if only 1 page
 	{
 		tputs(tgoto(data->termcaps.cm, data->win.ws_col / 2 - 5, data->win.ws_row - 2), 1, output);

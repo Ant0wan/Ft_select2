@@ -6,13 +6,13 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/11 16:59:47 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/16 18:04:45 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "searchline.h"
 
-void	display_element(struct s_select *data, struct s_element *l, int w_frame)
+static void	display_element(struct s_select *data, struct s_element *l, int w_frame)
 {
 	if (l == data->cursor)
 	{
@@ -42,37 +42,47 @@ void	display_element(struct s_select *data, struct s_element *l, int w_frame)
 	}
 }
 
-void	display_elements(struct s_select *data)
+static int	display_column(struct s_select *data, struct s_element **l, int offset)
 {
+	int	next_offset;
 	int	w_frame;
-	struct s_element	*l;
-	int	i;
-	int	j;
-	int	width;
+	int	line;
 
 	if (data->frame_enabled)
 		w_frame = 1;
 	else
 		w_frame = 0;
+	next_offset = 0;
+	if (*l && (*l)->c_width)
+	{
+		next_offset = (*l)->c_width + 1;
+		tputs(tgoto(data->termcaps.cm, offset + w_frame, w_frame), 1, output);
+		display_element(data, *l, w_frame);
+		*l = (*l)->next;
+	}
+	else if (!(*l)->next)
+		return (-1);
+	line = 1;
+	while (*l && (*l)->next && !(*l)->next->c_width)
+	{
+		tputs(tgoto(data->termcaps.cm, offset + w_frame, w_frame + line), 1, output);
+		display_element(data, *l, w_frame);
+		*l = (*l)->next;
+	}
+	return (next_offset);
+}
+
+void	display_elements(struct s_select *data)
+{
+	struct s_element	*l;
+	int			offset;
+
+	offset = 0;
 	l = data->elements;
-	i = 0;
-	j = 0;
-	width = 0;
 	while (l)
 	{
-		tputs(tgoto(data->termcaps.cm, w_frame + j, w_frame + i), 1, output);
-
-		display_element(data, l, w_frame);
-
-		if (l->len > width)
-			width = l->len + 1;
+		offset = display_column(data, &l, offset);
 		l = l->next;
-		++i;
-		if (i >= data->win.ws_row - 3)
-		{
-			i = 0;
-			j += width;
-		}
 	}
 }
 
