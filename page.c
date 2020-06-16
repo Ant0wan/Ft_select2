@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 17:32:47 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/11 17:54:02 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/16 10:02:39 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static struct s_element	*set_columns(struct s_select *data, struct s_element *e)
 
 static void	set_pages(struct s_select *data)
 {
-	set_columns(data, data->elements);/*
+	set_columns(data, data->elements);
+/*
 	struct s_element	*e;
 	int			nb_col;
 
@@ -69,18 +70,34 @@ static void	set_pages(struct s_select *data)
 	{
 		++nb_col;
 	}
-	data->elements->page = 1;*/
+*/	data->elements->page = 1;
+}
+
+int	current_page_nb(struct s_select *data)
+{
+	struct s_element	*c;
+
+	c = data->cursor;
+	while (c)
+	{
+		if (c->page)
+			return (c->page);
+		else if (c == data->elements)
+			return (0);
+		c = c->previous;
+	}
+	return (0);
 }
 
 void	page(struct s_select *data)
 {
+	set_pages(data);
 	data->psum = 10; // SHoud be computed at each resize
-	data->pnb = 1; // SHould be computed what element is underlined
+	data->pnb = current_page_nb(data); // SHould be computed what element is underlined
 	if (data->psum > 1 && data->frame_enabled && data->win.ws_col > 10) // No need to display pages if only 1 page
 	{
 		tputs(tgoto(data->termcaps.cm, data->win.ws_col / 2 - 5, data->win.ws_row - 2), 1, output);
 		ft_dprintf(data->fd, "%3d/%-3d", data->pnb, data->psum);
 	}
-	set_pages(data);
 //	display_elements(data);
 }
