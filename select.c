@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/11 19:20:03 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/17 11:49:23 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	cursor_prev(struct s_select *data)
 		while (data->cursor->next)
 			data->cursor = data->cursor->next;
 	}
-//	display_elements(data);
 	page(data);
+	display_page(data);
 	data->no_refresh = 1;
 }
 
@@ -50,8 +50,8 @@ void	cursor_next(struct s_select *data)
 		data->cursor = data->cursor->next;
 	else
 		data->cursor = data->elements;
-//	display_elements(data);
 	page(data);
+	display_page(data);
 	data->no_refresh = 1;
 }
 

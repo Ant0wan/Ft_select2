@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/16 19:58:00 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/17 14:19:21 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,26 @@ static void	display_element(struct s_select *data, struct s_element *l)
 	{
 		if (!l->selected)
 		{
-			ft_dprintf(data->fd, "%s%s%.*s%s", l->color, UNDERL,
-				l->c_width, l->arg, DEFAULT);
+		//	ft_dprintf(data->fd, "%s%s%.*s%s", l->color, UNDERL, l->c_width, l->arg, DEFAULT);
+			ft_dprintf(data->fd, "%s%s%d%s", l->color, UNDERL, l->c, DEFAULT);
 		}
 		else
 		{
-			ft_dprintf(data->fd, "%s%s%.*s%s", HIGHLI, UNDERL,
-				l->c_width, l->arg, DEFAULT);
+			//ft_dprintf(data->fd, "%s%s%.*s%s", HIGHLI, UNDERL, l->c_width, l->arg, DEFAULT);
+			ft_dprintf(data->fd, "%s%s%d%s", HIGHLI, UNDERL, l->c, DEFAULT);
 		}
 	}
 	else
 	{
 		if (!l->selected)
 		{
-			ft_dprintf(data->fd, "%s%.*s%s", l->color,
-				l->c_width, l->arg, DEFAULT);
+			//ft_dprintf(data->fd, "%s%.*s%s", l->color, l->c_width, l->arg, DEFAULT);
+			ft_dprintf(data->fd, "%s%d%s", l->color, l->c, DEFAULT);
 		}
 		else
 		{
-			ft_dprintf(data->fd, "%s%.*s%s", "\e[7m",
-				l->c_width, l->arg, DEFAULT);
+			//ft_dprintf(data->fd, "%s%.*s%s", "\e[7m", l->c_width, l->arg, DEFAULT);
+			ft_dprintf(data->fd, "%s%d%s", "\e[7m", l->c, DEFAULT);
 		}
 	}
 }
