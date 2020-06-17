@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 17:32:47 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/17 19:36:21 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/17 19:40:51 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,11 @@ static void	compute_pages(struct s_select *data)
 
 static int	get_maxlen(struct s_select *data, int column_length, struct s_element *e)
 {
-	int maxlen = 0;
-	int r = data->frame_enabled / 2;
+	int maxlen;
+	int r;
 
+	maxlen = 0;
+	r = data->frame_enabled / 2;
 	while (e && column_length)
 	{
 		if (maxlen < e->len)
@@ -73,10 +75,11 @@ static void	set_column_element(struct s_element **e, int maxlen, int column_leng
 static void	set_page(struct s_select *data, struct s_element **e)
 {
 	int column_length;
-	int column_position = data->frame_enabled / 2;
+	int column_position;
 	int maxlen;
 
 	column_length = data->win.ws_row - data->frame_enabled - data->bar_enabled;
+	column_position = data->frame_enabled / 2;
 	++data->psum;
 	if (column_length <= 0)
 		return ;
