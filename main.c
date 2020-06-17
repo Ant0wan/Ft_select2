@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/17 12:27:23 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/17 19:35:04 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int main(int argc, char **argv)
 		fill_elements(data, argc, argv);
 		sort(data);
 		data->cursor = data->elements;
-
 		while (!acting)
 		{
 			if (!data->no_refresh)

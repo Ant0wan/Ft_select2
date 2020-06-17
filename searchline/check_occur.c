@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 18:44:59 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/16 18:59:39 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/17 19:22:51 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_occur(struct s_select *data)
 		if (!ft_strcmp(e->arg, data->search_line))
 		{
 			data->cursor = e;
-		//	display_elements(data);
+			page(data);
 			break ;
 		}
 		e = e->next;

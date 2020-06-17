@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 17:32:47 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/17 19:07:38 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/17 19:36:21 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,11 @@ static void	set_column_element(struct s_element **e, int maxlen, int column_leng
 
 static void	set_page(struct s_select *data, struct s_element **e)
 {
-	int column_length = data->win.ws_row - data->frame_enabled - data->bar_enabled;
+	int column_length;
 	int column_position = data->frame_enabled / 2;
 	int maxlen;
 
+	column_length = data->win.ws_row - data->frame_enabled - data->bar_enabled;
 	++data->psum;
 	if (column_length <= 0)
 		return ;
@@ -112,4 +113,5 @@ void	page(struct s_select *data)
 		tputs(tgoto(data->termcaps.cm, data->win.ws_col / 2 - 5, data->win.ws_row - 2), 1, output);
 		ft_dprintf(data->fd, "%3d/%-3d", data->pnb, data->psum);
 	}
+	display_page(data);
 }
