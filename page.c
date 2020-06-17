@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 17:32:47 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/17 18:45:05 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/17 19:07:38 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ static void	compute_pages(struct s_select *data)
 {
 	struct s_element	*e;
 
+	data->psum = 0;
 	e = data->elements;
 	set_page(data, &e);
 
