@@ -6,99 +6,101 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 17:32:47 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/17 15:32:29 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/17 18:45:05 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
-
-static void	fill_info(struct s_element *start, struct s_element *end, int width)
+/*
+static void	compute_pages(struct s_select *data)
 {
-	while (start)
+	struct s_element w = data->elements;
+
+	// Width of column and row nb
+	int column_width = 0;
+	int column_position = 0;
+
+	// Number of element per column
+	int column_length = 0;
+
+	column_length = data->win.ws_row - data->frame_enabled - bar_enabled;
+
+	int row_position = 0;
+	while (w && column_length)
 	{
-		if (start == end)
-			break;
-		start->c_width = width;
-		start = start->next;
+		// Get max len in column
+		column_width = column_length > w->len ? column_length : w->len;
+
+		// Give row position to element
+		w->r = row_position;
+		w->c = column_position;
+		++row_position;
+
+		// Decount for elements to handle
+		--column_length;
+		w = w->next;
 	}
-}
+	column_position += column_width + 1;
+}*/
 
-static struct s_element	*compute_column(struct s_select *data, struct s_element *e, int c)
+static int	get_maxlen(struct s_select *data, int column_length, struct s_element *e)
 {
-	struct s_element	*first_e;
-	int			nb_el;
-	int			capacity;
-	int			width;
-	int			r;
+	int maxlen = 0;
+	int r = data->frame_enabled / 2;
 
-	nb_el = 0;
-	first_e = e;
-	if (data->frame_enabled)
-		r = 1;
-	else
-		r = 0;
-	if (data->frame_enabled)
-		capacity = data->win.ws_row - 2 - 2;
-	else
-		capacity = data->win.ws_row - 2;
-	while (e && nb_el <= capacity)
+	while (e && column_length)
 	{
-		e->page = data->psum;
-		if (e->len > width)
-			width = e->len;
+		if (maxlen < e->len)
+			maxlen = e->len;
+		column_length--;
 		e->r = r;
-		++nb_el;
-		++r;
-		if (e == data->cursor)
-			data->pnb = data->psum;
-		e->c = c;
+		r++;
 		e = e->next;
 	}
-	fill_info(first_e, e, width);
-	return (e);
+	return (maxlen);
+}
+static void	set_column_element(struct s_element **e, int maxlen, int column_length, int column_position)
+{
+	while (*e && column_length)
+	{
+		(*e)->c_width = maxlen;
+		(*e)->c = column_position;
+		column_length--;
+		*e = (*e)->next;
+	}
 }
 
-static struct s_element	*compute_one_page(struct s_select *data, struct s_element *e)
+static void	set_page(struct s_select *data, struct s_element **e)
 {
-	int			remaining_width;
-	int			c;
+	int column_length = data->win.ws_row - data->frame_enabled - data->bar_enabled;
+	int column_position = data->frame_enabled / 2;
+	int maxlen;
 
-	if (data->frame_enabled)
+	++data->psum;
+	if (column_length <= 0)
+		return ;
+
+	while (*e)
 	{
-		c = 1;
-		remaining_width = data->win.ws_col - 2;
-	}
-	else
-	{
-		c = 0;
-		remaining_width = data->win.ws_col;
-	}
-	while (e && remaining_width > 0)
-	{
-		e = compute_column(data, e, c);
-		if (e)
-		{
-			remaining_width -= e->c_width;
-			remaining_width--;
-			c += e->c_width + 1;
+		maxlen = get_maxlen(data, column_length, *e);
+		if (column_position != data->frame_enabled / 2)
+		{ // Case second column need check for space
+			if (column_position + maxlen + (data->frame_enabled / 2) > data->win.ws_col)
+				return;
 		}
+		maxlen = data->win.ws_col - (data->frame_enabled / 2) < maxlen ? data->win.ws_col - (data->frame_enabled / 2) : maxlen;
+		set_column_element(e, maxlen, column_length, column_position);
+		column_position += maxlen + 1;
 	}
-	return (e);
 }
 
 static void	compute_pages(struct s_select *data)
 {
 	struct s_element	*e;
 
-	data->psum = 0;
 	e = data->elements;
-	while (e)
-	{
-		data->psum++;
-		e = compute_one_page(data, e);
-		if (e)
-			e = e->next;
-	}
+	set_page(data, &e);
+
 }
 
 void	page(struct s_select *data)

@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:20:20 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/11 16:34:37 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/17 15:47:06 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	frame(struct s_select *data)
 		data->frame_enabled = 0; // Not enough space to display frame and bar and an element
 	else
 	{
-		data->frame_enabled = 1;
+		data->frame_enabled = 2;
 		// Draw frame corners
 		draw_frame(data);
 	}
