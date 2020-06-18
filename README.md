@@ -9,6 +9,7 @@ Ft\_select2 is an argument viewer in the terminal that returns the user selectio
 
 <img src="https://i.imgur.com/BHfhj0n.gif" alt="demo" width="800" height="500">
 
+
 ## Description
 
 *Ft_select2* is the newer version of [Ft\_select](https://github.com/Ant0wan/Ft_select). It displays a list of arguments in the running terminal. Pressing arrow keys on the keyboard will move the cursor through the list of arguments passed to ft\_select.
