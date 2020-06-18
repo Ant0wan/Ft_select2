@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/17 19:35:04 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 23:47:50 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,25 @@
 
 #define NEED_ARG "ft_select requires at least one argument.\n\nUsage:\t./ft_select ARG...\n"
 
-int main(int argc, char **argv)
+static void	ft_select(struct s_select *data)
+{
+	int	acting;
+
+	data->cursor = data->elements;
+	acting = 0;
+	while (!acting)
+	{
+		if (!data->no_refresh)
+			display(data);
+		data->no_refresh = 0;
+		acting = actions(data);
+	}
+}
+
+int		main(int argc, char **argv)
 {
 	struct s_select	*data;
-	int		acting;
 
-	acting = 0;
 	if (argc > 1)
 	{
 		data = ft_memalloc(sizeof(struct s_select));
@@ -32,23 +45,15 @@ int main(int argc, char **argv)
 		set_signals();
 		fill_elements(data, argc, argv);
 		sort(data);
-		data->cursor = data->elements;
-		while (!acting)
-		{
-			if (!data->no_refresh)
-				display(data); // if acting was none, no need to display
-			data->no_refresh = 0;
-			acting = actions(data);
-		}
-
+		ft_select(data);
 		unset_terminal(data);
 		display_selection(data);
-		free_data(&data); // Free function of data
+		free_data(&data);
 	}
 	else
 	{
 		write(STDERR_FILENO, NEED_ARG, ft_strlen(NEED_ARG));
-		return (1);
+		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
 }
