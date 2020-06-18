@@ -6,13 +6,13 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/16 13:54:32 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/08 12:52:48 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 23:35:31 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
-static void	ft_split_lst(struct s_element **e)
+static void				ft_split_lst(struct s_element **e)
 {
 	struct s_element	*find_last_link;
 
@@ -28,7 +28,8 @@ static void	ft_split_lst(struct s_element **e)
 	}
 }
 
-static struct s_element	*ft_merge_list(struct s_select *data, struct s_element *lst1, struct s_element *lst2)
+static struct s_element	*ft_merge_list(struct s_select *data,
+			struct s_element *lst1, struct s_element *lst2)
 {
 	struct s_element	*head;
 	struct s_element	*tmp;
@@ -56,7 +57,8 @@ static struct s_element	*ft_merge_list(struct s_select *data, struct s_element *
 	return (head);
 }
 
-void		ft_merge_sort(struct s_element **e, struct s_select *data)
+void					ft_merge_sort(struct s_element **e,
+						struct s_select *data)
 {
 	struct s_element	*e1;
 	struct s_element	*e2;
