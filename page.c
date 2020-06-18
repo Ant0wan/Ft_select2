@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 17:32:47 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 11:52:17 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 11:58:15 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	set_page(struct s_select *data, struct s_element **e)
 			if (column_position + maxlen + (data->frame_enabled / 2) > data->win.ws_col)
 				return;
 		}
-		maxlen = data->win.ws_col - (data->frame_enabled / 2) < maxlen ? data->win.ws_col - (data->frame_enabled / 2) : maxlen;
+		maxlen = data->win.ws_col - (data->frame_enabled) < maxlen ? data->win.ws_col - (data->frame_enabled) : maxlen;
 		set_column_element(e, maxlen, column_length, column_position);
 		column_position += maxlen + 1;
 	}
