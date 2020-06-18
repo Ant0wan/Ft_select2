@@ -1,5 +1,7 @@
 # Ft_select - new version
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ee2a920bcacc404db54ee8a85a04d9f6)](https://app.codacy.com/manual/antoinepaulbarthelemy/Ft_select2?utm_source=github.com&utm_medium=referral&utm_content=Ant0wan/Ft_select2&utm_campaign=Badge_Grade_Dashboard)
+
 An implementation of an **in-shell file dialog** using termcaps [a 42 project].
 
 This project aims to learn the very basics of using termcap library in C programming language.
