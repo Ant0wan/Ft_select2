@@ -6,14 +6,14 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 11:23:23 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 14:52:48 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 23:36:35 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 #include "searchline.h"
 
-int	output(int c)
+int				output(int c)
 {
 	struct s_select	*data;
 
@@ -27,7 +27,7 @@ int	output(int c)
 union u_buffer	read_key(void)
 {
 	union u_buffer	buffer_u;
-	int		ret;
+	int				ret;
 
 	buffer_u.value = 0;
 	ret = read(STDIN_FILENO, buffer_u.buf, sizeof(buffer_u.buf));
@@ -35,11 +35,3 @@ union u_buffer	read_key(void)
 		buffer_u.value = -1;
 	return (buffer_u);
 }
-
-/*
-void	placendisplay(int col, int row, struct s_element *l, struct s_select *data)
-{
-        tputs(tgoto(data->termcaps.cm , col, row), 1, output);
-        write(data->fd, l->arg, l->len);
-}*/
-
