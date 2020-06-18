@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 18:41:20 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 18:55:18 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	quit(struct s_select *data, union u_buffer input)
 
 void	cursor_prev(struct s_select *data)
 {
+	int p;
+
+	p = data->cursor->page;
 	if (data->cursor->previous)
 		data->cursor = data->cursor->previous;
 	else
@@ -39,18 +42,23 @@ void	cursor_prev(struct s_select *data)
 		while (data->cursor->next)
 			data->cursor = data->cursor->next;
 	}
+	if (data->cursor->page == p)
+		data->no_refresh = 1;
 	page(data);
-	data->no_refresh = 1;
 }
 
 void	cursor_next(struct s_select *data)
 {
+	int p;
+
+	p = data->cursor->page;
 	if (data->cursor->next)
 		data->cursor = data->cursor->next;
 	else
 		data->cursor = data->elements;
+	if (data->cursor->page == p)
+		data->no_refresh = 1;
 	page(data);
-	data->no_refresh = 1;
 }
 
 void	select_it(struct s_select *data)
