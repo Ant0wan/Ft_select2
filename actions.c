@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 22:35:58 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 22:38:10 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	select_input(struct s_select *data)
 	union u_buffer	input;
 
 	input = read_key();
-//		ft_printf(">>%d,%d,%d,%d, %d, %d << ", input.buf[0], input.buf[1], input.buf[2], input.buf[3], input.buf[4], input.buf[5]);
 	if (enter_rc(input))
 		return (1);
 	else if (isstdkey(input.value))
@@ -53,8 +52,6 @@ int	search_input(struct s_select *data)
 
 int	actions(struct s_select *data)
 {
-	//	ft_printf(">>%d,%d,%d,%d, %d, %d << ", input.buf[0], input.buf[1], input.buf[2], input.buf[3], input.buf[4], input.buf[5]);
-
 	if (data->mode == SELECT)
 		return (select_input(data));
 	else if (data->mode == COMMAN)
