@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 11:56:27 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 18:39:39 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ void	display_page(struct s_select *data)
 	struct s_element *e;
 
 	e = data->cursor;
-	//e = data->elements;
-	while (e && e->previous && e->page == data->cursor->page)
+	while (e && e->previous && e->previous->page == data->cursor->page)
 		e = e->previous;
 	while (e && e->page == data->cursor->page)
 	{

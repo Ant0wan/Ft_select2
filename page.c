@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 17:32:47 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 11:58:15 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 18:18:36 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int	get_maxlen(struct s_select *data, int column_length, struct s_element
 			maxlen = e->len;
 		column_length--;
 		e->r = r;
+		e->page = data->psum;
 		r++;
 		e = e->next;
 	}
