@@ -6,13 +6,13 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:04:25 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/09 18:59:42 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 23:22:59 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 
-void	del_one(struct s_select *data)
+void					del_one(struct s_select *data)
 {
 	if (data->elements == NULL || data->cursor == NULL)
 		end_pgm(-128);
@@ -26,7 +26,7 @@ void	del_one(struct s_select *data)
 	data->cursor = NULL;
 }
 
-void	free_elements(struct s_element *element)
+void					free_elements(struct s_element *element)
 {
 	if (element)
 	{
@@ -50,7 +50,7 @@ static struct s_element	*node_element(struct s_element *prev, char *av)
 	return (node);
 }
 
-static void	add_to_elements(struct s_select *data, char *av)
+static void				add_to_elements(struct s_select *data, char *av)
 {
 	static struct s_element	*last;
 
@@ -66,7 +66,8 @@ static void	add_to_elements(struct s_select *data, char *av)
 	}
 }
 
-void	fill_elements(struct s_select *data, int argc, char **argv)
+void					fill_elements(struct s_select *data,
+					int argc, char **argv)
 {
 	int	i;
 
