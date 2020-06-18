@@ -1,17 +1,19 @@
-# Ft_select - new version
+# Ft\_select2 [![42](https://i.imgur.com/9NXfcit.jpg)](i.imgur.com/9NXfcit.jpg)
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b6363ce6cf4a418887bb63736a5eccb8)](https://www.codacy.com/manual/antoinepaulbarthelemy/Ft_select2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Ant0wan/Ft_select2&amp;utm_campaign=Badge_Grade)
 
 An implementation of an **in-shell file dialog** using termcaps [a 42 project].
 
 This project aims to learn the very basics of using termcap library in C programming language.
-Ft\_select is an argument viewer in the terminal that returns the user selection on the standard output.
+Ft\_select2 is an argument viewer in the terminal that returns the user selection on the standard output.
 
 <img src="https://i.imgur.com/BHfhj0n.gif" alt="demo" width="800" height="500">
 
 ## Description
 
-*Ft_select - new version* is the newer version of [Ft\_select](https://github.com/Ant0wan/Ft_select). It displays a list of arguments in the running terminal. Pressing arrow keys on the keyboard will move the cursor through the list of arguments passed to ft\_select.
+*Ft_select2* is the newer version of [Ft\_select](https://github.com/Ant0wan/Ft_select). It displays a list of arguments in the running terminal. Pressing arrow keys on the keyboard will move the cursor through the list of arguments passed to ft\_select.
 
-Ft\_select has 3 different modes.
+Ft\_select2 has 3 different modes.
 
 1. Selection mode (default mode)
 2. Command mode by pressing <:> from selection mode
