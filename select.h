@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 22:35:42 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 23:57:40 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,32 +70,32 @@ union					u_buffer
 
 struct	s_termcaps
 {
-	char	*cl; //0 clear all screen
-	char	*ce; //1 clear end of line
-	char	*vs; //2 cursor visible
-	char	*vi; //3 cursor not visible
-	char	*us; //4 underline
-	char	*af; //5 font color
-	char	*ab; //6 background color
-	char	*cm; //7 move position
-	char	*me; //8 reset colors
-	char	*ti; //9 Enable full screen
-	char	*te; //10 Disable full screen
+	char	*cl;
+	char	*ce;
+	char	*vs;
+	char	*vi;
+	char	*us;
+	char	*af;
+	char	*ab;
+	char	*cm;
+	char	*me;
+	char	*ti;
+	char	*te;
 };
 
 struct	s_element
 {
 	struct s_element	*next;
 	struct s_element	*previous;
-	char			*arg; // No free
+	char			*arg;
 	int			len;
 	struct stat		st;
 	int			selected;
-	char			*color; // No free
-	int			c; // Column position
-	int			r; // Row position
-	int			c_width; // Width of the column
-	int			page; // Page it belongs to
+	char			*color;
+	int			c;
+	int			r;
+	int			c_width;
+	int			page;
 };
 
 struct s_keymap
@@ -117,38 +117,36 @@ struct	s_select
 {
 	char			*ttyname;
 	int			fd;
-	char			*term; // No free
-	char			*tc_string[NB_TERMS]; // No free
-	struct termios		termios_backup; // No free
-	struct termios		termios_select; // No free
-	struct s_termcaps	termcaps; // No free
-	int			dumb_mode; // Set true is all termcaps are not available
-	struct winsize		win; // Use to get window size
-	int			no_refresh; // Set to 0 if dis needed, 1 if last key executed none
-	struct s_element	*elements; // linked list of elements
-	char			*line; // Malloc
-	int			mode; // 0. selection'escape', 1. control (change sort)':', 2. search '/'
+	char			*term;
+	char			*tc_string[NB_TERMS];
+	struct termios		termios_backup;
+	struct termios		termios_select;
+	struct s_termcaps	termcaps;
+	int			dumb_mode;
+	struct winsize		win;
+	int			no_refresh;
+	struct s_element	*elements;
+	char			*line;
+	int			mode;
 	struct s_keymap		select_keymap;
 	struct s_keymap		cmd_keymap;
 	struct s_keymap		search_keymap;
-	struct s_sort		*sort; // Sort mode selected
-	int			frame_enabled; // 2 if frame can be displayed else 0
-	int			bar_enabled; // 1 if bar can be displayed else 0
-	int			help_enabled; // If too win too small, help is not displayed
-	int			search_error; // 1:error, 0:no error
-	char			*search_line; // line input for search loop
-	int			sl_size; //  buffer of search_line
-	int			sl_len; // len of line
-	int			sl_cpos; // Cursor position on the line
-	struct s_element	*suggestion; // element suggested for completion
-	int			psum; // total nb of pages needed
-	struct s_element	*cursor; // element the user is underlining
+	struct s_sort		*sort;
+	int			frame_enabled;
+	int			bar_enabled;
+	int			help_enabled;
+	int			search_error;
+	char			*search_line;
+	int			sl_size;
+	int			sl_len;
+	int			sl_cpos;
+	struct s_element	*suggestion;
+	int			psum;
+	struct s_element	*cursor;
 };
 
 union u_buffer			read_key(void);
-
 int     output(int c);
-
 void	set_terminal(struct s_select *data);
 void	unset_terminal(struct s_select *data);
 void    data_static_method(struct s_select *set, struct s_select **get);
@@ -157,36 +155,30 @@ void    fill_elements(struct s_select *data, int argc, char **argv);
 char    *get_color(struct stat *st);
 void    free_data(struct s_select **data);
 void    free_elements(struct s_element *element);
-
 void	bar(struct s_select *data);
 void	frame(struct s_select *data);
 void	display_elements(struct s_select *data);
 void	display(struct s_select *data);
 void	set_bar_color(struct s_select *data);
-
 void		set_signals(void);
 void            termsize(struct s_select *data);
 void    placendisplay(int col, int row, struct s_element *l, struct s_select *data);
-
 int     actions(struct s_select *data);
 void    init_keymaps(struct s_select *data);
 void	set_command_mode(struct s_select *data, union u_buffer input);
-void	set_select_mode(struct s_select *data);//, union u_buffer input);
+void	set_select_mode(struct s_select *data);
 void	set_search_mode(struct s_select *data, union u_buffer input);
 void	quit(struct s_select *data, union u_buffer input);
-
 int     isstdkey(int c);
 int	isctrlkey(union u_buffer c);
 int	mvctrlkey(union u_buffer c);
 int     isprintchr(int c);
 int	enter_rc(union u_buffer c);
 int	ismetachar(union u_buffer c);
-
 void    init_sort_list(struct s_select *data);
 void	sort(struct s_select *data);
 void    left_sort_mode(struct s_select *data, union u_buffer input);
 void    right_sort_mode(struct s_select *data, union u_buffer input);
-
 void	ft_merge_sort(struct s_element **e, struct s_select *data);
 void    fcompare(struct s_select *data, struct s_element **e1, struct s_element **e2, struct s_element **h);
 int	alpha_compare(struct s_element *e1, struct s_element *e2);
@@ -194,11 +186,8 @@ int	size_compare(struct s_element *e1, struct s_element *e2);
 int	time_compare(struct s_element *e1, struct s_element *e2);
 int	type_compare(struct s_element *e1, struct s_element *e2);
 int	uid_compare(struct s_element *e1, struct s_element *e2);
-
 void		searchline(struct s_select *data);
-
 void    page(struct s_select *data);
-
 void	cursor_prev(struct s_select *data);
 void	cursor_next(struct s_select *data);
 void	select_it(struct s_select *data);
@@ -208,9 +197,7 @@ void    go_right(struct s_select *data);
 void    go_left(struct s_select *data);
 void	go_home(struct s_select *data);
 void    del_cursor_element(struct s_select *data);
-
 void    del_one(struct s_select *data);
-
 void	display_selection(struct s_select *data);
 void	display_page(struct s_select *data);
 
