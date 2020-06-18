@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/10 20:03:53 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/19 00:02:00 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ static void	set_termcaps(struct s_select *data)
 		|| !(data->termcaps.me = tgetstr("me", NULL))
 		|| !(data->termcaps.ti = tgetstr("ti", NULL))
 		|| !(data->termcaps.te = tgetstr("te", NULL)))
-			data->dumb_mode = 1;
+		data->dumb_mode = 1;
 }
 
-void	set_terminal(struct s_select *data)
+void		set_terminal(struct s_select *data)
 {
 	if (isatty(STDIN_FILENO))
 	{
@@ -58,7 +58,7 @@ void	set_terminal(struct s_select *data)
 	else
 		exit(1);
 	set_termcaps(data);
-	if (data->dumb_mode) // Should be removed once dumb_mode is handled
+	if (data->dumb_mode)
 	{
 		write(STDERR_FILENO, ERR_TERM, ft_strlen(ERR_TERM));
 		exit(2);
@@ -74,7 +74,7 @@ void	set_terminal(struct s_select *data)
 	tputs(data->termcaps.vi, 1, output);
 }
 
-void	unset_terminal(struct s_select *data)
+void		unset_terminal(struct s_select *data)
 {
 	tputs(data->termcaps.vs, 1, output);
 	tputs(data->termcaps.te, 1, output);
