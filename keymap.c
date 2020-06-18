@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 22:07:35 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 22:32:04 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	set_command_keymap(struct s_select *data)
 	data->select_keymap.ctrl[65] = &cursor_prev;
 	data->select_keymap.ctrl[66] = &cursor_next;
 	data->select_keymap.ctrl[67] = &go_right;
+	data->select_keymap.ctrl[68] = &go_left;
 	data->select_keymap.ctrl[51] = &del_cursor_element;
 	data->select_keymap.std[27] = &quit;
 	data->select_keymap.std[' '] = &select_it;

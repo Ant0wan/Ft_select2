@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 21:54:15 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 22:30:39 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,34 @@ void	go_right(struct s_select *data)
 
 void	go_left(struct s_select *data)
 {
-	(void)data;
-	return ;
+	struct s_element *e;
+
+	if (data->cursor->previous)
+		e = data->cursor->previous;
+	else
+	{
+		e = data->cursor;
+		while (e->next)
+			e = e->next;
+	}
+	while (e && e->r != data->cursor->r)
+	{
+		e = e->previous;
+		if (!e)
+		{
+			e = data->cursor;
+			while (e->next)
+				e = e->next;
+		}
+	}
+	if (data->cursor->page == e->page)
+	{
+		data->no_refresh = 1;
+		data->cursor = e;
+		page(data);
+	}
+	else
+		data->cursor = e;
 }
 
 void	go_home(struct s_select *data)
