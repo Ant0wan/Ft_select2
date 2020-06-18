@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 20:43:50 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 22:07:35 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	set_command_keymap(struct s_select *data)
 	data->select_keymap.std[' '] = &select_it;
 	data->select_keymap.std[':'] = &set_command_mode;
 	data->select_keymap.std['/'] = &set_search_mode;
+	data->select_keymap.std[127] = &del_cursor_element;
 
 	// set cmd binding
 	data->cmd_keymap.ctrl[67] = &right_sort_mode;
