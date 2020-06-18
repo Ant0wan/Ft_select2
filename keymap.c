@@ -6,23 +6,20 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 22:35:21 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 23:38:54 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
 #include "searchline.h"
 
-static void	none(struct s_select *data, union u_buffer input)
+static void	none(struct s_select *data)
 {
 	data->no_refresh = 1;
-	(void)input;
-	return;
 }
 
-void	set_command_keymap(struct s_select *data)
+void		set_select_keymap(struct s_select *data)
 {
-	// set select binding
 	data->select_keymap.ctrl[51] = &del_cursor_element;
 	data->select_keymap.ctrl[53] = &prev_page;
 	data->select_keymap.ctrl[54] = &next_page;
@@ -36,20 +33,20 @@ void	set_command_keymap(struct s_select *data)
 	data->select_keymap.std[':'] = &set_command_mode;
 	data->select_keymap.std['/'] = &set_search_mode;
 	data->select_keymap.std[127] = &del_cursor_element;
+}
 
-	// set cmd binding
+void		set_command_keymap(struct s_select *data)
+{
 	data->cmd_keymap.ctrl[67] = &right_sort_mode;
 	data->cmd_keymap.ctrl[68] = &left_sort_mode;
 	data->cmd_keymap.std[27] = &set_select_mode;
-
-	// set search binding
 	set_search_std_insertion_keymap(data);
 	set_search_std_keymap(data);
 	set_search_ctrl_keymap(data);
 	set_search_meta_keymap(data);
 }
 
-void	init_keymaps(struct s_select *data)
+void		init_keymaps(struct s_select *data)
 {
 	int	i;
 
@@ -68,4 +65,5 @@ void	init_keymaps(struct s_select *data)
 		--i;
 	}
 	set_command_keymap(data);
+	set_select_keymap(data);
 }
