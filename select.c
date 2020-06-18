@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 21:24:24 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 21:54:15 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ void	cursor_prev(struct s_select *data)
 			data->cursor = data->cursor->next;
 	}
 	if (data->cursor->page == p)
+	{
 		data->no_refresh = 1;
-	page(data);
+		page(data);
+	}
 }
 
 void	cursor_next(struct s_select *data)
@@ -57,8 +59,10 @@ void	cursor_next(struct s_select *data)
 	else
 		data->cursor = data->elements;
 	if (data->cursor->page == p)
+	{
 		data->no_refresh = 1;
-	page(data);
+		page(data);
+	}
 }
 
 void	select_it(struct s_select *data)
@@ -89,9 +93,14 @@ void	next_page(struct s_select *data)
 	struct s_element *e;
 	int	p;
 
-	if (data->cursor->page == data->psum)
+	if (data->psum <= 1)
 	{
 		data->no_refresh = 1;
+		return ;
+	}
+	if (data->cursor->page == data->psum)
+	{
+		data->cursor = data->elements;
 		return ;
 	}
 	e = data->cursor;
@@ -109,10 +118,16 @@ void	prev_page(struct s_select *data)
 	int	page_target;
 
 	e = data->cursor;
-	if (e->page == 1)
+	if (data->psum <= 1)
 	{
-		data->cursor = data->elements;
 		data->no_refresh = 1;
+		return ;
+	}
+	else if (e->page == 1)
+	{
+		while (e->page != data->psum)
+			e = e->next;
+		data->cursor = e;
 	}
 	else if (e->page == 2)
 		data->cursor = data->elements;
@@ -142,13 +157,25 @@ void	go_right(struct s_select *data)
 			e = data->elements;
 	}
 	if (data->cursor->page == e->page)
+	{
 		data->no_refresh = 1;
-	data->cursor = e;
-	page(data);
+		data->cursor = e;
+		page(data);
+	}
+	else
+		data->cursor = e;
 }
 
 void	go_left(struct s_select *data)
 {
 	(void)data;
 	return ;
+}
+
+void	go_home(struct s_select *data)
+{
+	if (data->psum == 1 || data->cursor->page == 1)
+		data->no_refresh = 1;
+	data->cursor = data->elements;
+	page(data);
 }
