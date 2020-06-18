@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/17 15:46:29 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 00:21:10 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,6 @@ struct	s_select
 	int			sl_len; // len of line
 	int			sl_cpos; // Cursor position on the line
 	struct s_element	*suggestion; // element suggested for completion
-	int			pnb; // page number the user is at
 	int			psum; // total nb of pages needed
 	struct s_element	*cursor; // element the user is underlining
 };

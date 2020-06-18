@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 17:51:21 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/17 19:45:07 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 00:14:33 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,16 @@ void	display_page(struct s_select *data)
 {
 	struct s_element *e;
 
-//	e = data->cursor;
-	e = data->elements;
-//	while (e->previous)
-//	{
-//		if (e->page != e->previous->page)
-//			break;
-//		else
-//			e = e->previous;
-//	}
+	e = data->cursor;
+	//e = data->elements;
+	while (e && e->previous && e->page == data->cursor->page)
+		e = e->previous;
 	while (e)
 	{
 		tputs(tgoto(data->termcaps.cm, e->c, e->r), 1, output);
 		display_element(data, e);
-//		if (e->next && e->next->page != e->page)
-//			break;
+		if (e->next && e->next->page != e->page)
+			break;
 		e = e->next;
 	}
 }
