@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 17:37:42 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/01 17:42:07 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 22:46:25 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	alpha_compare(struct s_element *e1, struct s_element *e2)
 {
 	size_t	len1;
 	size_t	len2;
-	int	ret_cmp;
+	int		ret_cmp;
 	_Bool	low_equal;
 
 	len1 = ft_strlen(e1->arg);
