@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 22:34:18 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 23:25:08 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ void	go_right(struct s_select *data)
 		if (!e)
 			e = data->elements;
 	}
-	if (data->cursor->page == e->page)
+	if (e && data->cursor->page == e->page)
 	{
 		data->no_refresh = 1;
 		data->cursor = e;

@@ -13,11 +13,13 @@ Ft\_select2 is an argument viewer in the terminal that returns the user selectio
 
 *Ft_select2* is the newer version of [Ft\_select](https://github.com/Ant0wan/Ft_select). It displays a list of arguments in the running terminal. Pressing arrow keys on the keyboard will move the cursor through the list of arguments passed to ft\_select.
 
-Ft\_select2 has 3 different modes.
+Ft\_select2 has 3 different modes:
 
-1. Selection mode (default mode)
-2. Command mode by pressing <:> from selection mode
-3. Search mode by pressing <\/> from selection mode
+	1. Selection mode (default mode)
+
+	2. Command mode by pressing <:> from selection mode
+
+	3. Search mode by pressing <\/> from selection mode
 
 Pressing \<ESC\> in Command or Search mode will put the user back to Selection mode.
 
