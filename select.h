@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 22:31:46 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 22:35:42 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,7 @@ void	next_page(struct s_select *data);
 void	prev_page(struct s_select *data);
 void    go_right(struct s_select *data);
 void    go_left(struct s_select *data);
+void	go_home(struct s_select *data);
 void    del_cursor_element(struct s_select *data);
 
 void    del_one(struct s_select *data);

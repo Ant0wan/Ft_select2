@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 18:59:02 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 22:32:04 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 22:35:21 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ static void	none(struct s_select *data, union u_buffer input)
 void	set_command_keymap(struct s_select *data)
 {
 	// set select binding
+	data->select_keymap.ctrl[51] = &del_cursor_element;
 	data->select_keymap.ctrl[53] = &prev_page;
 	data->select_keymap.ctrl[54] = &next_page;
 	data->select_keymap.ctrl[65] = &cursor_prev;
 	data->select_keymap.ctrl[66] = &cursor_next;
 	data->select_keymap.ctrl[67] = &go_right;
 	data->select_keymap.ctrl[68] = &go_left;
-	data->select_keymap.ctrl[51] = &del_cursor_element;
+	data->select_keymap.ctrl[72] = &go_home;
 	data->select_keymap.std[27] = &quit;
 	data->select_keymap.std[' '] = &select_it;
 	data->select_keymap.std[':'] = &set_command_mode;
