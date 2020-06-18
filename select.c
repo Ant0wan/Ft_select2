@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 14:48:35 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 18:55:18 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/18 19:49:33 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,47 @@ void	del_cursor_element(struct s_select *data)
 	data->cursor = e;
 	if (!data->cursor)
 		end_pgm(-128);
+}
+
+void	next_page(struct s_select *data)
+{
+	struct s_element *e;
+	int	p;
+
+	if (data->cursor->page == data->psum)
+	{
+		data->no_refresh = 1;
+		return ;
+	}
+	e = data->cursor;
+	p = e->page;
+	while (e && e->page == p)
+		e = e->next;
+	if (e)
+		data->cursor = e;
+	page(data);
+}
+
+void	prev_page(struct s_select *data)
+{
+	struct s_element *e;
+	int	page_target;
+
+	e = data->cursor;
+	if (e->page == 1)
+	{
+		data->cursor = data->elements;
+		data->no_refresh = 1;
+	}
+	else if (e->page == 2)
+		data->cursor = data->elements;
+	else
+	{
+		page_target = e->page - 1;
+		while (e->previous->page > page_target - 1)
+			e = e->previous;
+		if (e)
+			data->cursor = e;
+	}
+	page(data);
 }
