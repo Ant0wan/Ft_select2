@@ -102,3 +102,9 @@ For instance:
 ```shell=
 ./ft_select Makefile README.md author ft_select ft_select.en.pdf libft src
 ```
+
+
+
+## Demo
+
+[![asciicast](https://asciinema.org/a/i5FeTPOeLOQTTl8q3t1tkEg1Y.svg)](https://asciinema.org/a/i5FeTPOeLOQTTl8q3t1tkEg1Y)
