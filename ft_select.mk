@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/06/19 10:57:51 by abarthel         ###   ########.fr        #
+#    Updated: 2020/06/19 16:44:27 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,9 +57,4 @@ DEPENDS := $(patsubst %.c,%.d,$(addprefix $(SOURCES_PATH), $(SOURCES)))
 
 LDLIBS += -ltermcap $(PATH_LIB)libft.a
 
-LDFLAGS += $(DEBUG)
-
-CFLAGS += -Wall -Wextra -Werror -g3 $(DEBUG) #-D_POSIX_C_SOURCE
-#CFLAGS += -fno-builtin -O2
-
-DEBUG += -fsanitize=address
+CFLAGS += -Wall -Wextra -Werror -g3
