@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 17:26:23 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/01 15:58:44 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/19 11:04:43 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,12 @@ void	disp_sug(struct s_select *data)
 	if (data->suggestion)
 	{
 		if (data->win.ws_col - 1 - data->sl_len > 0)
-			ft_dprintf(data->fd, "%s%.*s%s", DIMCOL, data->win.ws_col - 1 - data->sl_len, &(data->suggestion->arg[data->sl_cpos]), DEFAULT);
-		tputs(tgoto(data->termcaps.cm, data->sl_cpos + 1, data->win.ws_row), 1, output);
+		{
+			ft_dprintf(data->fd, "%s%.*s%s", DIMCOL,
+			data->win.ws_col - 1 - data->sl_len,
+			&(data->suggestion->arg[data->sl_cpos]), DEFAULT);
+		}
+		tputs(tgoto(data->termcaps.cm, data->sl_cpos + 1,
+		data->win.ws_row), 1, output);
 	}
 }
