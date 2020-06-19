@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:16:27 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 16:25:21 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/19 11:09:25 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ void		insert_text(struct s_select *data, const char *string, int len)
 		l_expand(data);
 	if (data->sl_cpos < data->sl_len)
 	{
-		ft_memmove(&(data->search_line[data->sl_cpos + len]), &(data->search_line[data->sl_cpos]), data->sl_len - data->sl_cpos);
+		ft_memmove(&(data->search_line[data->sl_cpos + len]),
+		&(data->search_line[data->sl_cpos]),
+		data->sl_len - data->sl_cpos);
 	}
 	ft_memmove(&(data->search_line[data->sl_cpos]), string, len);
 	data->sl_len += len;
@@ -56,7 +58,8 @@ void		rl_delete(struct s_select *data)
 		if (data->search_line[data->sl_cpos] && data->sl_cpos <= data->sl_len)
 		{
 			ft_memmove(&(data->search_line[data->sl_cpos]),
-				&(data->search_line[data->sl_cpos + 1]), data->sl_len - data->sl_cpos + 1);
+			&(data->search_line[data->sl_cpos + 1]),
+			data->sl_len - data->sl_cpos + 1);
 			data->search_line[data->sl_len + 1] = '\0';
 			bar(data);
 			--data->sl_len;
@@ -77,8 +80,9 @@ void		rl_backspace(struct s_select *data)
 		cursor_l(data);
 		if (data->search_line[data->sl_cpos])
 		{
-			ft_memmove(data->search_line + data->sl_cpos, data->search_line + data->sl_cpos \
-					+ 1, data->sl_len - data->sl_cpos + 1);
+			ft_memmove(data->search_line + data->sl_cpos,
+			data->search_line + data->sl_cpos + 1,
+			data->sl_len - data->sl_cpos + 1);
 		}
 		else
 			data->search_line[data->sl_cpos] = '\0';

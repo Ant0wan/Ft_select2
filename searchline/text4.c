@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:13:58 by abarthel          #+#    #+#             */
-/*   Updated: 2020/05/31 16:31:46 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/19 11:07:44 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	clear_eol(struct s_select *data)
 {
 	if (data->sl_cpos != data->sl_len)
 	{
-		ft_bzero(&(data->search_line[data->sl_cpos]), data->sl_len - data->sl_cpos);
+		ft_bzero(&(data->search_line[data->sl_cpos]),
+		data->sl_len - data->sl_cpos);
 		data->sl_len -= data->sl_len - data->sl_cpos;
 		bar(data);
 	}
