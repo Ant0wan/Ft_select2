@@ -6,13 +6,11 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 23:48:48 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/19 11:12:49 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select.h"
-
-#define NEED_ARG "ft_select requires at least one argument.\n\nUsage:\t./ft_select ARG...\n"
 
 static void	ft_select(struct s_select *data)
 {

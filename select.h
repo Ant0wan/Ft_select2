@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:04:22 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 23:57:40 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/19 11:12:32 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@
 
 #define ERR_TERM "Terminal capabilities insuficient for program use.\n"
 #define ERR_WINS "Something went wrong in getting window size. ioctl(2): failed.\n"
+
+#define NEED_ARG "ft_select requires at least one argument.\n\nUsage:\t./ft_select ARG...\n"
 
 union					u_buffer
 {
