@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 17:26:23 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/19 11:04:43 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/19 16:41:08 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	suggestion(struct s_select *data)
 
 	data->suggestion = NULL;
 	e = data->elements;
-	while (e)
+	while (e && data->search_line && data->search_line[0])
 	{
 		if (!ft_strncmp(e->arg, data->search_line, data->sl_len)
 			&& data->sl_len != e->len)
