@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:16:44 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/10 17:27:55 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/19 11:02:27 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	display_selection(struct s_select *data)
 {
-	struct	s_element	*e;
-	int	has_prev;
+	struct s_element	*e;
+	int					has_prev;
 
 	has_prev = 0;
 	e = data->elements;
