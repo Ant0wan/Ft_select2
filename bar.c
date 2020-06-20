@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 13:13:05 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 22:45:20 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/20 12:16:35 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void		select_bar(struct s_select *data)
 	if (data->win.ws_col >= 25 + 16)
 		ft_dprintf(data->fd, "    Selected:%3d", nb_selected(data));
 	ft_dprintf(data->fd, "%s", DEFAULT);
-	if (data->win.ws_col >= 25 + 16 + 55)
+	if (data->win.ws_col >= 25 + 16 + 43)
 	{
-		tputs(tgoto(data->termcaps.cm, data->win.ws_col - 55,
+		tputs(tgoto(data->termcaps.cm, data->win.ws_col - 43,
 		data->win.ws_row), 1, output);
 		ft_dprintf(data->fd,
-		"%s    Press <:> sort mode   </> search mode   <r> reset%s",
+		"%s    Press <:> sort mode   </> search mode%s",
 		GRMODE, DEFAULT);
 	}
 }
@@ -68,7 +68,7 @@ void		command_bar(struct s_select *data)
 	if (data->win.ws_col >= 25 + 16)
 		ft_dprintf(data->fd, "    Selected:%3d", nb_selected(data));
 	ft_dprintf(data->fd, "%s", DEFAULT);
-	if (data->win.ws_col >= 25 + 16 + 55)
+	if (data->win.ws_col >= 25 + 16 + 43)
 	{
 		ft_dprintf(data->fd,
 		"%s    %sPress <ESC> or <ENTER> to quit mode%s",
