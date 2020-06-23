@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:14:17 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/19 11:06:41 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/23 10:53:05 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,18 @@ void	cursor_r(struct s_select *data)
 	{
 		data->sl_cpos++;
 		bar(data);
+	}
+}
+
+void	tab_autocomp(struct s_select *data)
+{
+	if (data->sl_cpos == data->sl_len)
+	{
+		if (data->suggestion)
+		{
+			clear_line(data);
+			insert_text(data, data->suggestion->arg,
+			data->suggestion->len);
+		}
 	}
 }

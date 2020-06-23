@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/16 14:31:51 by abarthel          #+#    #+#              #
-#    Updated: 2020/06/19 16:44:27 by abarthel         ###   ########.fr        #
+#    Updated: 2020/06/23 10:49:22 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,4 +57,4 @@ DEPENDS := $(patsubst %.c,%.d,$(addprefix $(SOURCES_PATH), $(SOURCES)))
 
 LDLIBS += -ltermcap $(PATH_LIB)libft.a
 
-CFLAGS += -Wall -Wextra -Werror -g3
+CFLAGS += -Wall -Wextra -Werror -g3 -O2 -fno-builtin
