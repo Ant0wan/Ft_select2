@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 11:23:23 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/18 23:36:35 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/23 14:44:08 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int				output(int c)
 	struct s_select	*data;
 
 	data_static_method(NULL, &data);
-	if (write(data->fd, &c, sizeof(c)) != -1)
+//	if (write(data->fd, &c, sizeof(c)) != -1)
+	if (write(data->fd, &c, 1) != -1)
 		return ((unsigned char)c);
 	else
 		return (EOF);
