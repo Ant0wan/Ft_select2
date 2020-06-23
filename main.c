@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:07:38 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/19 11:12:49 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/23 14:27:10 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int			main(int argc, char **argv)
 	}
 	else
 	{
-		write(STDERR_FILENO, NEED_ARG, ft_strlen(NEED_ARG));
+		ft_dprintf(STDERR_FILENO, "%s", NEED_ARG);
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);

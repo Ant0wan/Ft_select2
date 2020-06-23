@@ -6,7 +6,7 @@
 /*   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 13:17:43 by abarthel          #+#    #+#             */
-/*   Updated: 2020/06/19 00:02:00 by abarthel         ###   ########.fr       */
+/*   Updated: 2020/06/23 14:24:18 by abarthel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		set_terminal(struct s_select *data)
 			data->term = "dumb";
 		if (tgetent(NULL, data->term) != 1)
 		{
-			write(STDERR_FILENO, ERR_TERM, ft_strlen(ERR_TERM));
+			ft_dprintf(STDERR_FILENO, "%s", ERR_TERM);
 			exit(2);
 		}
 	}
@@ -60,7 +60,7 @@ void		set_terminal(struct s_select *data)
 	set_termcaps(data);
 	if (data->dumb_mode)
 	{
-		write(STDERR_FILENO, ERR_TERM, ft_strlen(ERR_TERM));
+		ft_dprintf(STDERR_FILENO, "%s", ERR_TERM);
 		exit(2);
 	}
 	tcgetattr(STDIN_FILENO, &(data->termios_backup));
