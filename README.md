@@ -7,7 +7,6 @@ An implementation of an **in-shell file dialog** using termcaps [a 42 project].
 This project aims to learn the very basics of using termcap library in C programming language.
 Ft\_select2 is an argument viewer in the terminal that returns the user selection on the standard output.
 
-<img src="https://i.imgur.com/BHfhj0n.gif" alt="demo" width="800" height="500">
 
 
 ## Description
@@ -103,8 +102,6 @@ For instance:
 ./ft_select Makefile README.md author ft_select ft_select.en.pdf libft src
 ```
 
-
-
 ## Demo
 
-[![asciicast](https://asciinema.org/a/i5FeTPOeLOQTTl8q3t1tkEg1Y.svg)](https://asciinema.org/a/i5FeTPOeLOQTTl8q3t1tkEg1Y)
+[![demo](/demo.gif)](/demo.gif)
